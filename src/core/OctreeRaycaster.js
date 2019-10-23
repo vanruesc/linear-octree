@@ -1,13 +1,13 @@
 import { Line3, Ray, Vector3 } from "math-ds";
 
 import {
+	layout,
 	Flags,
 	findEntryOctant,
 	findNextOctant,
 	intersectOctree
-} from "../raycasting";
+} from "sparse-octree";
 
-import { layout } from "../core";
 import { OctantWrapper } from "./OctantWrapper.js";
 
 /**
@@ -288,7 +288,7 @@ export class OctreeRaycaster {
 		// Check if the ray hits the octree.
 		if(a !== null) {
 
-			// Phase 1: Initialisation.
+			// Phase 1: Initialization.
 
 			// Find the ending point.
 			t = cellSize << 1;

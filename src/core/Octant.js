@@ -3,6 +3,8 @@
  *
  * This octant serves as a data container. Its position is implicitly defined
  * by its key and its size is defined by the level in which it resides.
+ *
+ * @implements {Node}
  */
 
 export class Octant {

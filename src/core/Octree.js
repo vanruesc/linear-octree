@@ -1,5 +1,5 @@
 import { Vector3 } from "math-ds";
-import { layout } from "../core";
+import { layout } from "sparse-octree";
 import { KeyDesign } from "./KeyDesign.js";
 import { OctantWrapper } from "./OctantWrapper.js";
 import { OctreeIterator } from "./OctreeIterator.js";
@@ -125,6 +125,10 @@ function prune(octree, keyX, keyY, keyZ, level) {
  *
  * This linear implementation offers constant time access to octants at any
  * depth level as well as octant neighbours and parents.
+ *
+ * @implements {Iterable}
+ * @implements {Node}
+ * @implements {Tree}
  */
 
 export class Octree {
@@ -304,18 +308,6 @@ export class Octree {
 	}
 
 	/**
-	 * Returns the octree depth.
-	 *
-	 * @return {Number} The octree depth. This value is constant.
-	 */
-
-	getDepth() {
-
-		return this.grids.length - 1;
-
-	}
-
-	/**
 	 * Returns the grid of the specified level.
 	 *
 	 * @param {Number} level - The level of the grid.
@@ -356,13 +348,25 @@ export class Octree {
 	}
 
 	/**
-	 * Fetches all octants of the specified level.
+	 * Returns the octree depth.
 	 *
-	 * @param {Number} level - The level.
-	 * @return {Iterable} A collection that contains the octants of the specified level.
+	 * @return {Number} The octree depth. This value is constant.
 	 */
 
-	findOctantsByLevel(level) {
+	getDepth() {
+
+		return this.grids.length - 1;
+
+	}
+
+	/**
+	 * Fetches all nodes of the specified level.
+	 *
+	 * @param {Number} level - The level.
+	 * @return {Iterable} A collection that contains the nodes of the specified level.
+	 */
+
+	findNodesByLevel(level) {
 
 		return this.octants(level);
 
@@ -395,14 +399,14 @@ export class Octree {
 	}
 
 	/**
-	 * Retrieves the octant of a specific level that contains the given point.
+	 * Retrieves the node of a specific level that contains the given point.
 	 *
 	 * @param {Vector3} point - A point.
 	 * @param {Number} [level=0] - A level value.
-	 * @return {Octant} The octant that contains the point or undefined if it doesn't exist.
+	 * @return {Octant} The node that contains the point or undefined if it doesn't exist.
 	 */
 
-	getOctantByPoint(point, level = 0) {
+	getNodeByPoint(point, level = 0) {
 
 		const keyDesign = this.keyDesign;
 		const grid = this.getGrid(level);
@@ -433,7 +437,7 @@ export class Octree {
 	}
 
 	/**
-	 * Removes a specific octant by a given key.
+	 * Removes a specific node by a given key.
 	 *
 	 * Children and empty parent nodes will be removed as well.
 	 *
@@ -441,7 +445,7 @@ export class Octree {
 	 * @param {Number} [level=0] - The level of the octant.
 	 */
 
-	removeOctant(key, level = 0) {
+	remove(key, level = 0) {
 
 		const keyDesign = this.keyDesign;
 		const grid = this.getGrid(level);
@@ -480,13 +484,13 @@ export class Octree {
 	}
 
 	/**
-	 * Finds the octants that intersect with the given ray. The intersecting
-	 * octants are sorted by distance, closest first. Empty octants will not be
+	 * Finds the nodes that intersect with the given ray. The intersecting
+	 * nodes are sorted by distance, closest first. Empty nodes will not be
 	 * included in the result.
 	 *
 	 * @param {Raycaster} raycaster - A raycaster.
-	 * @param {Array} [intersects] - An optional target list to be filled with the intersecting octants.
-	 * @return {Octant[]} The intersecting octants.
+	 * @param {Array} [intersects] - An optional target list to be filled with the intersecting nodes.
+	 * @return {Node[]} The intersecting nodes.
 	 */
 
 	raycast(raycaster, intersects = []) {
@@ -502,7 +506,7 @@ export class Octree {
 	 * positional information. See {@link OctantWrapper} for more details.
 	 *
 	 * @param {Number} [level=0] - The depth.
-	 * @return {Iterator} An iterator.
+	 * @return {Iterator<OctantWrapper>} An iterator.
 	 */
 
 	octants(level = 0) {
