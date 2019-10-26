@@ -4,6 +4,8 @@
 [![npm version](https://badgen.net/npm/v/linear-octree?color=green)](https://www.npmjs.com/package/linear-octree)
 [![Peer dependencies](https://david-dm.org/vanruesc/linear-octree/peer-status.svg)](https://david-dm.org/vanruesc/linear-octree?type=peer)
 
+:warning: WIP :warning:
+
 A sparse, linear octree data structure. For a pointer-based implementation see [sparse-octree](https://github.com/vanruesc/sparse-octree).
 
 *[Demo](https://vanruesc.github.io/linear-octree/public/demo)&ensp;&middot;&ensp;[Documentation](https://vanruesc.github.io/linear-octree/public/docs)*
