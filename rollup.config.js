@@ -12,17 +12,21 @@ const banner = `/**
  */`;
 
 const production = (process.env.NODE_ENV === "production");
-const globals = { three: "THREE" };
+const external = Object.keys(pkg.peerDependencies).concat(["three"]);
+const globals = Object.assign({}, ...external.map((value) => ({
+	[value]: value.replace(/-/g, "").toUpperCase()
+})));
 
 const lib = {
 
 	module: {
 		input: "src/index.js",
 		plugins: [resolve()],
+		external,
 		output: [{
 			file: pkg.module,
 			format: "esm",
-			banner: banner
+			banner
 		}, {
 			file: pkg.main,
 			format: "esm"
@@ -35,11 +39,13 @@ const lib = {
 	main: {
 		input: pkg.main,
 		plugins: [babel()],
+		external,
 		output: {
 			file: pkg.main,
 			format: "umd",
 			name: pkg.name.replace(/-/g, "").toUpperCase(),
-			banner: banner
+			globals,
+			banner
 		}
 	},
 
@@ -49,11 +55,13 @@ const lib = {
 			bannerNewLine: true,
 			comments: false
 		}), babel()],
+		external,
 		output: {
 			file: pkg.main.replace(".js", ".min.js"),
 			format: "umd",
 			name: pkg.name.replace(/-/g, "").toUpperCase(),
-			banner: banner
+			globals,
+			banner
 		}
 	}
 
@@ -63,40 +71,40 @@ const demo = {
 
 	module: {
 		input: "demo/src/index.js",
-		external: Object.keys(globals),
 		plugins: [resolve()],
+		external: ["three"],
 		output: [{
 			file: "public/demo/index.js",
 			format: "esm",
-			globals: globals
+			globals
 		}].concat(production ? [{
 			file: "public/demo/index.min.js",
 			format: "esm",
-			globals: globals
+			globals
 		}] : [])
 	},
 
 	main: {
 		input: production ? "public/demo/index.js" : "demo/src/index.js",
-		external: Object.keys(globals),
 		plugins: production ? [babel()] : [resolve()],
+		external: ["three"],
 		output: [{
 			file: "public/demo/index.js",
 			format: "iife",
-			globals: globals
+			globals
 		}]
 	},
 
 	min: {
 		input: "public/demo/index.min.js",
-		external: Object.keys(globals),
 		plugins: [minify({
 			comments: false
 		}), babel()],
+		external: ["three"],
 		output: {
 			file: "public/demo/index.min.js",
 			format: "iife",
-			globals: globals
+			globals
 		}
 	}
 
