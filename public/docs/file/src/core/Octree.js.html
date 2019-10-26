@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/core/Octree.js | linear-octree</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="A sparse, linear octree data structure."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="linear-octree"><meta property="twitter:description" content="A sparse, linear octree data structure."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/vanruesc/linear-octree.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/BinaryUtils.js~BinaryUtils.html">BinaryUtils</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/IntermediateOctant.js~IntermediateOctant.html">IntermediateOctant</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/KeyDesign.js~KeyDesign.html">KeyDesign</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/KeyIterator.js~KeyIterator.html">KeyIterator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Octant.js~Octant.html">Octant</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/OctantId.js~OctantId.html">OctantId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/OctantWrapper.js~OctantWrapper.html">OctantWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Octree.js~Octree.html">Octree</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/OctreeIterator.js~OctreeIterator.html">OctreeIterator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/OctreeRaycaster.js~OctreeRaycaster.html">OctreeRaycaster</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/core/Octree.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Vector3 } from &quot;math-ds&quot;;
+import { layout } from &quot;sparse-octree&quot;;
+import { KeyDesign } from &quot;./KeyDesign.js&quot;;
+import { OctantWrapper } from &quot;./OctantWrapper.js&quot;;
+import { OctreeIterator } from &quot;./OctreeIterator.js&quot;;
+import { OctreeRaycaster } from &quot;./OctreeRaycaster.js&quot;;
+
+/**
+ * A vector.
+ *
+ * @type {Vector3}
+ * @private
+ */
+
+const v = new Vector3();
+
+/**
+ * Recursively deletes octant children.
+ *
+ * @param {Octree} octree - An octree.
+ * @param {Octant} octant - The current octant.
+ * @param {Number} keyX - The X-coordinate of the current octant key.
+ * @param {Number} keyY - The Y-coordinate of the current octant key.
+ * @param {Number} keyZ - The Z-coordinate of the current octant key.
+ * @param {Number} level - The current depth.
+ */
+
+function removeChildren(octree, octant, keyX, keyY, keyZ, level) {
+
+	let grid, keyDesign;
+	let children, child;
+	let offset, key, i;
+
+	// The octants from level zero have no children.
+	if(level &gt; 0) {
+
+		// Look at the next lower level.
+		--level;
+
+		grid = octree.getGrid(level);
+		keyDesign = octree.getKeyDesign();
+		children = octant.children;
+
+		// Translate the key coordinates to the next lower level.
+		keyX &lt;&lt;= 1; keyY &lt;&lt;= 1; keyZ &lt;&lt;= 1;
+
+		for(i = 0; i &lt; 8; ++i) {
+
+			// Check if the child exists.
+			if((children &amp; (1 &lt;&lt; i)) !== 0) {
+
+				offset = layout[i];
+
+				v.set(
+					keyX + offset[0],
+					keyY + offset[1],
+					keyZ + offset[2]
+				);
+
+				key = keyDesign.packKey(v);
+
+				// Fetch the child and remove it from the grid.
+				child = grid.get(key);
+				grid.delete(key);
+
+				removeChildren(octree, child, v.x, v.y, v.z, level);
+
+			}
+
+		}
+
+		octant.children = 0;
+
+	}
+
+}
+
+/**
+ * Recursively removes empty parent nodes.
+ *
+ * @param {Octree} octree - An octree.
+ * @param {Number} keyX - The X-coordinate of the deleted octant&apos;s key.
+ * @param {Number} keyY - The Y-coordinate of the deleted octant&apos;s key.
+ * @param {Number} keyZ - The Z-coordinate of the deleted octant&apos;s key.
+ * @param {Number} level - The current level value.
+ */
+
+function prune(octree, keyX, keyY, keyZ, level) {
+
+	let grid, i, key, parent;
+
+	if(++level &lt; octree.levels) {
+
+		// Look at the next higher level grid.
+		grid = octree.getGrid(level);
+
+		// Determine the position of the deleted octant relative to its parent.
+		i = Octree.calculateOffsetIndex(keyX, keyY, keyZ);
+
+		// Translate the key coordinates to the next higher level.
+		v.set(keyX &gt;&gt;&gt; 1, keyY &gt;&gt;&gt; 1, keyZ &gt;&gt;&gt; 1);
+
+		// The resulting coordinates identify the parent octant.
+		key = octree.getKeyDesign().packKey(v);
+		parent = grid.get(key);
+
+		// Unset the existence flag of the deleted child.
+		parent.children &amp;= ~(1 &lt;&lt; i);
+
+		// Check if there are any children left.
+		if(parent.children === 0) {
+
+			// Remove the empty parent and recur.
+			grid.delete(key);
+			prune(octree, v.x, v.y, v.z, level);
+
+		}
+
+	}
+
+}
+
+/**
+ * An octree that subdivides space for fast spatial searches.
+ *
+ * This linear implementation offers constant time access to octants at any
+ * depth level as well as octant neighbours and parents.
+ *
+ * @implements {Iterable}
+ * @implements {Node}
+ * @implements {Tree}
+ */
+
+export class Octree {
+
+	/**
+	 * Constructs a new octree.
+	 *
+	 * Each octant can be uniquely identified by a 3D coordinate and a level.
+	 * The individual values for X, Y and Z are packed into a numeric key.
+	 *
+	 * @param {Number} [cellSize=20] - The size of the smallest octants in level zero. Must be an integer i such that 0 &lt; i &lt; 2 ** (33 - levels).
+	 * @param {Number} [levels=8] - The amount of detail levels. Must be an integer i such that 0 &lt; i &lt; 33.
+	 * @param {KeyDesign} [keyDesign] - The bit allotments for the octant coordinates.
+	 */
+
+	constructor(cellSize = 20, levels = 8, keyDesign = new KeyDesign()) {
+
+		levels = Math.max(Math.min(Math.trunc(levels), 32), 1);
+
+		/**
+		 * The level zero cell size.
+		 *
+		 * @type {Number}
+		 * @private
+		 */
+
+		this.cellSize = Math.max(Math.min(Math.trunc(cellSize), Math.pow(2, 33 - levels) - 1), 1);
+
+		/**
+		 * The octant key design.
+		 *
+		 * @type {KeyDesign}
+		 * @private
+		 */
+
+		this.keyDesign = keyDesign;
+
+		/**
+		 * The octant level grids.
+		 *
+		 * @type {Map[]}
+		 * @private
+		 */
+
+		this.grids = [];
+
+		while(this.grids.length &lt; levels) {
+
+			this.grids.push(new Map());
+
+		}
+
+		/**
+		 * An empty octant wrapper that holds the bounds of this octree.
+		 *
+		 * @type {OctantWrapper}
+		 * @private
+		 */
+
+		this.bounds = new OctantWrapper();
+
+		this.bounds.min.copy(this.keyDesign.halfRange).multiplyScalar(-this.cellSize);
+		this.bounds.max.copy(this.keyDesign.halfRange).multiplyScalar(this.cellSize);
+
+	}
+
+	/**
+	 * The lower bounds of this octree.
+	 *
+	 * @type {Vector3}
+	 */
+
+	get min() {
+
+		return this.bounds.min;
+
+	}
+
+	/**
+	 * The upper bounds of this octree.
+	 *
+	 * @type {Vector3}
+	 */
+
+	get max() {
+
+		return this.bounds.max;
+
+	}
+
+	/**
+	 * The amount of depth levels. This value can not be changed.
+	 *
+	 * @type {Number}
+	 */
+
+	get levels() {
+
+		return this.grids.length;
+
+	}
+
+	/**
+	 * The level zero octant grid.
+	 *
+	 * @type {Number}
+	 */
+
+	get levelZero() {
+
+		return this.grids[0];
+
+	}
+
+	/**
+	 * Returns the key design.
+	 *
+	 * @return {KeyDesign} The key design.
+	 */
+
+	getKeyDesign() {
+
+		return this.keyDesign;
+
+	}
+
+	/**
+	 * Returns the size of the cells in the specified grid.
+	 *
+	 * @param {Number} [level=0] - The level. Must be a positive integer.
+	 * @return {Number} The cell size.
+	 */
+
+	getCellSize(level = 0) {
+
+		return (this.cellSize &lt;&lt; level) &gt;&gt;&gt; 0;
+
+	}
+
+	/**
+	 * Calculates the center of this octree.
+	 *
+	 * @param {Vector3} [target] - A target vector. If none is provided, a new one will be created.
+	 * @return {Vector3} A vector that describes the center of this octree.
+	 */
+
+	getCenter(target) {
+
+		return this.bounds.getCenter(target);
+
+	}
+
+	/**
+	 * Sets the center of this octree.
+	 *
+	 * @param {Vector3} center - The new center.
+	 */
+
+	setCenter(center) {
+
+		this.min.copy(this.keyDesign.halfRange).multiplyScalar(-this.cellSize).add(center);
+		this.max.copy(this.keyDesign.halfRange).multiplyScalar(this.cellSize).add(center);
+
+	}
+
+	/**
+	 * Computes the size of this octree.
+	 *
+	 * @param {Vector3} [target] - A target vector. If none is provided, a new one will be created.
+	 * @return {Vector3} A vector that describes the size of this octree.
+	 */
+
+	getDimensions(target) {
+
+		return this.bounds.getDimensions(target);
+
+	}
+
+	/**
+	 * Returns the grid of the specified level.
+	 *
+	 * @param {Number} level - The level of the grid.
+	 * @return {Map} The requested grid or undefined if the given level is out of bounds.
+	 */
+
+	getGrid(level) {
+
+		return (level &gt;= 0 &amp;&amp; level &lt; this.grids.length) ? this.grids[level] : undefined;
+
+	}
+
+	/**
+	 * Removes all octants.
+	 */
+
+	clear() {
+
+		for(const grid of this.grids) {
+
+			grid.clear();
+
+		}
+
+	}
+
+	/**
+	 * Checks if the given point lies inside this octree&apos;s boundaries.
+	 *
+	 * @param {Vector3} point - A point.
+	 * @return {Boolean} Whether the given point lies inside this octree.
+	 */
+
+	containsPoint(point) {
+
+		return this.bounds.containsPoint(point);
+
+	}
+
+	/**
+	 * Returns the octree depth.
+	 *
+	 * @return {Number} The octree depth. This value is constant.
+	 */
+
+	getDepth() {
+
+		return this.grids.length - 1;
+
+	}
+
+	/**
+	 * Fetches all nodes of the specified level.
+	 *
+	 * @param {Number} level - The level.
+	 * @return {Iterable} A collection that contains the nodes of the specified level.
+	 */
+
+	findNodesByLevel(level) {
+
+		return this.octants(level);
+
+	}
+
+	/**
+	 * Calculates key coordinates based on a given position and level.
+	 *
+	 * @param {Vector3} position - A position.
+	 * @param {Number} level - The target level.
+	 * @param {Vector3} [target] - A vector to store the result in. If none is provided, a new one will be created.
+	 * @return {Vector3} The key coordinates.
+	 */
+
+	calculateKeyCoordinates(position, level, target = new Vector3()) {
+
+		const cellSize = this.cellSize &lt;&lt; level;
+
+		// Translate to the origin (zero-based unsigned coordinates).
+		v.subVectors(position, this.min);
+
+		target.set(
+			Math.trunc(v.x / cellSize),
+			Math.trunc(v.y / cellSize),
+			Math.trunc(v.z / cellSize)
+		);
+
+		return target;
+
+	}
+
+	/**
+	 * Retrieves the node of a specific level that contains the given point.
+	 *
+	 * @param {Vector3} point - A point.
+	 * @param {Number} [level=0] - A level value.
+	 * @return {Octant} The node that contains the point or undefined if it doesn&apos;t exist.
+	 */
+
+	getNodeByPoint(point, level = 0) {
+
+		const keyDesign = this.keyDesign;
+		const grid = this.getGrid(level);
+
+		let result;
+
+		if(grid !== undefined) {
+
+			if(this.containsPoint(point)) {
+
+				this.calculateKeyCoordinates(point, level, v);
+				result = grid.get(keyDesign.packKey(v));
+
+			} else {
+
+				console.error(&quot;Position out of range&quot;, point);
+
+			}
+
+		} else {
+
+			console.error(&quot;Invalid level&quot;, level);
+
+		}
+
+		return result;
+
+	}
+
+	/**
+	 * Removes a specific node by a given key.
+	 *
+	 * Children and empty parent nodes will be removed as well.
+	 *
+	 * @param {Number} key - The key of the octant that should be removed.
+	 * @param {Number} [level=0] - The level of the octant.
+	 */
+
+	remove(key, level = 0) {
+
+		const keyDesign = this.keyDesign;
+		const grid = this.getGrid(level);
+
+		let keyX, keyY, keyZ;
+
+		if(grid !== undefined) {
+
+			if(grid.has(key)) {
+
+				// Note: v will be modified by removeChildren and prune.
+				keyDesign.unpackKey(key, v);
+				keyX = v.x; keyY = v.y; keyZ = v.z;
+
+				// Recursively delete all children in the lower level grids.
+				removeChildren(this, grid.get(key), keyX, keyY, keyZ, level);
+
+				// Remove the octant.
+				grid.delete(key);
+
+				// Recursively delete empty parent nodes.
+				prune(this, keyX, keyY, keyZ, level);
+
+			} else {
+
+				console.error(&quot;No octant found&quot;, key);
+
+			}
+
+		} else {
+
+			console.error(&quot;Invalid level&quot;, level);
+
+		}
+
+	}
+
+	/**
+	 * Finds the nodes that intersect with the given ray. The intersecting
+	 * nodes are sorted by distance, closest first. Empty nodes will not be
+	 * included in the result.
+	 *
+	 * @param {Raycaster} raycaster - A raycaster.
+	 * @param {Array} [intersects] - An optional target list to be filled with the intersecting nodes.
+	 * @return {Node[]} The intersecting nodes.
+	 */
+
+	raycast(raycaster, intersects = []) {
+
+		return OctreeRaycaster.intersectOctree(this, raycaster.ray, intersects);
+
+	}
+
+	/**
+	 * Returns a new octree octant iterator.
+	 *
+	 * The octants returned by this iterator are augmented with explicit
+	 * positional information. See {@link OctantWrapper} for more details.
+	 *
+	 * @param {Number} [level=0] - The depth.
+	 * @return {Iterator&lt;OctantWrapper&gt;} An iterator.
+	 */
+
+	octants(level = 0) {
+
+		return new OctreeIterator(this, level);
+
+	}
+
+	/**
+	 * Calculates an offset index from octant key coordinates.
+	 *
+	 * The index identifies the octant&apos;s positional offset relative to its parent:
+	 *
+	 * ```text
+	 *  0: [0, 0, 0]
+	 *  1: [0, 0, 1]
+	 *  2: [0, 1, 0]
+	 *  3: [0, 1, 1]
+	 *  4: [1, 0, 0]
+	 *  5: [1, 0, 1]
+	 *  6: [1, 1, 0]
+	 *  7: [1, 1, 1]
+	 * ```
+	 *
+	 * Note: This binary layout is defined in the external module `sparse-octree`.
+	 *
+	 * For more information on fast bitwise modulo with power of two divisors see:
+	 *  https://graphics.stanford.edu/~seander/bithacks.html#ModulusDivisionEasy
+	 *
+	 * @param {Number} x - The X-coordinate of the octant key.
+	 * @param {Number} y - The Y-coordinate of the octant key.
+	 * @param {Number} z - The Z-coordinate of the octant key.
+	 * @return {Number} The index of the relative positional offset. Range: [0, 7].
+	 */
+
+	static calculateOffsetIndex(x, y, z) {
+
+		// Bitwise modulo: n % (1 &lt;&lt; s) = n &amp; ((1 &lt;&lt; s) - 1) for positive integers.
+		const offsetX = x &amp; 1;
+		const offsetY = y &amp; 1;
+		const offsetZ = z &amp; 1;
+
+		// Use a reversed packing order for correct indexing (X * 4 + Y * 2 + Z).
+		return (offsetX &lt;&lt; 2) + (offsetY &lt;&lt; 1) + offsetZ;
+
+	}
+
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,0 +1,3864 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "src/core/BinaryUtils.js",
+    "content": "/**\r\n * A collection of binary number utilities.\r\n */\r\n\r\nexport class BinaryUtils {\r\n\r\n\t/**\r\n\t * Interpretes the given string as a binary number.\r\n\t *\r\n\t * @param {String} s - A string that represents a binary number.\r\n\t * @return {Number} The parsed number.\r\n\t */\r\n\r\n\tstatic parseBin(s) {\r\n\r\n\t\treturn parseInt(s, 2);\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Creates a binary string representation of the given number.\r\n\t *\r\n\t * @param {Number} n - A number.\r\n\t * @param {Number} [minBits=64] - The minimum length of the string.\r\n\t * @return {String} The binary representation.\r\n\t */\r\n\r\n\tstatic createBinaryString(n, minBits = 64) {\r\n\r\n\t\tconst sign = (n < 0) ? \"-\" : \"\";\r\n\r\n\t\tlet result = Math.abs(n).toString(2);\r\n\r\n\t\twhile(result.length < minBits) {\r\n\r\n\t\t\tresult = \"0\" + result;\r\n\r\n\t\t}\r\n\r\n\t\treturn sign + result;\r\n\r\n\t}\r\n\r\n}\r\n",
+    "static": true,
+    "longname": "D:/Sourcecode/JavaScript/linear-octree/src/core/BinaryUtils.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "class",
+    "name": "BinaryUtils",
+    "memberof": "src/core/BinaryUtils.js",
+    "static": true,
+    "longname": "src/core/BinaryUtils.js~BinaryUtils",
+    "access": "public",
+    "export": true,
+    "importPath": "linear-octree",
+    "importStyle": "{BinaryUtils}",
+    "description": "A collection of binary number utilities.",
+    "lineNumber": 5,
+    "interface": false
+  },
+  {
+    "__docId__": 50,
+    "kind": "method",
+    "name": "parseBin",
+    "memberof": "src/core/BinaryUtils.js~BinaryUtils",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/core/BinaryUtils.js~BinaryUtils.parseBin",
+    "access": "public",
+    "description": "Interpretes the given string as a binary number.",
+    "lineNumber": 14,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "s",
+        "description": "A string that represents a binary number."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": "The parsed number."
+    }
+  },
+  {
+    "__docId__": 51,
+    "kind": "method",
+    "name": "createBinaryString",
+    "memberof": "src/core/BinaryUtils.js~BinaryUtils",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/core/BinaryUtils.js~BinaryUtils.createBinaryString",
+    "access": "public",
+    "description": "Creates a binary string representation of the given number.",
+    "lineNumber": 28,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "n",
+        "description": "A number."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "64",
+        "defaultRaw": 64,
+        "name": "minBits",
+        "description": "The minimum length of the string."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": "The binary representation."
+    }
+  },
+  {
+    "__docId__": 52,
+    "kind": "file",
+    "name": "src/core/index.js",
+    "content": "export { IntermediateOctant } from \"./IntermediateOctant.js\";\r\n\r\nexport { KeyDesign } from \"./KeyDesign.js\";\r\nexport { KeyIterator } from \"./KeyIterator.js\";\r\n\r\nexport { Octant } from \"./Octant.js\";\r\nexport { OctantId } from \"./OctantId.js\";\r\nexport { OctantWrapper } from \"./OctantWrapper.js\";\r\nexport { Octree } from \"./Octree.js\";\r\nexport { OctreeIterator } from \"./OctreeIterator.js\";\r\nexport { OctreeRaycaster } from \"./OctreeRaycaster.js\";\r\n",
+    "static": true,
+    "longname": "D:/Sourcecode/JavaScript/linear-octree/src/core/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 53,
+    "kind": "file",
+    "name": "src/core/IntermediateOctant.js",
+    "content": "import { Octant } from \"./Octant.js\";\r\n\r\n/**\r\n * An octant that doesn't reside in level zero.\r\n *\r\n * This octant stores information about the existence of its potential children.\r\n */\r\n\r\nexport class IntermediateOctant extends Octant {\r\n\r\n\t/**\r\n\t * Constructs a new intermediate octant.\r\n\t */\r\n\r\n\tconstructor() {\r\n\r\n\t\tsuper();\r\n\r\n\t\t/**\r\n\t\t * An 8-bit mask that indicates the existence of the eight potential\r\n\t\t * children.\r\n\t\t *\r\n\t\t * The order of the children follows the common octant layout from the\r\n\t\t * external module `sparse-octree`:\r\n\t\t *\r\n\t\t * ```text\r\n\t\t *    3____7\r\n\t\t *  2/___6/|\r\n\t\t *  | 1__|_5\r\n\t\t *  0/___4/\r\n\t\t * ```\r\n\t\t *\r\n\t\t * @type {Number}\r\n\t\t */\r\n\r\n\t\tthis.children = 0;\r\n\r\n\t}\r\n\r\n}\r\n",
+    "static": true,
+    "longname": "D:/Sourcecode/JavaScript/linear-octree/src/core/IntermediateOctant.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 54,
+    "kind": "class",
+    "name": "IntermediateOctant",
+    "memberof": "src/core/IntermediateOctant.js",
+    "static": true,
+    "longname": "src/core/IntermediateOctant.js~IntermediateOctant",
+    "access": "public",
+    "export": true,
+    "importPath": "linear-octree",
+    "importStyle": "{IntermediateOctant}",
+    "description": "An octant that doesn't reside in level zero.\n\nThis octant stores information about the existence of its potential children.",
+    "lineNumber": 9,
+    "interface": false,
+    "extends": [
+      "src/core/Octant.js~Octant"
+    ]
+  },
+  {
+    "__docId__": 55,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/core/IntermediateOctant.js~IntermediateOctant",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/IntermediateOctant.js~IntermediateOctant#constructor",
+    "access": "public",
+    "description": "Constructs a new intermediate octant.",
+    "lineNumber": 15
+  },
+  {
+    "__docId__": 56,
+    "kind": "member",
+    "name": "children",
+    "memberof": "src/core/IntermediateOctant.js~IntermediateOctant",
+    "static": false,
+    "longname": "src/core/IntermediateOctant.js~IntermediateOctant#children",
+    "access": "public",
+    "description": "An 8-bit mask that indicates the existence of the eight potential\nchildren.\n\nThe order of the children follows the common octant layout from the\nexternal module `sparse-octree`:\n\n```text\n   3____7\n 2/___6/|\n | 1__|_5\n 0/___4/\n```",
+    "lineNumber": 36,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 57,
+    "kind": "file",
+    "name": "src/core/KeyDesign.js",
+    "content": "import { Vector3 } from \"math-ds\";\r\nimport { BinaryUtils } from \"./BinaryUtils.js\";\r\nimport { KeyIterator } from \"./KeyIterator.js\";\r\n\r\n/**\r\n * The amount of bits of a DWord.\r\n *\r\n * @type {Number}\r\n * @private\r\n */\r\n\r\nconst DWORD_BITS = 32;\r\n\r\n/**\r\n * The amount of different values that can be represented with a DWord.\r\n *\r\n * @type {Number}\r\n * @private\r\n */\r\n\r\nconst RANGE_DWORD = Math.pow(2, DWORD_BITS);\r\n\r\n/**\r\n * The total amount of available bits for safe integers.\r\n *\r\n * @type {Number}\r\n * @private\r\n */\r\n\r\nconst BITS = 53;\r\n\r\n/**\r\n * The amount of available high bits.\r\n *\r\n * In JavaScript, bit operations can only be applied to DWords (32-bit).\r\n * All 53-bit keys must be split into a high and a low part for processing.\r\n *\r\n * @type {Number}\r\n * @private\r\n */\r\n\r\nconst HI_BITS = 21;\r\n\r\n/**\r\n * The amount of available low bits.\r\n *\r\n * In JavaScript, bit operations can only be applied to DWords (32-bit).\r\n * All 53-bit keys must be split into a high and a low part for processing.\r\n *\r\n * @type {Number}\r\n * @private\r\n */\r\n\r\nconst LO_BITS = 32;\r\n\r\n/**\r\n * A design for octant keys.\r\n *\r\n * 3D coordinates are packed into a single integer to obtain a unique key. This\r\n * class describes the bit allotment for each coordinate and provides methods\r\n * for key packing and unpacking.\r\n *\r\n * See {@link KeyDesign.BITS} for the total amount of available bits.\r\n */\r\n\r\nexport class KeyDesign {\r\n\r\n\t/**\r\n\t * Constructs a new key design.\r\n\t *\r\n\t * @param {Number} [x=Math.round(BITS * 0.4)] - The amount of bits used for the X-coordinate.\r\n\t * @param {Number} [y=Math.round(BITS * 0.2)] - The amount of bits used for the Y-coordinate.\r\n\t * @param {Number} [z=x] - The amount of bits used for the Z-coordinate.\r\n\t */\r\n\r\n\tconstructor(x = Math.round(BITS * 0.4), y = Math.round(BITS * 0.2), z = x) {\r\n\r\n\t\t/**\r\n\t\t * The amount of bits reserved for the X-coordinate.\r\n\t\t *\r\n\t\t * @type {Number}\r\n\t\t */\r\n\r\n\t\tthis.x = 0;\r\n\r\n\t\t/**\r\n\t\t * The amount of bits reserved for the Y-coordinate.\r\n\t\t *\r\n\t\t * @type {Number}\r\n\t\t */\r\n\r\n\t\tthis.y = 0;\r\n\r\n\t\t/**\r\n\t\t * The amount of bits reserved for the Z-coordinate.\r\n\t\t *\r\n\t\t * @type {Number}\r\n\t\t */\r\n\r\n\t\tthis.z = 0;\r\n\r\n\t\t/**\r\n\t\t * The amount of distinct integers that can be represented with X bits.\r\n\t\t *\r\n\t\t * @type {Number}\r\n\t\t */\r\n\r\n\t\tthis.rangeX = 0;\r\n\r\n\t\t/**\r\n\t\t * The amount of distinct integers that can be represented with Y bits.\r\n\t\t *\r\n\t\t * @type {Number}\r\n\t\t */\r\n\r\n\t\tthis.rangeY = 0;\r\n\r\n\t\t/**\r\n\t\t * The amount of distinct integers that can be represented with Z bits.\r\n\t\t *\r\n\t\t * @type {Number}\r\n\t\t */\r\n\r\n\t\tthis.rangeZ = 0;\r\n\r\n\t\t/**\r\n\t\t * The amount of distinct integers that can be represented with X + Y bits.\r\n\t\t *\r\n\t\t * @type {Number}\r\n\t\t */\r\n\r\n\t\tthis.rangeXY = 0;\r\n\r\n\t\t/**\r\n\t\t * The key range divided by two.\r\n\t\t *\r\n\t\t * @type {Vector3}\r\n\t\t */\r\n\r\n\t\tthis.halfRange = null;\r\n\r\n\t\t/**\r\n\t\t * A bit mask for the X-coordinate. The first item holds the low bits while\r\n\t\t * the second item holds the high bits.\r\n\t\t *\r\n\t\t * @type {Number}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.maskX = [0, 0];\r\n\r\n\t\t/**\r\n\t\t * A bit mask for the Y-coordinate. The first item holds the low bits while\r\n\t\t * the second item holds the high bits.\r\n\t\t *\r\n\t\t * @type {Number}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.maskY = [0, 0];\r\n\r\n\t\t/**\r\n\t\t * A bit mask for the Z-coordinate. The first item holds the low bits while\r\n\t\t * the second item holds the high bits.\r\n\t\t *\r\n\t\t * @type {Number}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.maskZ = [0, 0];\r\n\r\n\t\tthis.set(x, y, z);\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Sets the bit distribution.\r\n\t *\r\n\t * Make sure to clear your octree after changing the key design!\r\n\t *\r\n\t * @param {Number} [x] - The amount of bits used for the X-coordinate.\r\n\t * @param {Number} [y] - The amount of bits used for the Y-coordinate.\r\n\t * @param {Number} [z] - The amount of bits used for the Z-coordinate.\r\n\t */\r\n\r\n\tset(x, y, z) {\r\n\r\n\t\t// Bit operations only work on DWord Numbers.\r\n\t\tif(x + y + z > BITS || x > DWORD_BITS || y > DWORD_BITS || z > DWORD_BITS) {\r\n\r\n\t\t\tconsole.warn(\"Invalid bit allotment\");\r\n\r\n\t\t\tx = Math.round(BITS * 0.4);\r\n\t\t\ty = Math.round(BITS * 0.2);\r\n\t\t\tz = x;\r\n\r\n\t\t}\r\n\r\n\t\tthis.x = x;\r\n\t\tthis.y = y;\r\n\t\tthis.z = z;\r\n\r\n\t\tthis.rangeX = Math.pow(2, x);\r\n\t\tthis.rangeY = Math.pow(2, y);\r\n\t\tthis.rangeZ = Math.pow(2, z);\r\n\r\n\t\tthis.rangeXY = Math.pow(2, x + y);\r\n\r\n\t\tthis.halfRange = new Vector3(\r\n\t\t\tthis.rangeX / 2,\r\n\t\t\tthis.rangeY / 2,\r\n\t\t\tthis.rangeZ / 2\r\n\t\t);\r\n\r\n\t\tthis.updateBitMasks();\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Creates bit masks for the extraction of coordinates from keys.\r\n\t *\r\n\t * @private\r\n\t */\r\n\r\n\tupdateBitMasks() {\r\n\r\n\t\tconst xBits = this.x;\r\n\t\tconst yBits = this.y;\r\n\t\tconst zBits = this.z;\r\n\r\n\t\tconst maskX = this.maskX;\r\n\t\tconst maskY = this.maskY;\r\n\t\tconst maskZ = this.maskZ;\r\n\r\n\t\tconst hiShiftX = DWORD_BITS - Math.max(0, xBits - LO_BITS);\r\n\t\tconst hiShiftY = DWORD_BITS - Math.max(0, yBits + xBits - LO_BITS);\r\n\t\tconst hiShiftZ = DWORD_BITS - Math.max(0, zBits + yBits + xBits - LO_BITS);\r\n\r\n\t\tmaskX[1] = (hiShiftX < DWORD_BITS) ? ~0 >>> hiShiftX : 0;\r\n\t\tmaskX[0] = ~0 >>> Math.max(0, LO_BITS - xBits);\r\n\r\n\t\tmaskY[1] = (((hiShiftY < DWORD_BITS) ? ~0 >>> hiShiftY : 0) & ~maskX[1]) >>> 0;\r\n\t\tmaskY[0] = ((~0 >>> Math.max(0, LO_BITS - (xBits + yBits))) & ~maskX[0]) >>> 0;\r\n\r\n\t\tmaskZ[1] = (((hiShiftZ < DWORD_BITS) ? ~0 >>> hiShiftZ : 0) & ~maskY[1] & ~maskX[1]) >>> 0;\r\n\t\tmaskZ[0] = ((~0 >>> Math.max(0, LO_BITS - (xBits + yBits + zBits))) & ~maskY[0] & ~maskX[0]) >>> 0;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Extracts the 3D coordinates from a given key.\r\n\t *\r\n\t * @param {Number} key - The key.\r\n\t * @param {Vector3} [target] - A target for the extracted coordinates. If none is provided, a new vector will be created.\r\n\t * @return {Vector3} The extracted coordinates.\r\n\t */\r\n\r\n\tunpackKey(key, target = new Vector3()) {\r\n\r\n\t\tconst maskX = this.maskX;\r\n\t\tconst maskY = this.maskY;\r\n\t\tconst maskZ = this.maskZ;\r\n\r\n\t\t// Split the QWord key in a high and a low DWord.\r\n\t\tconst hi = Math.trunc(key / RANGE_DWORD);\r\n\t\tconst lo = key % RANGE_DWORD;\r\n\r\n\t\treturn target.set(\r\n\r\n\t\t\t((hi & maskX[1]) * RANGE_DWORD) + ((lo & maskX[0]) >>> 0),\r\n\t\t\t(((hi & maskY[1]) * RANGE_DWORD) + ((lo & maskY[0]) >>> 0)) / this.rangeX,\r\n\t\t\t(((hi & maskZ[1]) * RANGE_DWORD) + ((lo & maskZ[0]) >>> 0)) / this.rangeXY\r\n\r\n\t\t);\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Packs a 3D position into a unique key.\r\n\t *\r\n\t * @param {Vector3} position - A position.\r\n\t * @return {Number} The octant key.\r\n\t */\r\n\r\n\tpackKey(position) {\r\n\r\n\t\treturn position.z * this.rangeXY + position.y * this.rangeX + position.x;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Returns a new key range iterator.\r\n\t *\r\n\t * The key iterator will return all keys in the specified coordinate range,\r\n\t * including those at min and max.\r\n\t *\r\n\t * @param {Vector3} min - The lower key index bounds (zero-based unsigned integer coordinates).\r\n\t * @param {Vector3} max - The upper key index bounds (zero-based unsigned integer coordinates).\r\n\t * @return {KeyIterator} An iterator.\r\n\t */\r\n\r\n\tkeyRange(min, max) {\r\n\r\n\t\treturn new KeyIterator(this, min, max);\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Converts the information of this key design into a string.\r\n\t *\r\n\t * @return {String} The key design as a string.\r\n\t */\r\n\r\n\ttoString() {\r\n\r\n\t\tconst maskX = this.maskX;\r\n\t\tconst maskY = this.maskY;\r\n\t\tconst maskZ = this.maskZ;\r\n\r\n\t\treturn (\r\n\r\n\t\t\t\"Key Design\\n\\n\" +\r\n\r\n\t\t\t\"X-Bits: \" + this.x + \"\\n\" +\r\n\t\t\t\"Y-Bits: \" + this.y + \"\\n\" +\r\n\t\t\t\"Z-Bits: \" + this.z + \"\\n\\n\" +\r\n\r\n\t\t\tBinaryUtils.createBinaryString(maskX[1], DWORD_BITS) + \" \" + maskX[1] + \" (HI-Mask X)\\n\" +\r\n\t\t\tBinaryUtils.createBinaryString(maskX[0], DWORD_BITS) + \" \" + maskX[0] + \" (LO-Mask X)\\n\\n\" +\r\n\r\n\t\t\tBinaryUtils.createBinaryString(maskY[1], DWORD_BITS) + \" \" + maskY[1] + \" (HI-Mask Y)\\n\" +\r\n\t\t\tBinaryUtils.createBinaryString(maskY[0], DWORD_BITS) + \" \" + maskY[0] + \" (LO-Mask Y)\\n\\n\" +\r\n\r\n\t\t\tBinaryUtils.createBinaryString(maskZ[1], DWORD_BITS) + \" \" + maskZ[1] + \" (HI-Mask Z)\\n\" +\r\n\t\t\tBinaryUtils.createBinaryString(maskZ[0], DWORD_BITS) + \" \" + maskZ[0] + \" (LO-Mask Z)\\n\"\r\n\r\n\t\t);\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * The total amount of available bits for safe integers.\r\n\t *\r\n\t * JavaScript uses IEEE 754 binary64 Doubles for Numbers and, as a result,\r\n\t * only supports 53-bit integers as of ES2015.\r\n\t *\r\n\t * For more information see: http://2ality.com/2012/04/number-encoding.html\r\n\t *\r\n\t * @type {Number}\r\n\t */\r\n\r\n\tstatic get BITS() {\r\n\r\n\t\treturn BITS;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * The amount of available bits in the high DWord.\r\n\t *\r\n\t * In JavaScript, bit operations can only be applied to DWords (32-bit).\r\n\t * All 53-bit keys must be split into a high and a low part for processing.\r\n\t *\r\n\t * @type {Number}\r\n\t */\r\n\r\n\tstatic get HI_BITS() {\r\n\r\n\t\treturn HI_BITS;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * The amount of available bits in the low DWord.\r\n\t *\r\n\t * In JavaScript, bit operations can only be applied to DWords (32-bit).\r\n\t * All 53-bit keys must be split into a high and a low part for processing.\r\n\t *\r\n\t * @type {Number}\r\n\t */\r\n\r\n\tstatic get LO_BITS() {\r\n\r\n\t\treturn LO_BITS;\r\n\r\n\t}\r\n\r\n}\r\n",
+    "static": true,
+    "longname": "D:/Sourcecode/JavaScript/linear-octree/src/core/KeyDesign.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 58,
+    "kind": "variable",
+    "name": "DWORD_BITS",
+    "memberof": "src/core/KeyDesign.js",
+    "static": true,
+    "longname": "src/core/KeyDesign.js~DWORD_BITS",
+    "access": "private",
+    "export": false,
+    "importPath": "linear-octree",
+    "importStyle": null,
+    "description": "The amount of bits of a DWord.",
+    "lineNumber": 12,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 59,
+    "kind": "variable",
+    "name": "RANGE_DWORD",
+    "memberof": "src/core/KeyDesign.js",
+    "static": true,
+    "longname": "src/core/KeyDesign.js~RANGE_DWORD",
+    "access": "private",
+    "export": false,
+    "importPath": "linear-octree",
+    "importStyle": null,
+    "description": "The amount of different values that can be represented with a DWord.",
+    "lineNumber": 21,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 60,
+    "kind": "variable",
+    "name": "BITS",
+    "memberof": "src/core/KeyDesign.js",
+    "static": true,
+    "longname": "src/core/KeyDesign.js~BITS",
+    "access": "private",
+    "export": false,
+    "importPath": "linear-octree",
+    "importStyle": null,
+    "description": "The total amount of available bits for safe integers.",
+    "lineNumber": 30,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 61,
+    "kind": "variable",
+    "name": "HI_BITS",
+    "memberof": "src/core/KeyDesign.js",
+    "static": true,
+    "longname": "src/core/KeyDesign.js~HI_BITS",
+    "access": "private",
+    "export": false,
+    "importPath": "linear-octree",
+    "importStyle": null,
+    "description": "The amount of available high bits.\n\nIn JavaScript, bit operations can only be applied to DWords (32-bit).\nAll 53-bit keys must be split into a high and a low part for processing.",
+    "lineNumber": 42,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 62,
+    "kind": "variable",
+    "name": "LO_BITS",
+    "memberof": "src/core/KeyDesign.js",
+    "static": true,
+    "longname": "src/core/KeyDesign.js~LO_BITS",
+    "access": "private",
+    "export": false,
+    "importPath": "linear-octree",
+    "importStyle": null,
+    "description": "The amount of available low bits.\n\nIn JavaScript, bit operations can only be applied to DWords (32-bit).\nAll 53-bit keys must be split into a high and a low part for processing.",
+    "lineNumber": 54,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 63,
+    "kind": "class",
+    "name": "KeyDesign",
+    "memberof": "src/core/KeyDesign.js",
+    "static": true,
+    "longname": "src/core/KeyDesign.js~KeyDesign",
+    "access": "public",
+    "export": true,
+    "importPath": "linear-octree",
+    "importStyle": "{KeyDesign}",
+    "description": "A design for octant keys.\n\n3D coordinates are packed into a single integer to obtain a unique key. This\nclass describes the bit allotment for each coordinate and provides methods\nfor key packing and unpacking.\n\nSee {@link KeyDesign.BITS} for the total amount of available bits.",
+    "lineNumber": 66,
+    "interface": false
+  },
+  {
+    "__docId__": 64,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/KeyDesign.js~KeyDesign#constructor",
+    "access": "public",
+    "description": "Constructs a new key design.",
+    "lineNumber": 76,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "Math.round(BITS * 0.4)",
+        "defaultRaw": "Math.round(BITS * 0.4)",
+        "name": "x",
+        "description": "The amount of bits used for the X-coordinate."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "Math.round(BITS * 0.2)",
+        "defaultRaw": "Math.round(BITS * 0.2)",
+        "name": "y",
+        "description": "The amount of bits used for the Y-coordinate."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "x",
+        "defaultRaw": "x",
+        "name": "z",
+        "description": "The amount of bits used for the Z-coordinate."
+      }
+    ]
+  },
+  {
+    "__docId__": 65,
+    "kind": "member",
+    "name": "x",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "static": false,
+    "longname": "src/core/KeyDesign.js~KeyDesign#x",
+    "access": "public",
+    "description": "The amount of bits reserved for the X-coordinate.",
+    "lineNumber": 84,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 66,
+    "kind": "member",
+    "name": "y",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "static": false,
+    "longname": "src/core/KeyDesign.js~KeyDesign#y",
+    "access": "public",
+    "description": "The amount of bits reserved for the Y-coordinate.",
+    "lineNumber": 92,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 67,
+    "kind": "member",
+    "name": "z",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "static": false,
+    "longname": "src/core/KeyDesign.js~KeyDesign#z",
+    "access": "public",
+    "description": "The amount of bits reserved for the Z-coordinate.",
+    "lineNumber": 100,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 68,
+    "kind": "member",
+    "name": "rangeX",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "static": false,
+    "longname": "src/core/KeyDesign.js~KeyDesign#rangeX",
+    "access": "public",
+    "description": "The amount of distinct integers that can be represented with X bits.",
+    "lineNumber": 108,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 69,
+    "kind": "member",
+    "name": "rangeY",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "static": false,
+    "longname": "src/core/KeyDesign.js~KeyDesign#rangeY",
+    "access": "public",
+    "description": "The amount of distinct integers that can be represented with Y bits.",
+    "lineNumber": 116,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 70,
+    "kind": "member",
+    "name": "rangeZ",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "static": false,
+    "longname": "src/core/KeyDesign.js~KeyDesign#rangeZ",
+    "access": "public",
+    "description": "The amount of distinct integers that can be represented with Z bits.",
+    "lineNumber": 124,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 71,
+    "kind": "member",
+    "name": "rangeXY",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "static": false,
+    "longname": "src/core/KeyDesign.js~KeyDesign#rangeXY",
+    "access": "public",
+    "description": "The amount of distinct integers that can be represented with X + Y bits.",
+    "lineNumber": 132,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 72,
+    "kind": "member",
+    "name": "halfRange",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "static": false,
+    "longname": "src/core/KeyDesign.js~KeyDesign#halfRange",
+    "access": "public",
+    "description": "The key range divided by two.",
+    "lineNumber": 140,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 73,
+    "kind": "member",
+    "name": "maskX",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "static": false,
+    "longname": "src/core/KeyDesign.js~KeyDesign#maskX",
+    "access": "private",
+    "description": "A bit mask for the X-coordinate. The first item holds the low bits while\nthe second item holds the high bits.",
+    "lineNumber": 150,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 74,
+    "kind": "member",
+    "name": "maskY",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "static": false,
+    "longname": "src/core/KeyDesign.js~KeyDesign#maskY",
+    "access": "private",
+    "description": "A bit mask for the Y-coordinate. The first item holds the low bits while\nthe second item holds the high bits.",
+    "lineNumber": 160,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 75,
+    "kind": "member",
+    "name": "maskZ",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "static": false,
+    "longname": "src/core/KeyDesign.js~KeyDesign#maskZ",
+    "access": "private",
+    "description": "A bit mask for the Z-coordinate. The first item holds the low bits while\nthe second item holds the high bits.",
+    "lineNumber": 170,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 76,
+    "kind": "method",
+    "name": "set",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/KeyDesign.js~KeyDesign#set",
+    "access": "public",
+    "description": "Sets the bit distribution.\n\nMake sure to clear your octree after changing the key design!",
+    "lineNumber": 186,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "x",
+        "description": "The amount of bits used for the X-coordinate."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "y",
+        "description": "The amount of bits used for the Y-coordinate."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "z",
+        "description": "The amount of bits used for the Z-coordinate."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 85,
+    "kind": "method",
+    "name": "updateBitMasks",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/KeyDesign.js~KeyDesign#updateBitMasks",
+    "access": "private",
+    "description": "Creates bit masks for the extraction of coordinates from keys.",
+    "lineNumber": 225,
+    "ignore": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 86,
+    "kind": "method",
+    "name": "unpackKey",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/KeyDesign.js~KeyDesign#unpackKey",
+    "access": "public",
+    "description": "Extracts the 3D coordinates from a given key.",
+    "lineNumber": 258,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "key",
+        "description": "The key."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Vector3"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "target",
+        "description": "A target for the extracted coordinates. If none is provided, a new vector will be created."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": "The extracted coordinates."
+    }
+  },
+  {
+    "__docId__": 87,
+    "kind": "method",
+    "name": "packKey",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/KeyDesign.js~KeyDesign#packKey",
+    "access": "public",
+    "description": "Packs a 3D position into a unique key.",
+    "lineNumber": 285,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Vector3"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "position",
+        "description": "A position."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": "The octant key."
+    }
+  },
+  {
+    "__docId__": 88,
+    "kind": "method",
+    "name": "keyRange",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/KeyDesign.js~KeyDesign#keyRange",
+    "access": "public",
+    "description": "Returns a new key range iterator.\n\nThe key iterator will return all keys in the specified coordinate range,\nincluding those at min and max.",
+    "lineNumber": 302,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Vector3"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "min",
+        "description": "The lower key index bounds (zero-based unsigned integer coordinates)."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Vector3"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "max",
+        "description": "The upper key index bounds (zero-based unsigned integer coordinates)."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "KeyIterator"
+      ],
+      "spread": false,
+      "description": "An iterator."
+    }
+  },
+  {
+    "__docId__": 89,
+    "kind": "method",
+    "name": "toString",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/KeyDesign.js~KeyDesign#toString",
+    "access": "public",
+    "description": "Converts the information of this key design into a string.",
+    "lineNumber": 314,
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": "The key design as a string."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 90,
+    "kind": "get",
+    "name": "BITS",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/core/KeyDesign.js~KeyDesign.BITS",
+    "access": "public",
+    "description": "The total amount of available bits for safe integers.\n\nJavaScript uses IEEE 754 binary64 Doubles for Numbers and, as a result,\nonly supports 53-bit integers as of ES2015.\n\nFor more information see: http://2ality.com/2012/04/number-encoding.html",
+    "lineNumber": 352,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 91,
+    "kind": "get",
+    "name": "HI_BITS",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/core/KeyDesign.js~KeyDesign.HI_BITS",
+    "access": "public",
+    "description": "The amount of available bits in the high DWord.\n\nIn JavaScript, bit operations can only be applied to DWords (32-bit).\nAll 53-bit keys must be split into a high and a low part for processing.",
+    "lineNumber": 367,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 92,
+    "kind": "get",
+    "name": "LO_BITS",
+    "memberof": "src/core/KeyDesign.js~KeyDesign",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/core/KeyDesign.js~KeyDesign.LO_BITS",
+    "access": "public",
+    "description": "The amount of available bits in the low DWord.\n\nIn JavaScript, bit operations can only be applied to DWords (32-bit).\nAll 53-bit keys must be split into a high and a low part for processing.",
+    "lineNumber": 382,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 93,
+    "kind": "file",
+    "name": "src/core/KeyIterator.js",
+    "content": "import { Vector3 } from \"math-ds\";\r\nimport IteratorResult from \"iterator-result\";\r\n\r\n/**\r\n * A key range iterator.\r\n *\r\n * @implements {Iterator}\r\n * @implements {Iterable}\r\n */\r\n\r\nexport class KeyIterator {\r\n\r\n\t/**\r\n\t * Constructs a new key iterator.\r\n\t *\r\n\t * This iterator returns all keys in the specified coordinate range, including\r\n\t * those at min and max.\r\n\t *\r\n\t * @param {KeyDesign} keyDesign - A key design.\r\n\t * @param {Vector3} min - The lower index bounds (zero-based unsigned integer coordinates).\r\n\t * @param {Vector3} max - The upper index bounds (zero-based unsigned integer coordinates).\r\n\t */\r\n\r\n\tconstructor(keyDesign, min, max) {\r\n\r\n\t\t/**\r\n\t\t * The key design.\r\n\t\t *\r\n\t\t * @type {KeyDesign}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.keyDesign = keyDesign;\r\n\r\n\t\t/**\r\n\t\t * The lower index bounds.\r\n\t\t *\r\n\t\t * @type {Vector3}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.min = min;\r\n\r\n\t\t/**\r\n\t\t * The upper index bounds.\r\n\t\t *\r\n\t\t * @type {Vector3}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.max = max;\r\n\r\n\t\t/**\r\n\t\t * The base key coordinates.\r\n\t\t *\r\n\t\t * @type {Vector3}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.keyBase = new Vector3();\r\n\r\n\t\t/**\r\n\t\t * The current key iteration coordinates.\r\n\t\t *\r\n\t\t * @type {Vector3}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.key = new Vector3();\r\n\r\n\t\t/**\r\n\t\t * The iteration limits.\r\n\t\t *\r\n\t\t * @type {Vector3}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.limit = new Vector3();\r\n\r\n\t\t/**\r\n\t\t * An iterator result.\r\n\t\t *\r\n\t\t * @type {IteratorResult}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.result = new IteratorResult();\r\n\r\n\t\tthis.reset();\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Resets this iterator.\r\n\t *\r\n\t * @return {KeyIterator} This iterator.\r\n\t */\r\n\r\n\treset() {\r\n\r\n\t\tconst keyDesign = this.keyDesign;\r\n\t\tconst min = this.min, max = this.max;\r\n\r\n\t\tif(min.x <= max.x && min.y <= max.y && min.z <= max.z) {\r\n\r\n\t\t\tthis.keyBase.set(min.x, min.y * keyDesign.rangeX, min.z * keyDesign.rangeXY);\r\n\t\t\tthis.limit.set(max.x, max.y * keyDesign.rangeX, max.z * keyDesign.rangeXY);\r\n\t\t\tthis.key.copy(this.keyBase);\r\n\r\n\t\t} else {\r\n\r\n\t\t\t// The range is invalid. Return no keys.\r\n\t\t\tthis.keyBase.set(1, 1, 1);\r\n\t\t\tthis.limit.set(0, 0, 0);\r\n\t\t\tthis.key.copy(this.keyBase);\r\n\r\n\t\t\tconsole.error(\"Invalid key range\", min, max);\r\n\r\n\t\t}\r\n\r\n\t\tthis.result.reset();\r\n\r\n\t\treturn this;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Iterates over the key range.\r\n\t *\r\n\t * @return {IteratorResult} The next key.\r\n\t */\r\n\r\n\tnext() {\r\n\r\n\t\tconst result = this.result;\r\n\t\tconst keyDesign = this.keyDesign;\r\n\t\tconst keyBase = this.keyBase;\r\n\t\tconst limit = this.limit;\r\n\t\tconst key = this.key;\r\n\r\n\t\tif(key.z <= limit.z) {\r\n\r\n\t\t\t// Put the key pieces together.\r\n\t\t\tresult.value = key.z + key.y + key.x;\r\n\r\n\t\t\t// Advance the key coordinates.\r\n\t\t\t++key.x;\r\n\r\n\t\t\tif(key.x > limit.x) {\r\n\r\n\t\t\t\tkey.x = keyBase.x;\r\n\t\t\t\tkey.y += keyDesign.rangeX;\r\n\r\n\t\t\t\tif(key.y > limit.y) {\r\n\r\n\t\t\t\t\tkey.y = keyBase.y;\r\n\t\t\t\t\tkey.z += keyDesign.rangeXY;\r\n\r\n\t\t\t\t}\r\n\r\n\t\t\t}\r\n\r\n\t\t} else {\r\n\r\n\t\t\tresult.value = null;\r\n\t\t\tresult.done = true;\r\n\r\n\t\t}\r\n\r\n\t\treturn result;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Called when this iterator will no longer be run to completion.\r\n\t *\r\n\t * @param {Object} value - An interator result value.\r\n\t * @return {IteratorResult} - A premature completion result.\r\n\t */\r\n\r\n\treturn(value) {\r\n\r\n\t\tthis.result.value = value;\r\n\t\tthis.result.done = true;\r\n\r\n\t\treturn this.result;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Returns this iterator.\r\n\t *\r\n\t * @return {Iterator} An iterator.\r\n\t */\r\n\r\n\t[Symbol.iterator]() {\r\n\r\n\t\treturn this;\r\n\r\n\t}\r\n\r\n}\r\n",
+    "static": true,
+    "longname": "D:/Sourcecode/JavaScript/linear-octree/src/core/KeyIterator.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 94,
+    "kind": "class",
+    "name": "KeyIterator",
+    "memberof": "src/core/KeyIterator.js",
+    "static": true,
+    "longname": "src/core/KeyIterator.js~KeyIterator",
+    "access": "public",
+    "export": true,
+    "importPath": "linear-octree",
+    "importStyle": "{KeyIterator}",
+    "description": "A key range iterator.",
+    "lineNumber": 11,
+    "interface": false,
+    "implements": [
+      "Iterator",
+      "Iterable"
+    ]
+  },
+  {
+    "__docId__": 95,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/core/KeyIterator.js~KeyIterator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/KeyIterator.js~KeyIterator#constructor",
+    "access": "public",
+    "description": "Constructs a new key iterator.\n\nThis iterator returns all keys in the specified coordinate range, including\nthose at min and max.",
+    "lineNumber": 24,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "KeyDesign"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "keyDesign",
+        "description": "A key design."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Vector3"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "min",
+        "description": "The lower index bounds (zero-based unsigned integer coordinates)."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Vector3"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "max",
+        "description": "The upper index bounds (zero-based unsigned integer coordinates)."
+      }
+    ]
+  },
+  {
+    "__docId__": 96,
+    "kind": "member",
+    "name": "keyDesign",
+    "memberof": "src/core/KeyIterator.js~KeyIterator",
+    "static": false,
+    "longname": "src/core/KeyIterator.js~KeyIterator#keyDesign",
+    "access": "private",
+    "description": "The key design.",
+    "lineNumber": 33,
+    "type": {
+      "nullable": null,
+      "types": [
+        "KeyDesign"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 97,
+    "kind": "member",
+    "name": "min",
+    "memberof": "src/core/KeyIterator.js~KeyIterator",
+    "static": false,
+    "longname": "src/core/KeyIterator.js~KeyIterator#min",
+    "access": "private",
+    "description": "The lower index bounds.",
+    "lineNumber": 42,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 98,
+    "kind": "member",
+    "name": "max",
+    "memberof": "src/core/KeyIterator.js~KeyIterator",
+    "static": false,
+    "longname": "src/core/KeyIterator.js~KeyIterator#max",
+    "access": "private",
+    "description": "The upper index bounds.",
+    "lineNumber": 51,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 99,
+    "kind": "member",
+    "name": "keyBase",
+    "memberof": "src/core/KeyIterator.js~KeyIterator",
+    "static": false,
+    "longname": "src/core/KeyIterator.js~KeyIterator#keyBase",
+    "access": "private",
+    "description": "The base key coordinates.",
+    "lineNumber": 60,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 100,
+    "kind": "member",
+    "name": "key",
+    "memberof": "src/core/KeyIterator.js~KeyIterator",
+    "static": false,
+    "longname": "src/core/KeyIterator.js~KeyIterator#key",
+    "access": "private",
+    "description": "The current key iteration coordinates.",
+    "lineNumber": 69,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 101,
+    "kind": "member",
+    "name": "limit",
+    "memberof": "src/core/KeyIterator.js~KeyIterator",
+    "static": false,
+    "longname": "src/core/KeyIterator.js~KeyIterator#limit",
+    "access": "private",
+    "description": "The iteration limits.",
+    "lineNumber": 78,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 102,
+    "kind": "member",
+    "name": "result",
+    "memberof": "src/core/KeyIterator.js~KeyIterator",
+    "static": false,
+    "longname": "src/core/KeyIterator.js~KeyIterator#result",
+    "access": "private",
+    "description": "An iterator result.",
+    "lineNumber": 87,
+    "type": {
+      "nullable": null,
+      "types": [
+        "IteratorResult"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 103,
+    "kind": "method",
+    "name": "reset",
+    "memberof": "src/core/KeyIterator.js~KeyIterator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/KeyIterator.js~KeyIterator#reset",
+    "access": "public",
+    "description": "Resets this iterator.",
+    "lineNumber": 99,
+    "return": {
+      "nullable": null,
+      "types": [
+        "KeyIterator"
+      ],
+      "spread": false,
+      "description": "This iterator."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 104,
+    "kind": "method",
+    "name": "next",
+    "memberof": "src/core/KeyIterator.js~KeyIterator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/KeyIterator.js~KeyIterator#next",
+    "access": "public",
+    "description": "Iterates over the key range.",
+    "lineNumber": 133,
+    "return": {
+      "nullable": null,
+      "types": [
+        "IteratorResult"
+      ],
+      "spread": false,
+      "description": "The next key."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 105,
+    "kind": "method",
+    "name": "return",
+    "memberof": "src/core/KeyIterator.js~KeyIterator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/KeyIterator.js~KeyIterator#return",
+    "access": "public",
+    "description": "Called when this iterator will no longer be run to completion.",
+    "lineNumber": 181,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "An interator result value."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "IteratorResult"
+      ],
+      "spread": false,
+      "description": "A premature completion result."
+    }
+  },
+  {
+    "__docId__": 106,
+    "kind": "method",
+    "name": "[Symbol.iterator]",
+    "memberof": "src/core/KeyIterator.js~KeyIterator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/KeyIterator.js~KeyIterator#[Symbol.iterator]",
+    "access": "public",
+    "description": "Returns this iterator.",
+    "lineNumber": 196,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Iterator"
+      ],
+      "spread": false,
+      "description": "An iterator."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 107,
+    "kind": "file",
+    "name": "src/core/Octant.js",
+    "content": "/**\r\n * An octant.\r\n *\r\n * This octant serves as a data container. Its position is implicitly defined\r\n * by its key and its size is defined by the level in which it resides.\r\n *\r\n * @implements {Node}\r\n */\r\n\r\nexport class Octant {\r\n\r\n\t/**\r\n\t * Constructs a new world octant.\r\n\t */\r\n\r\n\tconstructor() {\r\n\r\n\t\t/**\r\n\t\t * The data.\r\n\t\t *\r\n\t\t * @type {Object}\r\n\t\t */\r\n\r\n\t\tthis.data = null;\r\n\r\n\t}\r\n\r\n}\r\n",
+    "static": true,
+    "longname": "D:/Sourcecode/JavaScript/linear-octree/src/core/Octant.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 108,
+    "kind": "class",
+    "name": "Octant",
+    "memberof": "src/core/Octant.js",
+    "static": true,
+    "longname": "src/core/Octant.js~Octant",
+    "access": "public",
+    "export": true,
+    "importPath": "linear-octree",
+    "importStyle": "{Octant}",
+    "description": "An octant.\n\nThis octant serves as a data container. Its position is implicitly defined\nby its key and its size is defined by the level in which it resides.",
+    "lineNumber": 10,
+    "interface": false,
+    "implements": [
+      "Node"
+    ]
+  },
+  {
+    "__docId__": 109,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/core/Octant.js~Octant",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octant.js~Octant#constructor",
+    "access": "public",
+    "description": "Constructs a new world octant.",
+    "lineNumber": 16
+  },
+  {
+    "__docId__": 110,
+    "kind": "member",
+    "name": "data",
+    "memberof": "src/core/Octant.js~Octant",
+    "static": false,
+    "longname": "src/core/Octant.js~Octant#data",
+    "access": "public",
+    "description": "The data.",
+    "lineNumber": 24,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 111,
+    "kind": "file",
+    "name": "src/core/OctantId.js",
+    "content": "/**\r\n * An octant identifier.\r\n *\r\n * Each octant can be identified by a level and a positional key.\r\n */\r\n\r\nexport class OctantId {\r\n\r\n\t/**\r\n\t * Constructs a new world octant identifier.\r\n\t *\r\n\t * @param {Number} [level=0] - The level that this key applies to.\r\n\t * @param {Number} [key=0] - The key.\r\n\t */\r\n\r\n\tconstructor(level = 0, key = 0) {\r\n\r\n\t\t/**\r\n\t\t * The level that this key applies to.\r\n\t\t *\r\n\t\t * @type {Number}\r\n\t\t */\r\n\r\n\t\tthis.level = level;\r\n\r\n\t\t/**\r\n\t\t * The unique key of the world octant.\r\n\t\t *\r\n\t\t * @type {Number}\r\n\t\t */\r\n\r\n\t\tthis.key = key;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Sets the level and key.\r\n\t *\r\n\t * @param {Number} level - The level.\r\n\t * @param {Number} key - The key.\r\n\t * @return {OctantId} This octant identifier.\r\n\t */\r\n\r\n\tset(level, key) {\r\n\r\n\t\tthis.level = level;\r\n\t\tthis.key = key;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Copies the given octant identifier.\r\n\t *\r\n\t * @param {OctantId} id - An octant identifier.\r\n\t * @return {OctantId} This octant identifier.\r\n\t */\r\n\r\n\tcopy(id) {\r\n\r\n\t\tthis.level = id.level;\r\n\t\tthis.key = id.key;\r\n\r\n\t\treturn this;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Clones this octant identifier.\r\n\t *\r\n\t * @return {OctantId} The cloned octant identifier.\r\n\t */\r\n\r\n\tclone() {\r\n\r\n\t\treturn new this.constructor().copy(this);\r\n\r\n\t}\r\n\r\n}\r\n",
+    "static": true,
+    "longname": "D:/Sourcecode/JavaScript/linear-octree/src/core/OctantId.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 112,
+    "kind": "class",
+    "name": "OctantId",
+    "memberof": "src/core/OctantId.js",
+    "static": true,
+    "longname": "src/core/OctantId.js~OctantId",
+    "access": "public",
+    "export": true,
+    "importPath": "linear-octree",
+    "importStyle": "{OctantId}",
+    "description": "An octant identifier.\n\nEach octant can be identified by a level and a positional key.",
+    "lineNumber": 7,
+    "interface": false
+  },
+  {
+    "__docId__": 113,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/core/OctantId.js~OctantId",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/OctantId.js~OctantId#constructor",
+    "access": "public",
+    "description": "Constructs a new world octant identifier.",
+    "lineNumber": 16,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "0",
+        "defaultRaw": 0,
+        "name": "level",
+        "description": "The level that this key applies to."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "0",
+        "defaultRaw": 0,
+        "name": "key",
+        "description": "The key."
+      }
+    ]
+  },
+  {
+    "__docId__": 114,
+    "kind": "member",
+    "name": "level",
+    "memberof": "src/core/OctantId.js~OctantId",
+    "static": false,
+    "longname": "src/core/OctantId.js~OctantId#level",
+    "access": "public",
+    "description": "The level that this key applies to.",
+    "lineNumber": 24,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 115,
+    "kind": "member",
+    "name": "key",
+    "memberof": "src/core/OctantId.js~OctantId",
+    "static": false,
+    "longname": "src/core/OctantId.js~OctantId#key",
+    "access": "public",
+    "description": "The unique key of the world octant.",
+    "lineNumber": 32,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 116,
+    "kind": "method",
+    "name": "set",
+    "memberof": "src/core/OctantId.js~OctantId",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/OctantId.js~OctantId#set",
+    "access": "public",
+    "description": "Sets the level and key.",
+    "lineNumber": 44,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "level",
+        "description": "The level."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "key",
+        "description": "The key."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "OctantId"
+      ],
+      "spread": false,
+      "description": "This octant identifier."
+    }
+  },
+  {
+    "__docId__": 119,
+    "kind": "method",
+    "name": "copy",
+    "memberof": "src/core/OctantId.js~OctantId",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/OctantId.js~OctantId#copy",
+    "access": "public",
+    "description": "Copies the given octant identifier.",
+    "lineNumber": 58,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "OctantId"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "An octant identifier."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "OctantId"
+      ],
+      "spread": false,
+      "description": "This octant identifier."
+    }
+  },
+  {
+    "__docId__": 122,
+    "kind": "method",
+    "name": "clone",
+    "memberof": "src/core/OctantId.js~OctantId",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/OctantId.js~OctantId#clone",
+    "access": "public",
+    "description": "Clones this octant identifier.",
+    "lineNumber": 73,
+    "return": {
+      "nullable": null,
+      "types": [
+        "OctantId"
+      ],
+      "spread": false,
+      "description": "The cloned octant identifier."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 123,
+    "kind": "file",
+    "name": "src/core/OctantWrapper.js",
+    "content": "import { Vector3 } from \"math-ds\";\r\nimport { OctantId } from \"./OctantId.js\";\r\n\r\n/**\r\n * An octant wrapper that stores positional information.\r\n */\r\n\r\nexport class OctantWrapper {\r\n\r\n\t/**\r\n\t * Constructs a new octant wrapper.\r\n\t *\r\n\t * @param {Octant} [octant=null] - An octant.\r\n\t * @param {OctantId} [id] - The identifier of the octant.\r\n\t */\r\n\r\n\tconstructor(octant = null, id = new OctantId()) {\r\n\r\n\t\t/**\r\n\t\t * An octant.\r\n\t\t *\r\n\t\t * @type {Octant}\r\n\t\t */\r\n\r\n\t\tthis.octant = octant;\r\n\r\n\t\t/**\r\n\t\t * An octant identifier.\r\n\t\t *\r\n\t\t * @type {OctantId}\r\n\t\t */\r\n\r\n\t\tthis.id = id;\r\n\r\n\t\t/**\r\n\t\t * The lower bounds.\r\n\t\t *\r\n\t\t * @type {Vector3}\r\n\t\t */\r\n\r\n\t\tthis.min = new Vector3();\r\n\r\n\t\t/**\r\n\t\t * The upper bounds.\r\n\t\t *\r\n\t\t * @type {Vector3}\r\n\t\t */\r\n\r\n\t\tthis.max = new Vector3();\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Copies the given octant wrapper.\r\n\t *\r\n\t * @param {OctantWrapper} octantWrapper - An octant wrapper.\r\n\t * @return {OctantWrapper} This octant wrapper.\r\n\t */\r\n\r\n\tcopy(octantWrapper) {\r\n\r\n\t\tthis.octant = octantWrapper.octant;\r\n\t\tthis.id.copy(octantWrapper.id);\r\n\t\tthis.min.copy(octantWrapper.min);\r\n\t\tthis.max.copy(octantWrapper.max);\r\n\r\n\t\treturn this;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Clones this octant wrapper.\r\n\t *\r\n\t * @return {OctantWrapper} The cloned octant wrapper.\r\n\t */\r\n\r\n\tclone() {\r\n\r\n\t\treturn new this.constructor().copy(this);\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Computes the center of the wrapped octant.\r\n\t *\r\n\t * @param {Vector3} target - A target vector.\r\n\t * @return {Vector3} A vector that describes the center of the octant.\r\n\t */\r\n\r\n\tgetCenter(target) {\r\n\r\n\t\treturn target.addVectors(this.min, this.max).multiplyScalar(0.5);\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Computes the size of the wrapped octant.\r\n\t *\r\n\t * @param {Vector3} target - A target vector.\r\n\t * @return {Vector3} A vector that describes the size of the octant.\r\n\t */\r\n\r\n\tgetDimensions(target) {\r\n\r\n\t\treturn target.subVectors(this.max, this.min);\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Checks if the given point lies inside the boundaries of this wrapper.\r\n\t *\r\n\t * @param {Vector3} point - A point.\r\n\t * @return {Boolean} Whether the given point lies inside the boundaries.\r\n\t */\r\n\r\n\tcontainsPoint(point) {\r\n\r\n\t\tconst min = this.min;\r\n\t\tconst max = this.max;\r\n\r\n\t\treturn (\r\n\t\t\tpoint.x >= min.x &&\r\n\t\t\tpoint.y >= min.y &&\r\n\t\t\tpoint.z >= min.z &&\r\n\t\t\tpoint.x <= max.x &&\r\n\t\t\tpoint.y <= max.y &&\r\n\t\t\tpoint.z <= max.z\r\n\t\t);\r\n\r\n\t}\r\n\r\n}\r\n",
+    "static": true,
+    "longname": "D:/Sourcecode/JavaScript/linear-octree/src/core/OctantWrapper.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 124,
+    "kind": "class",
+    "name": "OctantWrapper",
+    "memberof": "src/core/OctantWrapper.js",
+    "static": true,
+    "longname": "src/core/OctantWrapper.js~OctantWrapper",
+    "access": "public",
+    "export": true,
+    "importPath": "linear-octree",
+    "importStyle": "{OctantWrapper}",
+    "description": "An octant wrapper that stores positional information.",
+    "lineNumber": 8,
+    "interface": false
+  },
+  {
+    "__docId__": 125,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/core/OctantWrapper.js~OctantWrapper",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/OctantWrapper.js~OctantWrapper#constructor",
+    "access": "public",
+    "description": "Constructs a new octant wrapper.",
+    "lineNumber": 17,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Octant"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "null",
+        "defaultRaw": null,
+        "name": "octant",
+        "description": "An octant."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "OctantId"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "id",
+        "description": "The identifier of the octant."
+      }
+    ]
+  },
+  {
+    "__docId__": 126,
+    "kind": "member",
+    "name": "octant",
+    "memberof": "src/core/OctantWrapper.js~OctantWrapper",
+    "static": false,
+    "longname": "src/core/OctantWrapper.js~OctantWrapper#octant",
+    "access": "public",
+    "description": "An octant.",
+    "lineNumber": 25,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Octant"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 127,
+    "kind": "member",
+    "name": "id",
+    "memberof": "src/core/OctantWrapper.js~OctantWrapper",
+    "static": false,
+    "longname": "src/core/OctantWrapper.js~OctantWrapper#id",
+    "access": "public",
+    "description": "An octant identifier.",
+    "lineNumber": 33,
+    "type": {
+      "nullable": null,
+      "types": [
+        "OctantId"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 128,
+    "kind": "member",
+    "name": "min",
+    "memberof": "src/core/OctantWrapper.js~OctantWrapper",
+    "static": false,
+    "longname": "src/core/OctantWrapper.js~OctantWrapper#min",
+    "access": "public",
+    "description": "The lower bounds.",
+    "lineNumber": 41,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 129,
+    "kind": "member",
+    "name": "max",
+    "memberof": "src/core/OctantWrapper.js~OctantWrapper",
+    "static": false,
+    "longname": "src/core/OctantWrapper.js~OctantWrapper#max",
+    "access": "public",
+    "description": "The upper bounds.",
+    "lineNumber": 49,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 130,
+    "kind": "method",
+    "name": "copy",
+    "memberof": "src/core/OctantWrapper.js~OctantWrapper",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/OctantWrapper.js~OctantWrapper#copy",
+    "access": "public",
+    "description": "Copies the given octant wrapper.",
+    "lineNumber": 60,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "OctantWrapper"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "octantWrapper",
+        "description": "An octant wrapper."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "OctantWrapper"
+      ],
+      "spread": false,
+      "description": "This octant wrapper."
+    }
+  },
+  {
+    "__docId__": 132,
+    "kind": "method",
+    "name": "clone",
+    "memberof": "src/core/OctantWrapper.js~OctantWrapper",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/OctantWrapper.js~OctantWrapper#clone",
+    "access": "public",
+    "description": "Clones this octant wrapper.",
+    "lineNumber": 77,
+    "return": {
+      "nullable": null,
+      "types": [
+        "OctantWrapper"
+      ],
+      "spread": false,
+      "description": "The cloned octant wrapper."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 133,
+    "kind": "method",
+    "name": "getCenter",
+    "memberof": "src/core/OctantWrapper.js~OctantWrapper",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/OctantWrapper.js~OctantWrapper#getCenter",
+    "access": "public",
+    "description": "Computes the center of the wrapped octant.",
+    "lineNumber": 90,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Vector3"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "target",
+        "description": "A target vector."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": "A vector that describes the center of the octant."
+    }
+  },
+  {
+    "__docId__": 134,
+    "kind": "method",
+    "name": "getDimensions",
+    "memberof": "src/core/OctantWrapper.js~OctantWrapper",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/OctantWrapper.js~OctantWrapper#getDimensions",
+    "access": "public",
+    "description": "Computes the size of the wrapped octant.",
+    "lineNumber": 103,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Vector3"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "target",
+        "description": "A target vector."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": "A vector that describes the size of the octant."
+    }
+  },
+  {
+    "__docId__": 135,
+    "kind": "method",
+    "name": "containsPoint",
+    "memberof": "src/core/OctantWrapper.js~OctantWrapper",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/OctantWrapper.js~OctantWrapper#containsPoint",
+    "access": "public",
+    "description": "Checks if the given point lies inside the boundaries of this wrapper.",
+    "lineNumber": 116,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Vector3"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "point",
+        "description": "A point."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Boolean"
+      ],
+      "spread": false,
+      "description": "Whether the given point lies inside the boundaries."
+    }
+  },
+  {
+    "__docId__": 136,
+    "kind": "file",
+    "name": "src/core/Octree.js",
+    "content": "import { Vector3 } from \"math-ds\";\r\nimport { layout } from \"sparse-octree\";\r\nimport { KeyDesign } from \"./KeyDesign.js\";\r\nimport { OctantWrapper } from \"./OctantWrapper.js\";\r\nimport { OctreeIterator } from \"./OctreeIterator.js\";\r\nimport { OctreeRaycaster } from \"./OctreeRaycaster.js\";\r\n\r\n/**\r\n * A vector.\r\n *\r\n * @type {Vector3}\r\n * @private\r\n */\r\n\r\nconst v = new Vector3();\r\n\r\n/**\r\n * Recursively deletes octant children.\r\n *\r\n * @param {Octree} octree - An octree.\r\n * @param {Octant} octant - The current octant.\r\n * @param {Number} keyX - The X-coordinate of the current octant key.\r\n * @param {Number} keyY - The Y-coordinate of the current octant key.\r\n * @param {Number} keyZ - The Z-coordinate of the current octant key.\r\n * @param {Number} level - The current depth.\r\n */\r\n\r\nfunction removeChildren(octree, octant, keyX, keyY, keyZ, level) {\r\n\r\n\tlet grid, keyDesign;\r\n\tlet children, child;\r\n\tlet offset, key, i;\r\n\r\n\t// The octants from level zero have no children.\r\n\tif(level > 0) {\r\n\r\n\t\t// Look at the next lower level.\r\n\t\t--level;\r\n\r\n\t\tgrid = octree.getGrid(level);\r\n\t\tkeyDesign = octree.getKeyDesign();\r\n\t\tchildren = octant.children;\r\n\r\n\t\t// Translate the key coordinates to the next lower level.\r\n\t\tkeyX <<= 1; keyY <<= 1; keyZ <<= 1;\r\n\r\n\t\tfor(i = 0; i < 8; ++i) {\r\n\r\n\t\t\t// Check if the child exists.\r\n\t\t\tif((children & (1 << i)) !== 0) {\r\n\r\n\t\t\t\toffset = layout[i];\r\n\r\n\t\t\t\tv.set(\r\n\t\t\t\t\tkeyX + offset[0],\r\n\t\t\t\t\tkeyY + offset[1],\r\n\t\t\t\t\tkeyZ + offset[2]\r\n\t\t\t\t);\r\n\r\n\t\t\t\tkey = keyDesign.packKey(v);\r\n\r\n\t\t\t\t// Fetch the child and remove it from the grid.\r\n\t\t\t\tchild = grid.get(key);\r\n\t\t\t\tgrid.delete(key);\r\n\r\n\t\t\t\tremoveChildren(octree, child, v.x, v.y, v.z, level);\r\n\r\n\t\t\t}\r\n\r\n\t\t}\r\n\r\n\t\toctant.children = 0;\r\n\r\n\t}\r\n\r\n}\r\n\r\n/**\r\n * Recursively removes empty parent nodes.\r\n *\r\n * @param {Octree} octree - An octree.\r\n * @param {Number} keyX - The X-coordinate of the deleted octant's key.\r\n * @param {Number} keyY - The Y-coordinate of the deleted octant's key.\r\n * @param {Number} keyZ - The Z-coordinate of the deleted octant's key.\r\n * @param {Number} level - The current level value.\r\n */\r\n\r\nfunction prune(octree, keyX, keyY, keyZ, level) {\r\n\r\n\tlet grid, i, key, parent;\r\n\r\n\tif(++level < octree.levels) {\r\n\r\n\t\t// Look at the next higher level grid.\r\n\t\tgrid = octree.getGrid(level);\r\n\r\n\t\t// Determine the position of the deleted octant relative to its parent.\r\n\t\ti = Octree.calculateOffsetIndex(keyX, keyY, keyZ);\r\n\r\n\t\t// Translate the key coordinates to the next higher level.\r\n\t\tv.set(keyX >>> 1, keyY >>> 1, keyZ >>> 1);\r\n\r\n\t\t// The resulting coordinates identify the parent octant.\r\n\t\tkey = octree.getKeyDesign().packKey(v);\r\n\t\tparent = grid.get(key);\r\n\r\n\t\t// Unset the existence flag of the deleted child.\r\n\t\tparent.children &= ~(1 << i);\r\n\r\n\t\t// Check if there are any children left.\r\n\t\tif(parent.children === 0) {\r\n\r\n\t\t\t// Remove the empty parent and recur.\r\n\t\t\tgrid.delete(key);\r\n\t\t\tprune(octree, v.x, v.y, v.z, level);\r\n\r\n\t\t}\r\n\r\n\t}\r\n\r\n}\r\n\r\n/**\r\n * An octree that subdivides space for fast spatial searches.\r\n *\r\n * This linear implementation offers constant time access to octants at any\r\n * depth level as well as octant neighbours and parents.\r\n *\r\n * @implements {Iterable}\r\n * @implements {Node}\r\n * @implements {Tree}\r\n */\r\n\r\nexport class Octree {\r\n\r\n\t/**\r\n\t * Constructs a new octree.\r\n\t *\r\n\t * Each octant can be uniquely identified by a 3D coordinate and a level.\r\n\t * The individual values for X, Y and Z are packed into a numeric key.\r\n\t *\r\n\t * @param {Number} [cellSize=20] - The size of the smallest octants in level zero. Must be an integer i such that 0 < i < 2 ** (33 - levels).\r\n\t * @param {Number} [levels=8] - The amount of detail levels. Must be an integer i such that 0 < i < 33.\r\n\t * @param {KeyDesign} [keyDesign] - The bit allotments for the octant coordinates.\r\n\t */\r\n\r\n\tconstructor(cellSize = 20, levels = 8, keyDesign = new KeyDesign()) {\r\n\r\n\t\tlevels = Math.max(Math.min(Math.trunc(levels), 32), 1);\r\n\r\n\t\t/**\r\n\t\t * The level zero cell size.\r\n\t\t *\r\n\t\t * @type {Number}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.cellSize = Math.max(Math.min(Math.trunc(cellSize), Math.pow(2, 33 - levels) - 1), 1);\r\n\r\n\t\t/**\r\n\t\t * The octant key design.\r\n\t\t *\r\n\t\t * @type {KeyDesign}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.keyDesign = keyDesign;\r\n\r\n\t\t/**\r\n\t\t * The octant level grids.\r\n\t\t *\r\n\t\t * @type {Map[]}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.grids = [];\r\n\r\n\t\twhile(this.grids.length < levels) {\r\n\r\n\t\t\tthis.grids.push(new Map());\r\n\r\n\t\t}\r\n\r\n\t\t/**\r\n\t\t * An empty octant wrapper that holds the bounds of this octree.\r\n\t\t *\r\n\t\t * @type {OctantWrapper}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.bounds = new OctantWrapper();\r\n\r\n\t\tthis.bounds.min.copy(this.keyDesign.halfRange).multiplyScalar(-this.cellSize);\r\n\t\tthis.bounds.max.copy(this.keyDesign.halfRange).multiplyScalar(this.cellSize);\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * The lower bounds of this octree.\r\n\t *\r\n\t * @type {Vector3}\r\n\t */\r\n\r\n\tget min() {\r\n\r\n\t\treturn this.bounds.min;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * The upper bounds of this octree.\r\n\t *\r\n\t * @type {Vector3}\r\n\t */\r\n\r\n\tget max() {\r\n\r\n\t\treturn this.bounds.max;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * The amount of depth levels. This value can not be changed.\r\n\t *\r\n\t * @type {Number}\r\n\t */\r\n\r\n\tget levels() {\r\n\r\n\t\treturn this.grids.length;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * The level zero octant grid.\r\n\t *\r\n\t * @type {Number}\r\n\t */\r\n\r\n\tget levelZero() {\r\n\r\n\t\treturn this.grids[0];\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Returns the key design.\r\n\t *\r\n\t * @return {KeyDesign} The key design.\r\n\t */\r\n\r\n\tgetKeyDesign() {\r\n\r\n\t\treturn this.keyDesign;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Returns the size of the cells in the specified grid.\r\n\t *\r\n\t * @param {Number} [level=0] - The level. Must be a positive integer.\r\n\t * @return {Number} The cell size.\r\n\t */\r\n\r\n\tgetCellSize(level = 0) {\r\n\r\n\t\treturn (this.cellSize << level) >>> 0;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Calculates the center of this octree.\r\n\t *\r\n\t * @param {Vector3} [target] - A target vector. If none is provided, a new one will be created.\r\n\t * @return {Vector3} A vector that describes the center of this octree.\r\n\t */\r\n\r\n\tgetCenter(target) {\r\n\r\n\t\treturn this.bounds.getCenter(target);\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Sets the center of this octree.\r\n\t *\r\n\t * @param {Vector3} center - The new center.\r\n\t */\r\n\r\n\tsetCenter(center) {\r\n\r\n\t\tthis.min.copy(this.keyDesign.halfRange).multiplyScalar(-this.cellSize).add(center);\r\n\t\tthis.max.copy(this.keyDesign.halfRange).multiplyScalar(this.cellSize).add(center);\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Computes the size of this octree.\r\n\t *\r\n\t * @param {Vector3} [target] - A target vector. If none is provided, a new one will be created.\r\n\t * @return {Vector3} A vector that describes the size of this octree.\r\n\t */\r\n\r\n\tgetDimensions(target) {\r\n\r\n\t\treturn this.bounds.getDimensions(target);\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Returns the grid of the specified level.\r\n\t *\r\n\t * @param {Number} level - The level of the grid.\r\n\t * @return {Map} The requested grid or undefined if the given level is out of bounds.\r\n\t */\r\n\r\n\tgetGrid(level) {\r\n\r\n\t\treturn (level >= 0 && level < this.grids.length) ? this.grids[level] : undefined;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Removes all octants.\r\n\t */\r\n\r\n\tclear() {\r\n\r\n\t\tfor(const grid of this.grids) {\r\n\r\n\t\t\tgrid.clear();\r\n\r\n\t\t}\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Checks if the given point lies inside this octree's boundaries.\r\n\t *\r\n\t * @param {Vector3} point - A point.\r\n\t * @return {Boolean} Whether the given point lies inside this octree.\r\n\t */\r\n\r\n\tcontainsPoint(point) {\r\n\r\n\t\treturn this.bounds.containsPoint(point);\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Returns the octree depth.\r\n\t *\r\n\t * @return {Number} The octree depth. This value is constant.\r\n\t */\r\n\r\n\tgetDepth() {\r\n\r\n\t\treturn this.grids.length - 1;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Fetches all nodes of the specified level.\r\n\t *\r\n\t * @param {Number} level - The level.\r\n\t * @return {Iterable} A collection that contains the nodes of the specified level.\r\n\t */\r\n\r\n\tfindNodesByLevel(level) {\r\n\r\n\t\treturn this.octants(level);\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Calculates key coordinates based on a given position and level.\r\n\t *\r\n\t * @param {Vector3} position - A position.\r\n\t * @param {Number} level - The target level.\r\n\t * @param {Vector3} [target] - A vector to store the result in. If none is provided, a new one will be created.\r\n\t * @return {Vector3} The key coordinates.\r\n\t */\r\n\r\n\tcalculateKeyCoordinates(position, level, target = new Vector3()) {\r\n\r\n\t\tconst cellSize = this.cellSize << level;\r\n\r\n\t\t// Translate to the origin (zero-based unsigned coordinates).\r\n\t\tv.subVectors(position, this.min);\r\n\r\n\t\ttarget.set(\r\n\t\t\tMath.trunc(v.x / cellSize),\r\n\t\t\tMath.trunc(v.y / cellSize),\r\n\t\t\tMath.trunc(v.z / cellSize)\r\n\t\t);\r\n\r\n\t\treturn target;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Retrieves the node of a specific level that contains the given point.\r\n\t *\r\n\t * @param {Vector3} point - A point.\r\n\t * @param {Number} [level=0] - A level value.\r\n\t * @return {Octant} The node that contains the point or undefined if it doesn't exist.\r\n\t */\r\n\r\n\tgetNodeByPoint(point, level = 0) {\r\n\r\n\t\tconst keyDesign = this.keyDesign;\r\n\t\tconst grid = this.getGrid(level);\r\n\r\n\t\tlet result;\r\n\r\n\t\tif(grid !== undefined) {\r\n\r\n\t\t\tif(this.containsPoint(point)) {\r\n\r\n\t\t\t\tthis.calculateKeyCoordinates(point, level, v);\r\n\t\t\t\tresult = grid.get(keyDesign.packKey(v));\r\n\r\n\t\t\t} else {\r\n\r\n\t\t\t\tconsole.error(\"Position out of range\", point);\r\n\r\n\t\t\t}\r\n\r\n\t\t} else {\r\n\r\n\t\t\tconsole.error(\"Invalid level\", level);\r\n\r\n\t\t}\r\n\r\n\t\treturn result;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Removes a specific node by a given key.\r\n\t *\r\n\t * Children and empty parent nodes will be removed as well.\r\n\t *\r\n\t * @param {Number} key - The key of the octant that should be removed.\r\n\t * @param {Number} [level=0] - The level of the octant.\r\n\t */\r\n\r\n\tremove(key, level = 0) {\r\n\r\n\t\tconst keyDesign = this.keyDesign;\r\n\t\tconst grid = this.getGrid(level);\r\n\r\n\t\tlet keyX, keyY, keyZ;\r\n\r\n\t\tif(grid !== undefined) {\r\n\r\n\t\t\tif(grid.has(key)) {\r\n\r\n\t\t\t\t// Note: v will be modified by removeChildren and prune.\r\n\t\t\t\tkeyDesign.unpackKey(key, v);\r\n\t\t\t\tkeyX = v.x; keyY = v.y; keyZ = v.z;\r\n\r\n\t\t\t\t// Recursively delete all children in the lower level grids.\r\n\t\t\t\tremoveChildren(this, grid.get(key), keyX, keyY, keyZ, level);\r\n\r\n\t\t\t\t// Remove the octant.\r\n\t\t\t\tgrid.delete(key);\r\n\r\n\t\t\t\t// Recursively delete empty parent nodes.\r\n\t\t\t\tprune(this, keyX, keyY, keyZ, level);\r\n\r\n\t\t\t} else {\r\n\r\n\t\t\t\tconsole.error(\"No octant found\", key);\r\n\r\n\t\t\t}\r\n\r\n\t\t} else {\r\n\r\n\t\t\tconsole.error(\"Invalid level\", level);\r\n\r\n\t\t}\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Finds the nodes that intersect with the given ray. The intersecting\r\n\t * nodes are sorted by distance, closest first. Empty nodes will not be\r\n\t * included in the result.\r\n\t *\r\n\t * @param {Raycaster} raycaster - A raycaster.\r\n\t * @param {Array} [intersects] - An optional target list to be filled with the intersecting nodes.\r\n\t * @return {Node[]} The intersecting nodes.\r\n\t */\r\n\r\n\traycast(raycaster, intersects = []) {\r\n\r\n\t\treturn OctreeRaycaster.intersectOctree(this, raycaster.ray, intersects);\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Returns a new octree octant iterator.\r\n\t *\r\n\t * The octants returned by this iterator are augmented with explicit\r\n\t * positional information. See {@link OctantWrapper} for more details.\r\n\t *\r\n\t * @param {Number} [level=0] - The depth.\r\n\t * @return {Iterator<OctantWrapper>} An iterator.\r\n\t */\r\n\r\n\toctants(level = 0) {\r\n\r\n\t\treturn new OctreeIterator(this, level);\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Calculates an offset index from octant key coordinates.\r\n\t *\r\n\t * The index identifies the octant's positional offset relative to its parent:\r\n\t *\r\n\t * ```text\r\n\t *  0: [0, 0, 0]\r\n\t *  1: [0, 0, 1]\r\n\t *  2: [0, 1, 0]\r\n\t *  3: [0, 1, 1]\r\n\t *  4: [1, 0, 0]\r\n\t *  5: [1, 0, 1]\r\n\t *  6: [1, 1, 0]\r\n\t *  7: [1, 1, 1]\r\n\t * ```\r\n\t *\r\n\t * Note: This binary layout is defined in the external module `sparse-octree`.\r\n\t *\r\n\t * For more information on fast bitwise modulo with power of two divisors see:\r\n\t *  https://graphics.stanford.edu/~seander/bithacks.html#ModulusDivisionEasy\r\n\t *\r\n\t * @param {Number} x - The X-coordinate of the octant key.\r\n\t * @param {Number} y - The Y-coordinate of the octant key.\r\n\t * @param {Number} z - The Z-coordinate of the octant key.\r\n\t * @return {Number} The index of the relative positional offset. Range: [0, 7].\r\n\t */\r\n\r\n\tstatic calculateOffsetIndex(x, y, z) {\r\n\r\n\t\t// Bitwise modulo: n % (1 << s) = n & ((1 << s) - 1) for positive integers.\r\n\t\tconst offsetX = x & 1;\r\n\t\tconst offsetY = y & 1;\r\n\t\tconst offsetZ = z & 1;\r\n\r\n\t\t// Use a reversed packing order for correct indexing (X * 4 + Y * 2 + Z).\r\n\t\treturn (offsetX << 2) + (offsetY << 1) + offsetZ;\r\n\r\n\t}\r\n\r\n}\r\n",
+    "static": true,
+    "longname": "D:/Sourcecode/JavaScript/linear-octree/src/core/Octree.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 137,
+    "kind": "variable",
+    "name": "v",
+    "memberof": "src/core/Octree.js",
+    "static": true,
+    "longname": "src/core/Octree.js~v",
+    "access": "private",
+    "export": false,
+    "importPath": "linear-octree",
+    "importStyle": null,
+    "description": "A vector.",
+    "lineNumber": 15,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 138,
+    "kind": "function",
+    "name": "removeChildren",
+    "memberof": "src/core/Octree.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/core/Octree.js~removeChildren",
+    "access": "public",
+    "export": false,
+    "importPath": "linear-octree",
+    "importStyle": null,
+    "description": "Recursively deletes octant children.",
+    "lineNumber": 28,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Octree"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "octree",
+        "description": "An octree."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Octant"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "octant",
+        "description": "The current octant."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "keyX",
+        "description": "The X-coordinate of the current octant key."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "keyY",
+        "description": "The Y-coordinate of the current octant key."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "keyZ",
+        "description": "The Z-coordinate of the current octant key."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "level",
+        "description": "The current depth."
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 139,
+    "kind": "function",
+    "name": "prune",
+    "memberof": "src/core/Octree.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/core/Octree.js~prune",
+    "access": "public",
+    "export": false,
+    "importPath": "linear-octree",
+    "importStyle": null,
+    "description": "Recursively removes empty parent nodes.",
+    "lineNumber": 88,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Octree"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "octree",
+        "description": "An octree."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "keyX",
+        "description": "The X-coordinate of the deleted octant's key."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "keyY",
+        "description": "The Y-coordinate of the deleted octant's key."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "keyZ",
+        "description": "The Z-coordinate of the deleted octant's key."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "level",
+        "description": "The current level value."
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 140,
+    "kind": "class",
+    "name": "Octree",
+    "memberof": "src/core/Octree.js",
+    "static": true,
+    "longname": "src/core/Octree.js~Octree",
+    "access": "public",
+    "export": true,
+    "importPath": "linear-octree",
+    "importStyle": "{Octree}",
+    "description": "An octree that subdivides space for fast spatial searches.\n\nThis linear implementation offers constant time access to octants at any\ndepth level as well as octant neighbours and parents.",
+    "lineNumber": 134,
+    "interface": false,
+    "implements": [
+      "Iterable",
+      "Node",
+      "Tree"
+    ]
+  },
+  {
+    "__docId__": 141,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#constructor",
+    "access": "public",
+    "description": "Constructs a new octree.\n\nEach octant can be uniquely identified by a 3D coordinate and a level.\nThe individual values for X, Y and Z are packed into a numeric key.",
+    "lineNumber": 147,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "20",
+        "defaultRaw": 20,
+        "name": "cellSize",
+        "description": "The size of the smallest octants in level zero. Must be an integer i such that 0 < i < 2 ** (33 - levels)."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "8",
+        "defaultRaw": 8,
+        "name": "levels",
+        "description": "The amount of detail levels. Must be an integer i such that 0 < i < 33."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "KeyDesign"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "keyDesign",
+        "description": "The bit allotments for the octant coordinates."
+      }
+    ]
+  },
+  {
+    "__docId__": 142,
+    "kind": "member",
+    "name": "cellSize",
+    "memberof": "src/core/Octree.js~Octree",
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#cellSize",
+    "access": "private",
+    "description": "The level zero cell size.",
+    "lineNumber": 158,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 143,
+    "kind": "member",
+    "name": "keyDesign",
+    "memberof": "src/core/Octree.js~Octree",
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#keyDesign",
+    "access": "private",
+    "description": "The octant key design.",
+    "lineNumber": 167,
+    "type": {
+      "nullable": null,
+      "types": [
+        "KeyDesign"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 144,
+    "kind": "member",
+    "name": "grids",
+    "memberof": "src/core/Octree.js~Octree",
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#grids",
+    "access": "private",
+    "description": "The octant level grids.",
+    "lineNumber": 176,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Map[]"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 145,
+    "kind": "member",
+    "name": "bounds",
+    "memberof": "src/core/Octree.js~Octree",
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#bounds",
+    "access": "private",
+    "description": "An empty octant wrapper that holds the bounds of this octree.",
+    "lineNumber": 191,
+    "type": {
+      "nullable": null,
+      "types": [
+        "OctantWrapper"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 146,
+    "kind": "get",
+    "name": "min",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#min",
+    "access": "public",
+    "description": "The lower bounds of this octree.",
+    "lineNumber": 204,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 147,
+    "kind": "get",
+    "name": "max",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#max",
+    "access": "public",
+    "description": "The upper bounds of this octree.",
+    "lineNumber": 216,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 148,
+    "kind": "get",
+    "name": "levels",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#levels",
+    "access": "public",
+    "description": "The amount of depth levels. This value can not be changed.",
+    "lineNumber": 228,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 149,
+    "kind": "get",
+    "name": "levelZero",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#levelZero",
+    "access": "public",
+    "description": "The level zero octant grid.",
+    "lineNumber": 240,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 150,
+    "kind": "method",
+    "name": "getKeyDesign",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#getKeyDesign",
+    "access": "public",
+    "description": "Returns the key design.",
+    "lineNumber": 252,
+    "return": {
+      "nullable": null,
+      "types": [
+        "KeyDesign"
+      ],
+      "spread": false,
+      "description": "The key design."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 151,
+    "kind": "method",
+    "name": "getCellSize",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#getCellSize",
+    "access": "public",
+    "description": "Returns the size of the cells in the specified grid.",
+    "lineNumber": 265,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "0",
+        "defaultRaw": 0,
+        "name": "level",
+        "description": "The level. Must be a positive integer."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": "The cell size."
+    }
+  },
+  {
+    "__docId__": 152,
+    "kind": "method",
+    "name": "getCenter",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#getCenter",
+    "access": "public",
+    "description": "Calculates the center of this octree.",
+    "lineNumber": 278,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Vector3"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "target",
+        "description": "A target vector. If none is provided, a new one will be created."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": "A vector that describes the center of this octree."
+    }
+  },
+  {
+    "__docId__": 153,
+    "kind": "method",
+    "name": "setCenter",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#setCenter",
+    "access": "public",
+    "description": "Sets the center of this octree.",
+    "lineNumber": 290,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Vector3"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "center",
+        "description": "The new center."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 154,
+    "kind": "method",
+    "name": "getDimensions",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#getDimensions",
+    "access": "public",
+    "description": "Computes the size of this octree.",
+    "lineNumber": 304,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Vector3"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "target",
+        "description": "A target vector. If none is provided, a new one will be created."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": "A vector that describes the size of this octree."
+    }
+  },
+  {
+    "__docId__": 155,
+    "kind": "method",
+    "name": "getGrid",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#getGrid",
+    "access": "public",
+    "description": "Returns the grid of the specified level.",
+    "lineNumber": 317,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "level",
+        "description": "The level of the grid."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Map"
+      ],
+      "spread": false,
+      "description": "The requested grid or undefined if the given level is out of bounds."
+    }
+  },
+  {
+    "__docId__": 156,
+    "kind": "method",
+    "name": "clear",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#clear",
+    "access": "public",
+    "description": "Removes all octants.",
+    "lineNumber": 327,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 157,
+    "kind": "method",
+    "name": "containsPoint",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#containsPoint",
+    "access": "public",
+    "description": "Checks if the given point lies inside this octree's boundaries.",
+    "lineNumber": 344,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Vector3"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "point",
+        "description": "A point."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Boolean"
+      ],
+      "spread": false,
+      "description": "Whether the given point lies inside this octree."
+    }
+  },
+  {
+    "__docId__": 158,
+    "kind": "method",
+    "name": "getDepth",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#getDepth",
+    "access": "public",
+    "description": "Returns the octree depth.",
+    "lineNumber": 356,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": "The octree depth. This value is constant."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 159,
+    "kind": "method",
+    "name": "findNodesByLevel",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#findNodesByLevel",
+    "access": "public",
+    "description": "Fetches all nodes of the specified level.",
+    "lineNumber": 369,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "level",
+        "description": "The level."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Iterable"
+      ],
+      "spread": false,
+      "description": "A collection that contains the nodes of the specified level."
+    }
+  },
+  {
+    "__docId__": 160,
+    "kind": "method",
+    "name": "calculateKeyCoordinates",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#calculateKeyCoordinates",
+    "access": "public",
+    "description": "Calculates key coordinates based on a given position and level.",
+    "lineNumber": 384,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Vector3"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "position",
+        "description": "A position."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "level",
+        "description": "The target level."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Vector3"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "target",
+        "description": "A vector to store the result in. If none is provided, a new one will be created."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": "The key coordinates."
+    }
+  },
+  {
+    "__docId__": 161,
+    "kind": "method",
+    "name": "getNodeByPoint",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#getNodeByPoint",
+    "access": "public",
+    "description": "Retrieves the node of a specific level that contains the given point.",
+    "lineNumber": 409,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Vector3"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "point",
+        "description": "A point."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "0",
+        "defaultRaw": 0,
+        "name": "level",
+        "description": "A level value."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Octant"
+      ],
+      "spread": false,
+      "description": "The node that contains the point or undefined if it doesn't exist."
+    }
+  },
+  {
+    "__docId__": 162,
+    "kind": "method",
+    "name": "remove",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#remove",
+    "access": "public",
+    "description": "Removes a specific node by a given key.\n\nChildren and empty parent nodes will be removed as well.",
+    "lineNumber": 448,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "key",
+        "description": "The key of the octant that should be removed."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "0",
+        "defaultRaw": 0,
+        "name": "level",
+        "description": "The level of the octant."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 163,
+    "kind": "method",
+    "name": "raycast",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#raycast",
+    "access": "public",
+    "description": "Finds the nodes that intersect with the given ray. The intersecting\nnodes are sorted by distance, closest first. Empty nodes will not be\nincluded in the result.",
+    "lineNumber": 496,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Raycaster"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "raycaster",
+        "description": "A raycaster."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "intersects",
+        "description": "An optional target list to be filled with the intersecting nodes."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Node[]"
+      ],
+      "spread": false,
+      "description": "The intersecting nodes."
+    }
+  },
+  {
+    "__docId__": 164,
+    "kind": "method",
+    "name": "octants",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/Octree.js~Octree#octants",
+    "access": "public",
+    "description": "Returns a new octree octant iterator.\n\nThe octants returned by this iterator are augmented with explicit\npositional information. See {@link OctantWrapper} for more details.",
+    "lineNumber": 512,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "0",
+        "defaultRaw": 0,
+        "name": "level",
+        "description": "The depth."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Iterator<OctantWrapper>"
+      ],
+      "spread": false,
+      "description": "An iterator."
+    }
+  },
+  {
+    "__docId__": 165,
+    "kind": "method",
+    "name": "calculateOffsetIndex",
+    "memberof": "src/core/Octree.js~Octree",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/core/Octree.js~Octree.calculateOffsetIndex",
+    "access": "public",
+    "description": "Calculates an offset index from octant key coordinates.\n\nThe index identifies the octant's positional offset relative to its parent:\n\n```text\n 0: [0, 0, 0]\n 1: [0, 0, 1]\n 2: [0, 1, 0]\n 3: [0, 1, 1]\n 4: [1, 0, 0]\n 5: [1, 0, 1]\n 6: [1, 1, 0]\n 7: [1, 1, 1]\n```\n\nNote: This binary layout is defined in the external module `sparse-octree`.\n\nFor more information on fast bitwise modulo with power of two divisors see:\n https://graphics.stanford.edu/~seander/bithacks.html#ModulusDivisionEasy",
+    "lineNumber": 545,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "x",
+        "description": "The X-coordinate of the octant key."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "y",
+        "description": "The Y-coordinate of the octant key."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "z",
+        "description": "The Z-coordinate of the octant key."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": "The index of the relative positional offset. Range: [0, 7]."
+    }
+  },
+  {
+    "__docId__": 166,
+    "kind": "file",
+    "name": "src/core/OctreeIterator.js",
+    "content": "import IteratorResult from \"iterator-result\";\r\nimport { OctantWrapper } from \"./OctantWrapper.js\";\r\n\r\n/**\r\n * An octree iterator.\r\n *\r\n * @implements {Iterator}\r\n * @implements {Iterable}\r\n */\r\n\r\nexport class OctreeIterator {\r\n\r\n\t/**\r\n\t * Constructs a new octant iterator.\r\n\t *\r\n\t * @param {Octree} octree - An octree.\r\n\t * @param {Number} [level=0] - The grid level.\r\n\t */\r\n\r\n\tconstructor(octree, level = 0) {\r\n\r\n\t\t/**\r\n\t\t * The octree.\r\n\t\t *\r\n\t\t * @type {Octree}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.octree = octree;\r\n\r\n\t\t/**\r\n\t\t * The size of the cells in the specified grid.\r\n\t\t *\r\n\t\t * @type {Number}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.cellSize = 0;\r\n\r\n\t\t/**\r\n\t\t * The internal octant iterator.\r\n\t\t *\r\n\t\t * @type {Vector3}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.iterator = null;\r\n\r\n\t\t/**\r\n\t\t * A octant wrapper.\r\n\t\t *\r\n\t\t * @type {OctantWrapper}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.octantWrapper = new OctantWrapper();\r\n\t\tthis.octantWrapper.id.level = level;\r\n\r\n\t\t/**\r\n\t\t * An iterator result.\r\n\t\t *\r\n\t\t * @type {IteratorResult}\r\n\t\t * @private\r\n\t\t */\r\n\r\n\t\tthis.result = new IteratorResult();\r\n\r\n\t\tthis.reset();\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Resets this iterator.\r\n\t *\r\n\t * @return {KeyIterator} This iterator.\r\n\t */\r\n\r\n\treset() {\r\n\r\n\t\tconst level = this.octantWrapper.id.level;\r\n\t\tconst octree = this.octree;\r\n\t\tconst grid = octree.getGrid(level);\r\n\r\n\t\tif(grid !== undefined) {\r\n\r\n\t\t\tthis.cellSize = octree.getCellSize(level);\r\n\t\t\tthis.iterator = grid.entries();\r\n\t\t\tthis.result.reset();\r\n\r\n\t\t} else {\r\n\r\n\t\t\tconsole.error(\"Invalid level\", level);\r\n\r\n\t\t}\r\n\r\n\t\treturn this;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Iterates over the octants.\r\n\t *\r\n\t * @return {IteratorResult} The next key.\r\n\t */\r\n\r\n\tnext() {\r\n\r\n\t\tconst result = this.result;\r\n\t\tconst octantWrapper = this.octantWrapper;\r\n\t\tconst internalResult = this.iterator.next();\r\n\t\tconst value = internalResult.value;\r\n\r\n\t\tif(!internalResult.done) {\r\n\r\n\t\t\tthis.keyDesign.unpackKey(value[0], octantWrapper.min);\r\n\t\t\toctantWrapper.min.multiplyScalar(this.cellSize).add(this.octree.min);\r\n\t\t\toctantWrapper.max.copy(octantWrapper.min).addScalar(this.cellSize);\r\n\t\t\toctantWrapper.id.key = value[0];\r\n\t\t\toctantWrapper.octant = value[1];\r\n\r\n\t\t\tresult.value = octantWrapper;\r\n\r\n\t\t} else {\r\n\r\n\t\t\tresult.value = null;\r\n\t\t\tresult.done = true;\r\n\r\n\t\t}\r\n\r\n\t\treturn result;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Called when this iterator will no longer be run to completion.\r\n\t *\r\n\t * @param {Object} value - An interator result value.\r\n\t * @return {IteratorResult} - A premature completion result.\r\n\t */\r\n\r\n\treturn(value) {\r\n\r\n\t\tthis.result.value = value;\r\n\t\tthis.result.done = true;\r\n\r\n\t\treturn this.result;\r\n\r\n\t}\r\n\r\n\t/**\r\n\t * Returns this iterator.\r\n\t *\r\n\t * @return {OctantIterator} An iterator.\r\n\t */\r\n\r\n\t[Symbol.iterator]() {\r\n\r\n\t\treturn this;\r\n\r\n\t}\r\n\r\n}\r\n",
+    "static": true,
+    "longname": "D:/Sourcecode/JavaScript/linear-octree/src/core/OctreeIterator.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 167,
+    "kind": "class",
+    "name": "OctreeIterator",
+    "memberof": "src/core/OctreeIterator.js",
+    "static": true,
+    "longname": "src/core/OctreeIterator.js~OctreeIterator",
+    "access": "public",
+    "export": true,
+    "importPath": "linear-octree",
+    "importStyle": "{OctreeIterator}",
+    "description": "An octree iterator.",
+    "lineNumber": 11,
+    "interface": false,
+    "implements": [
+      "Iterator",
+      "Iterable"
+    ]
+  },
+  {
+    "__docId__": 168,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/core/OctreeIterator.js~OctreeIterator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/OctreeIterator.js~OctreeIterator#constructor",
+    "access": "public",
+    "description": "Constructs a new octant iterator.",
+    "lineNumber": 20,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Octree"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "octree",
+        "description": "An octree."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "0",
+        "defaultRaw": 0,
+        "name": "level",
+        "description": "The grid level."
+      }
+    ]
+  },
+  {
+    "__docId__": 169,
+    "kind": "member",
+    "name": "octree",
+    "memberof": "src/core/OctreeIterator.js~OctreeIterator",
+    "static": false,
+    "longname": "src/core/OctreeIterator.js~OctreeIterator#octree",
+    "access": "private",
+    "description": "The octree.",
+    "lineNumber": 29,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Octree"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 170,
+    "kind": "member",
+    "name": "cellSize",
+    "memberof": "src/core/OctreeIterator.js~OctreeIterator",
+    "static": false,
+    "longname": "src/core/OctreeIterator.js~OctreeIterator#cellSize",
+    "access": "private",
+    "description": "The size of the cells in the specified grid.",
+    "lineNumber": 38,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 171,
+    "kind": "member",
+    "name": "iterator",
+    "memberof": "src/core/OctreeIterator.js~OctreeIterator",
+    "static": false,
+    "longname": "src/core/OctreeIterator.js~OctreeIterator#iterator",
+    "access": "private",
+    "description": "The internal octant iterator.",
+    "lineNumber": 47,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 172,
+    "kind": "member",
+    "name": "octantWrapper",
+    "memberof": "src/core/OctreeIterator.js~OctreeIterator",
+    "static": false,
+    "longname": "src/core/OctreeIterator.js~OctreeIterator#octantWrapper",
+    "access": "private",
+    "description": "A octant wrapper.",
+    "lineNumber": 56,
+    "type": {
+      "nullable": null,
+      "types": [
+        "OctantWrapper"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 173,
+    "kind": "member",
+    "name": "result",
+    "memberof": "src/core/OctreeIterator.js~OctreeIterator",
+    "static": false,
+    "longname": "src/core/OctreeIterator.js~OctreeIterator#result",
+    "access": "private",
+    "description": "An iterator result.",
+    "lineNumber": 66,
+    "type": {
+      "nullable": null,
+      "types": [
+        "IteratorResult"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 174,
+    "kind": "method",
+    "name": "reset",
+    "memberof": "src/core/OctreeIterator.js~OctreeIterator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/OctreeIterator.js~OctreeIterator#reset",
+    "access": "public",
+    "description": "Resets this iterator.",
+    "lineNumber": 78,
+    "return": {
+      "nullable": null,
+      "types": [
+        "KeyIterator"
+      ],
+      "spread": false,
+      "description": "This iterator."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 177,
+    "kind": "method",
+    "name": "next",
+    "memberof": "src/core/OctreeIterator.js~OctreeIterator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/OctreeIterator.js~OctreeIterator#next",
+    "access": "public",
+    "description": "Iterates over the octants.",
+    "lineNumber": 106,
+    "return": {
+      "nullable": null,
+      "types": [
+        "IteratorResult"
+      ],
+      "spread": false,
+      "description": "The next key."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 178,
+    "kind": "method",
+    "name": "return",
+    "memberof": "src/core/OctreeIterator.js~OctreeIterator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/OctreeIterator.js~OctreeIterator#return",
+    "access": "public",
+    "description": "Called when this iterator will no longer be run to completion.",
+    "lineNumber": 141,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "An interator result value."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "IteratorResult"
+      ],
+      "spread": false,
+      "description": "A premature completion result."
+    }
+  },
+  {
+    "__docId__": 179,
+    "kind": "method",
+    "name": "[Symbol.iterator]",
+    "memberof": "src/core/OctreeIterator.js~OctreeIterator",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/core/OctreeIterator.js~OctreeIterator#[Symbol.iterator]",
+    "access": "public",
+    "description": "Returns this iterator.",
+    "lineNumber": 156,
+    "return": {
+      "nullable": null,
+      "types": [
+        "OctantIterator"
+      ],
+      "spread": false,
+      "description": "An iterator."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 180,
+    "kind": "file",
+    "name": "src/core/OctreeRaycaster.js",
+    "content": "import { Line3, Ray, Vector3 } from \"math-ds\";\r\n\r\nimport {\r\n\tlayout,\r\n\tFlags,\r\n\tfindEntryOctant,\r\n\tfindNextOctant,\r\n\tintersectOctree\r\n} from \"sparse-octree\";\r\n\r\nimport { OctantWrapper } from \"./OctantWrapper.js\";\r\n\r\n/**\r\n * Raycasting flags.\r\n *\r\n * @type {Flags}\r\n */\r\n\r\nconst flags = new Flags();\r\n\r\n/**\r\n * A vector.\r\n *\r\n * @type {Vector3}\r\n * @private\r\n */\r\n\r\nconst v = new Vector3();\r\n\r\n/**\r\n * A line.\r\n *\r\n * @type {Line3}\r\n * @private\r\n */\r\n\r\nconst l = new Line3();\r\n\r\n/**\r\n * A ray.\r\n *\r\n * @type {Ray}\r\n * @private\r\n */\r\n\r\nconst r = new Ray();\r\n\r\n/**\r\n * Recursively traverses the given octant to find (pseudo) leaf octants that\r\n * intersect with the given ray.\r\n *\r\n * @private\r\n * @param {Octree} octree - The octree.\r\n * @param {Octant} octant - The current octant.\r\n * @param {Number} keyX - The X-coordinate of the current octant key.\r\n * @param {Number} keyY - The Y-coordinate of the current octant key.\r\n * @param {Number} keyZ - The Z-coordinate of the current octant key.\r\n * @param {Number} level - The current depth.\r\n * @param {Number} tx0 - Ray projection parameter.\r\n * @param {Number} ty0 - Ray projection parameter.\r\n * @param {Number} tz0 - Ray projection parameter.\r\n * @param {Number} tx1 - Ray projection parameter.\r\n * @param {Number} ty1 - Ray projection parameter.\r\n * @param {Number} tz1 - Ray projection parameter.\r\n * @param {Octant[]} intersects - An array to be filled with the intersecting octants.\r\n */\r\n\r\nfunction raycastOctant(octree, octant, keyX, keyY, keyZ, level, tx0, ty0, tz0, tx1, ty1, tz1, intersects) {\r\n\r\n\tif(tx1 >= 0.0 && ty1 >= 0.0 && tz1 >= 0.0) {\r\n\r\n\t\tconst keyDesign = octree.getKeyDesign();\r\n\r\n\t\tif(level === 0 || octant.data !== null) {\r\n\r\n\t\t\tconst cellSize = octree.getCellSize(level);\r\n\t\t\tconst octantWrapper = new OctantWrapper(octant);\r\n\t\t\toctantWrapper.id.set(level, keyDesign.packKey(v.set(keyX, keyY, keyZ)));\r\n\t\t\toctantWrapper.min.copy(v).multiplyScalar(cellSize).add(octree.min);\r\n\t\t\toctantWrapper.max.copy(octantWrapper.min).addScalar(cellSize);\r\n\r\n\t\t\tintersects.push(octantWrapper);\r\n\r\n\t\t} else if(octant.children > 0) {\r\n\r\n\t\t\t// Look at the next lower LOD.\r\n\t\t\tconst grid = octree.getGrid(--level);\r\n\t\t\tconst children = octant.children;\r\n\r\n\t\t\t// Compute means.\r\n\t\t\tconst txm = 0.5 * (tx0 + tx1);\r\n\t\t\tconst tym = 0.5 * (ty0 + ty1);\r\n\t\t\tconst tzm = 0.5 * (tz0 + tz1);\r\n\r\n\t\t\tlet currentOctant = findEntryOctant(tx0, ty0, tz0, txm, tym, tzm);\r\n\t\t\tlet offset, childExists, i;\r\n\r\n\t\t\t// Translate the key coordinates to the next lower LOD.\r\n\t\t\tkeyX <<= 1; keyY <<= 1; keyZ <<= 1;\r\n\r\n\t\t\tdo {\r\n\r\n\t\t\t\ti = flags.value ^ currentOctant;\r\n\t\t\t\tchildExists = ((children & (1 << i)) !== 0);\r\n\t\t\t\toffset = layout[i];\r\n\r\n\t\t\t\tswitch(currentOctant) {\r\n\r\n\t\t\t\t\tcase 0: {\r\n\r\n\t\t\t\t\t\tif(childExists) {\r\n\r\n\t\t\t\t\t\t\tv.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);\r\n\t\t\t\t\t\t\traycastOctant(octree, grid.get(keyDesign.packKey(v)), v.x, v.y, v.z, level, tx0, ty0, tz0, txm, tym, tzm, intersects);\r\n\r\n\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t\tcurrentOctant = findNextOctant(currentOctant, txm, tym, tzm);\r\n\t\t\t\t\t\tbreak;\r\n\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t\tcase 1: {\r\n\r\n\t\t\t\t\t\tif(childExists) {\r\n\r\n\t\t\t\t\t\t\tv.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);\r\n\t\t\t\t\t\t\traycastOctant(octree, grid.get(keyDesign.packKey(v)), v.x, v.y, v.z, level, tx0, ty0, tzm, txm, tym, tz1, intersects);\r\n\r\n\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t\tcurrentOctant = findNextOctant(currentOctant, txm, tym, tz1);\r\n\t\t\t\t\t\tbreak;\r\n\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t\tcase 2: {\r\n\r\n\t\t\t\t\t\tif(childExists) {\r\n\r\n\t\t\t\t\t\t\tv.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);\r\n\t\t\t\t\t\t\traycastOctant(octree, grid.get(keyDesign.packKey(v)), v.x, v.y, v.z, level, tx0, tym, tz0, txm, ty1, tzm, intersects);\r\n\r\n\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t\tcurrentOctant = findNextOctant(currentOctant, txm, ty1, tzm);\r\n\t\t\t\t\t\tbreak;\r\n\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t\tcase 3: {\r\n\r\n\t\t\t\t\t\tif(childExists) {\r\n\r\n\t\t\t\t\t\t\tv.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);\r\n\t\t\t\t\t\t\traycastOctant(octree, grid.get(keyDesign.packKey(v)), v.x, v.y, v.z, level, tx0, tym, tzm, txm, ty1, tz1, intersects);\r\n\r\n\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t\tcurrentOctant = findNextOctant(currentOctant, txm, ty1, tz1);\r\n\t\t\t\t\t\tbreak;\r\n\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t\tcase 4: {\r\n\r\n\t\t\t\t\t\tif(childExists) {\r\n\r\n\t\t\t\t\t\t\tv.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);\r\n\t\t\t\t\t\t\traycastOctant(octree, grid.get(keyDesign.packKey(v)), v.x, v.y, v.z, level, txm, ty0, tz0, tx1, tym, tzm, intersects);\r\n\r\n\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t\tcurrentOctant = findNextOctant(currentOctant, tx1, tym, tzm);\r\n\t\t\t\t\t\tbreak;\r\n\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t\tcase 5: {\r\n\r\n\t\t\t\t\t\tif(childExists) {\r\n\r\n\t\t\t\t\t\t\tv.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);\r\n\t\t\t\t\t\t\traycastOctant(octree, grid.get(keyDesign.packKey(v)), v.x, v.y, v.z, level, txm, ty0, tzm, tx1, tym, tz1, intersects);\r\n\r\n\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t\tcurrentOctant = findNextOctant(currentOctant, tx1, tym, tz1);\r\n\t\t\t\t\t\tbreak;\r\n\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t\tcase 6: {\r\n\r\n\t\t\t\t\t\tif(childExists) {\r\n\r\n\t\t\t\t\t\t\tv.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);\r\n\t\t\t\t\t\t\traycastOctant(octree, grid.get(keyDesign.packKey(v)), v.x, v.y, v.z, level, txm, tym, tz0, tx1, ty1, tzm, intersects);\r\n\r\n\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t\tcurrentOctant = findNextOctant(currentOctant, tx1, ty1, tzm);\r\n\t\t\t\t\t\tbreak;\r\n\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t\tcase 7: {\r\n\r\n\t\t\t\t\t\tif(childExists) {\r\n\r\n\t\t\t\t\t\t\tv.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);\r\n\t\t\t\t\t\t\traycastOctant(octree, grid.get(keyDesign.packKey(v)), v.x, v.y, v.z, level, txm, tym, tzm, tx1, ty1, tz1, intersects);\r\n\r\n\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t\t// Far top right octant. No other octants can be reached from here.\r\n\t\t\t\t\t\tcurrentOctant = 8;\r\n\t\t\t\t\t\tbreak;\r\n\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t}\r\n\r\n\t\t\t} while(currentOctant < 8);\r\n\r\n\t\t}\r\n\r\n\t}\r\n\r\n}\r\n\r\n/**\r\n * A raycaster for linear octrees.\r\n *\r\n * This raycaster is a specialized hybrid that uses a voxel traversal algorithm\r\n * to iterate over the octants of the highest LOD grid and an octree traversal\r\n * algorithm to raycast the identified subtrees.\r\n *\r\n * The voxel traversal implementation is a 3D supercover variant of the Digital\r\n * Differential Analyzer (DDA) line algorithm and is similar to the Bresenham\r\n * algorithm. The octree traversal algorithm uses octant child existence\r\n * information to skip empty space and avoids hash table lookup misses.\r\n *\r\n * References:\r\n *  \"Voxel Traversal along a 3D Line\"\r\n *  by D. Cohen (1994)\r\n *  \"An Efficient Parametric Algorithm for Octree Traversal\"\r\n *  by J. Revelles et al. (2000)\r\n */\r\n\r\nexport class OctreeRaycaster {\r\n\r\n\t/**\r\n\t * Finds (pseudo) leaf octants that intersect with the given ray.\r\n\t *\r\n\t * @param {LinearOctree} octree - An octree.\r\n\t * @param {Ray} ray - A ray.\r\n\t * @param {Octant[]} [intersects] - An optional target list to be filled with the intersecting octants.\r\n\t * @return {Octant[]} The intersecting octants. Sorted by distance, closest first.\r\n\t */\r\n\r\n\tstatic intersectOctree(octree, ray, intersects = []) {\r\n\r\n\t\tconst level = octree.getDepth();\r\n\t\tconst grid = octree.getGrid(level);\r\n\t\tconst cellSize = octree.getCellSize(level);\r\n\t\tconst keyDesign = octree.getKeyDesign();\r\n\t\tconst subtree = new OctantWrapper();\r\n\r\n\t\tconst keyCoordinates0 = l.start;\r\n\t\tconst keyCoordinates1 = l.end;\r\n\r\n\t\t// Find the point at which the ray enters the grid.\r\n\t\tconst a = !octree.containsPoint(r.copy(ray).origin) ?\r\n\t\t\tr.intersectBox(octree, r.origin) :\r\n\t\t\tr.origin;\r\n\r\n\t\tlet parameters;\r\n\t\tlet key, octant;\r\n\t\tlet t, b, n;\r\n\r\n\t\tlet dx, dy, dz;\r\n\t\tlet ax, ay, az, bx, by, bz;\r\n\t\tlet sx, sy, sz, exy, exz, ezy;\r\n\r\n\t\tsubtree.id.level = level;\r\n\r\n\t\t// Check if the ray hits the octree.\r\n\t\tif(a !== null) {\r\n\r\n\t\t\t// Phase 1: Initialization.\r\n\r\n\t\t\t// Find the ending point.\r\n\t\t\tt = cellSize << 1;\r\n\t\t\tb = r.at(t, v);\r\n\r\n\t\t\t// Calculate the starting and ending cell coordinates.\r\n\t\t\toctree.calculateKeyCoordinates(a, level, keyCoordinates0);\r\n\t\t\toctree.calculateKeyCoordinates(b, level, keyCoordinates1);\r\n\r\n\t\t\t// Calculate the key coordinate vector from start to end.\r\n\t\t\tdx = keyCoordinates1.x - keyCoordinates0.x;\r\n\t\t\tdy = keyCoordinates1.y - keyCoordinates0.y;\r\n\t\t\tdz = keyCoordinates1.z - keyCoordinates0.z;\r\n\r\n\t\t\t// Prepare step sizes and project the line onto the XY-, XZ- and ZY-plane.\r\n\t\t\tsx = Math.sign(dx); sy = Math.sign(dy); sz = Math.sign(dz);\r\n\t\t\tax = Math.abs(dx); ay = Math.abs(dy); az = Math.abs(dz);\r\n\t\t\tbx = 2 * ax; by = 2 * ay; bz = 2 * az;\r\n\t\t\texy = ay - ax; exz = az - ax; ezy = ay - az;\r\n\r\n\t\t\t// Phase 2: Incremental Traversal.\r\n\t\t\tfor(n = ax + ay + az; n > 0; --n) {\r\n\r\n\t\t\t\tkey = keyDesign.packKey(keyCoordinates0);\r\n\r\n\t\t\t\t// Check if this cell is populated.\r\n\t\t\t\tif(grid.has(key)) {\r\n\r\n\t\t\t\t\toctant = grid.get(key);\r\n\r\n\t\t\t\t\t// Setup a pseudo octree.\r\n\t\t\t\t\tsubtree.id.key = key;\r\n\t\t\t\t\tsubtree.octant = octant;\r\n\t\t\t\t\tsubtree.min.copy(keyCoordinates0);\r\n\t\t\t\t\tsubtree.min.multiplyScalar(cellSize);\r\n\t\t\t\t\tsubtree.min.add(octree.min);\r\n\t\t\t\t\tsubtree.max.copy(subtree.min).addScalar(cellSize);\r\n\r\n\t\t\t\t\tif(octant.data === null) {\r\n\r\n\t\t\t\t\t\t// Raycast the subtree and calculate the initial parameters.\r\n\t\t\t\t\t\tparameters = intersectOctree(subtree, ray, flags);\r\n\r\n\t\t\t\t\t\t// Find the intersecting children.\r\n\t\t\t\t\t\traycastOctant(\r\n\t\t\t\t\t\t\toctree, subtree.octant,\r\n\t\t\t\t\t\t\tkeyCoordinates0.x, keyCoordinates0.y, keyCoordinates0.z,\r\n\t\t\t\t\t\t\toctree.getDepth(), ...parameters, intersects\r\n\t\t\t\t\t\t);\r\n\r\n\t\t\t\t\t} else {\r\n\r\n\t\t\t\t\t\t// The octant contains data. No need to look deeper.\r\n\t\t\t\t\t\tintersects.push(subtree.clone());\r\n\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t}\r\n\r\n\t\t\t\tif(exy < 0) {\r\n\r\n\t\t\t\t\tif(exz < 0) {\r\n\r\n\t\t\t\t\t\tkeyCoordinates0.x += sx;\r\n\t\t\t\t\t\texy += by; exz += bz;\r\n\r\n\t\t\t\t\t} else {\r\n\r\n\t\t\t\t\t\tkeyCoordinates0.z += sz;\r\n\t\t\t\t\t\texz -= bx; ezy += by;\r\n\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t} else if(ezy < 0) {\r\n\r\n\t\t\t\t\tkeyCoordinates0.z += sz;\r\n\t\t\t\t\texz -= bx; ezy += by;\r\n\r\n\t\t\t\t} else {\r\n\r\n\t\t\t\t\tkeyCoordinates0.y += sy;\r\n\t\t\t\t\texy -= bx; ezy -= bz;\r\n\r\n\t\t\t\t}\r\n\r\n\t\t\t}\r\n\r\n\t\t}\r\n\r\n\t\treturn intersects;\r\n\r\n\t}\r\n\r\n}\r\n",
+    "static": true,
+    "longname": "D:/Sourcecode/JavaScript/linear-octree/src/core/OctreeRaycaster.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 181,
+    "kind": "variable",
+    "name": "flags",
+    "memberof": "src/core/OctreeRaycaster.js",
+    "static": true,
+    "longname": "src/core/OctreeRaycaster.js~flags",
+    "access": "public",
+    "export": false,
+    "importPath": "linear-octree",
+    "importStyle": null,
+    "description": "Raycasting flags.",
+    "lineNumber": 19,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Flags"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 182,
+    "kind": "variable",
+    "name": "v",
+    "memberof": "src/core/OctreeRaycaster.js",
+    "static": true,
+    "longname": "src/core/OctreeRaycaster.js~v",
+    "access": "private",
+    "export": false,
+    "importPath": "linear-octree",
+    "importStyle": null,
+    "description": "A vector.",
+    "lineNumber": 28,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Vector3"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 183,
+    "kind": "variable",
+    "name": "l",
+    "memberof": "src/core/OctreeRaycaster.js",
+    "static": true,
+    "longname": "src/core/OctreeRaycaster.js~l",
+    "access": "private",
+    "export": false,
+    "importPath": "linear-octree",
+    "importStyle": null,
+    "description": "A line.",
+    "lineNumber": 37,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Line3"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 184,
+    "kind": "variable",
+    "name": "r",
+    "memberof": "src/core/OctreeRaycaster.js",
+    "static": true,
+    "longname": "src/core/OctreeRaycaster.js~r",
+    "access": "private",
+    "export": false,
+    "importPath": "linear-octree",
+    "importStyle": null,
+    "description": "A ray.",
+    "lineNumber": 46,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Ray"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 185,
+    "kind": "function",
+    "name": "raycastOctant",
+    "memberof": "src/core/OctreeRaycaster.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/core/OctreeRaycaster.js~raycastOctant",
+    "access": "private",
+    "export": false,
+    "importPath": "linear-octree",
+    "importStyle": null,
+    "description": "Recursively traverses the given octant to find (pseudo) leaf octants that\nintersect with the given ray.",
+    "lineNumber": 68,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Octree"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "octree",
+        "description": "The octree."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Octant"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "octant",
+        "description": "The current octant."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "keyX",
+        "description": "The X-coordinate of the current octant key."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "keyY",
+        "description": "The Y-coordinate of the current octant key."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "keyZ",
+        "description": "The Z-coordinate of the current octant key."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "level",
+        "description": "The current depth."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "tx0",
+        "description": "Ray projection parameter."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "ty0",
+        "description": "Ray projection parameter."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "tz0",
+        "description": "Ray projection parameter."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "tx1",
+        "description": "Ray projection parameter."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "ty1",
+        "description": "Ray projection parameter."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "tz1",
+        "description": "Ray projection parameter."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Octant[]"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "intersects",
+        "description": "An array to be filled with the intersecting octants."
+      }
+    ],
+    "ignore": true,
+    "return": null
+  },
+  {
+    "__docId__": 186,
+    "kind": "class",
+    "name": "OctreeRaycaster",
+    "memberof": "src/core/OctreeRaycaster.js",
+    "static": true,
+    "longname": "src/core/OctreeRaycaster.js~OctreeRaycaster",
+    "access": "public",
+    "export": true,
+    "importPath": "linear-octree",
+    "importStyle": "{OctreeRaycaster}",
+    "description": "A raycaster for linear octrees.\n\nThis raycaster is a specialized hybrid that uses a voxel traversal algorithm\nto iterate over the octants of the highest LOD grid and an octree traversal\nalgorithm to raycast the identified subtrees.\n\nThe voxel traversal implementation is a 3D supercover variant of the Digital\nDifferential Analyzer (DDA) line algorithm and is similar to the Bresenham\nalgorithm. The octree traversal algorithm uses octant child existence\ninformation to skip empty space and avoids hash table lookup misses.\n\nReferences:\n \"Voxel Traversal along a 3D Line\"\n by D. Cohen (1994)\n \"An Efficient Parametric Algorithm for Octree Traversal\"\n by J. Revelles et al. (2000)",
+    "lineNumber": 251,
+    "interface": false
+  },
+  {
+    "__docId__": 187,
+    "kind": "method",
+    "name": "intersectOctree",
+    "memberof": "src/core/OctreeRaycaster.js~OctreeRaycaster",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/core/OctreeRaycaster.js~OctreeRaycaster.intersectOctree",
+    "access": "public",
+    "description": "Finds (pseudo) leaf octants that intersect with the given ray.",
+    "lineNumber": 262,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "LinearOctree"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "octree",
+        "description": "An octree."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Ray"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "ray",
+        "description": "A ray."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Octant[]"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "intersects",
+        "description": "An optional target list to be filled with the intersecting octants."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Octant[]"
+      ],
+      "spread": false,
+      "description": "The intersecting octants. Sorted by distance, closest first."
+    }
+  },
+  {
+    "__docId__": 188,
+    "kind": "file",
+    "name": "src/index.js",
+    "content": "export {\n\tIntermediateOctant,\n\tKeyDesign,\n\tKeyIterator,\n\tOctant,\n\tOctantId,\n\tOctantWrapper,\n\tOctree,\n\tOctreeIterator,\n\tOctreeRaycaster\n} from \"./core\";\n",
+    "static": true,
+    "longname": "D:/Sourcecode/JavaScript/linear-octree/src/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "kind": "index",
+    "content": "# Linear Octree\r\n\r\n[![Build status](https://travis-ci.org/vanruesc/linear-octree.svg?branch=master)](https://travis-ci.org/vanruesc/linear-octree)\r\n[![npm version](https://badgen.net/npm/v/linear-octree?color=green)](https://www.npmjs.com/package/linear-octree)\r\n[![Peer dependencies](https://david-dm.org/vanruesc/linear-octree/peer-status.svg)](https://david-dm.org/vanruesc/linear-octree?type=peer)\r\n\r\n:warning: WIP :warning:\r\n\r\nA sparse, linear octree data structure. For a pointer-based implementation see [sparse-octree](https://github.com/vanruesc/sparse-octree).\r\n\r\n*[Demo](https://vanruesc.github.io/linear-octree/public/demo)&ensp;&middot;&ensp;[Documentation](https://vanruesc.github.io/linear-octree/public/docs)*\r\n\r\n\r\n## Installation\r\n\r\nThis library requires the peer dependencies [iterator-result](https://github.com/vanruesc/iterator-result) and [math-ds](https://github.com/vanruesc/math-ds).\r\n\r\n```sh\r\nnpm install iterator-result math-ds\r\n``` \r\n\r\n```sh\r\nnpm install linear-octree\r\n``` \r\n\r\n\r\n## Usage\r\n\r\n##### Objects\r\n\r\n```js\r\nimport { Octree } from \"linear-octree\";\r\n\r\n// TODO\r\n```\r\n\r\n\r\n## Features\r\n\r\n- Linear structure\r\n  - Packs positional data into numeric keys\r\n  - Constant time access to octants, parents and neighbors at any depth level\r\n  - Low memory usage\r\n  - Constant depth\r\n- Adheres to a [common octant layout](http://vanruesc.github.io/sparse-octree/public/docs/variable/index.html#static-variable-layout)\r\n- Supports raycasting\r\n  - Uses a 3D supercover variant of the [DDA](https://en.wikipedia.org/wiki/Digital_differential_analyzer_(graphics_algorithm)) line algorithm\r\n- Supports culling\r\n- Can be extended to manage any data\r\n\r\n\r\n## Octree Helper\r\n\r\nThe [octree-helper](https://github.com/vanruesc/octree-helper) module provides an octree visualization tool for [three.js](https://threejs.org/).\r\n\r\n\r\n## Contributing\r\n\r\nMaintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code.\r\n",
+    "longname": "D:\\Sourcecode\\JavaScript\\linear-octree\\README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\r\n\t\"name\": \"linear-octree\",\r\n\t\"version\": \"0.0.0\",\r\n\t\"description\": \"A sparse, linear octree data structure.\",\r\n\t\"homepage\": \"https://github.com/vanruesc/linear-octree\",\r\n\t\"main\": \"build/linear-octree.js\",\r\n\t\"module\": \"build/linear-octree.esm.js\",\r\n\t\"sideEffects\": false,\r\n\t\"license\": \"Zlib\",\r\n\r\n\t\"keywords\": [\r\n\t\t\"partition\",\r\n\t\t\"hierarchy\",\r\n\t\t\"subdivision\",\r\n\t\t\"raycasting\",\r\n\t\t\"3d\",\r\n\t\t\"spatial\",\r\n\t\t\"voxel\",\r\n\t\t\"points\",\r\n\t\t\"frustum\",\r\n\t\t\"culling\",\r\n\t\t\"linear\"\r\n\t],\r\n\r\n\t\"author\": {\r\n\t\t\"name\": \"Raoul van Rüschen\",\r\n\t\t\"email\": \"vanruesc@outlook.de\"\r\n\t},\r\n\r\n\t\"repository\": {\r\n\t\t\"type\": \"git\",\r\n\t\t\"url\": \"https://github.com/vanruesc/linear-octree.git\"\r\n\t},\r\n\r\n\t\"bugs\": {\r\n\t\t\"url\": \"https://github.com/vanruesc/linear-octree/issues\"\r\n\t},\r\n\r\n\t\"files\": [\"build\"],\r\n\r\n\t\"scripts\": {\r\n\t\t\"ava\": \"ava\",\r\n\t\t\"lint\": \"npm run lint:lib && npm run lint:demo\",\r\n\t\t\"lint:config\": \"eslint *.js\",\r\n\t\t\"lint:lib\": \"eslint src\",\r\n\t\t\"lint:demo\": \"eslint demo/src\",\r\n\t\t\"lint:test\": \"eslint test\",\r\n\t\t\"build\": \"rollup -c\",\r\n\t\t\"build:production\": \"cross-env NODE_ENV=production npm run build\",\r\n\t\t\"watch\": \"rollup -c --watch\",\r\n\t\t\"doc\": \"rimraf public/docs && esdoc\",\r\n\t\t\"pretest\": \"npm run lint && npm run build:production\",\r\n\t\t\"test\": \"\",\r\n\t\t\"prepack\": \"npm test\"\r\n\t},\r\n\r\n\t\"ava\": {\r\n\t\t\"failFast\": true,\r\n\t\t\"files\": [\"test/**/*.js\"]\r\n\t},\r\n\r\n\t\"eslintConfig\": {\r\n\t\t\"extends\": \"delta\"\r\n\t},\r\n\r\n\t\"dependencies\": {\r\n\t\t\"sparse-octree\": \"6.x.x\"\r\n\t},\r\n\r\n\t\"peerDependencies\": {\r\n\t\t\"iterator-result\": \">= 0.0.0 < 1.0.0\",\r\n\t\t\"math-ds\": \">= 1.0.0 < 2.0.0\"\r\n\t},\r\n\r\n\t\"devDependencies\": {\r\n\t\t\"@babel/core\": \"7.x.x\",\r\n\t\t\"@babel/preset-env\": \"7.x.x\",\r\n\t\t\"ava\": \"2.x.x\",\r\n\t\t\"cross-env\": \"6.x.x\",\r\n\t\t\"dat.gui\": \"0.x.x\",\r\n\t\t\"delta-controls\": \"2.x.x\",\r\n\t\t\"esdoc\": \"1.x.x\",\r\n\t\t\"esdoc-importpath-plugin\": \"1.x.x\",\r\n\t\t\"esdoc-standard-plugin\": \"1.x.x\",\r\n\t\t\"eslint\": \"6.x.x\",\r\n\t\t\"eslint-config-delta\": \"1.x.x\",\r\n\t\t\"iterator-result\": \"0.x.x\",\r\n\t\t\"math-ds\": \"1.x.x\",\r\n\t\t\"rimraf\": \"3.x.x\",\r\n\t\t\"octree-helper\": \"1.x.x\",\r\n\t\t\"rollup\": \"1.x.x\",\r\n\t\t\"rollup-plugin-babel\": \"4.x.x\",\r\n\t\t\"rollup-plugin-babel-minify\": \"9.x.x\",\r\n\t\t\"rollup-plugin-node-resolve\": \"5.x.x\",\r\n\t\t\"synthetic-event\": \"1.x.x\",\r\n\t\t\"three\": \"0.x.x\",\r\n\t\t\"three-demo\": \"3.x.x\"\r\n\t}\r\n}\r\n",
+    "longname": "D:\\Sourcecode\\JavaScript\\linear-octree\\package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  }
+]

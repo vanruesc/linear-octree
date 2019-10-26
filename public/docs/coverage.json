@@ -1,0 +1,57 @@
+{
+  "coverage": "100%",
+  "expectCount": 114,
+  "actualCount": 114,
+  "files": {
+    "src/core/BinaryUtils.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "src/core/IntermediateOctant.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "src/core/KeyDesign.js": {
+      "expectCount": 27,
+      "actualCount": 27,
+      "undocumentLines": []
+    },
+    "src/core/KeyIterator.js": {
+      "expectCount": 13,
+      "actualCount": 13,
+      "undocumentLines": []
+    },
+    "src/core/Octant.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "src/core/OctantId.js": {
+      "expectCount": 7,
+      "actualCount": 7,
+      "undocumentLines": []
+    },
+    "src/core/OctantWrapper.js": {
+      "expectCount": 11,
+      "actualCount": 11,
+      "undocumentLines": []
+    },
+    "src/core/Octree.js": {
+      "expectCount": 29,
+      "actualCount": 29,
+      "undocumentLines": []
+    },
+    "src/core/OctreeIterator.js": {
+      "expectCount": 11,
+      "actualCount": 11,
+      "undocumentLines": []
+    },
+    "src/core/OctreeRaycaster.js": {
+      "expectCount": 7,
+      "actualCount": 7,
+      "undocumentLines": []
+    }
+  }
+}
