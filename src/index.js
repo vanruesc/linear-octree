@@ -6,6 +6,8 @@ export {
 	OctantId,
 	OctantWrapper,
 	Octree,
-	OctreeIterator,
-	OctreeRaycaster
+	OctreeIterator
 } from "./core";
+
+export { OctreeRaycaster } from "./raycasting";
+export { BinaryUtils } from "./utils";

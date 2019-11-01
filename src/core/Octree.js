@@ -3,7 +3,7 @@ import { layout } from "sparse-octree";
 import { KeyDesign } from "./KeyDesign.js";
 import { OctantWrapper } from "./OctantWrapper.js";
 import { OctreeIterator } from "./OctreeIterator.js";
-import { OctreeRaycaster } from "./OctreeRaycaster.js";
+import { OctreeRaycaster } from "../raycasting/OctreeRaycaster.js";
 
 /**
  * A vector.

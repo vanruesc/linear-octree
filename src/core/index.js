@@ -8,4 +8,3 @@ export { OctantId } from "./OctantId.js";
 export { OctantWrapper } from "./OctantWrapper.js";
 export { Octree } from "./Octree.js";
 export { OctreeIterator } from "./OctreeIterator.js";
-export { OctreeRaycaster } from "./OctreeRaycaster.js";
