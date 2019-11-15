@@ -1,5 +1,5 @@
 /**
- * linear-octree v0.0.0 build Sat Oct 26 2019
+ * linear-octree v0.0.0 build Fri Nov 15 2019
  * https://github.com/vanruesc/linear-octree
  * Copyright 2019 Raoul van Rüschen, Zlib
  */
@@ -1081,6 +1081,7 @@
     return Octree;
   }();
 
+  exports.BinaryUtils = BinaryUtils;
   exports.IntermediateOctant = IntermediateOctant;
   exports.KeyDesign = KeyDesign;
   exports.KeyIterator = KeyIterator;

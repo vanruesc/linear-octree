@@ -1,5 +1,5 @@
 /**
- * linear-octree v0.0.0 build Sat Oct 26 2019
+ * linear-octree v0.0.0 build Fri Nov 15 2019
  * https://github.com/vanruesc/linear-octree
  * Copyright 2019 Raoul van Rüschen, Zlib
  */
@@ -18,7 +18,7 @@ import IteratorResult from 'iterator-result';
 class Octant {
 
 	/**
-	 * Constructs a new world octant.
+	 * Constructs a new octant.
 	 */
 
 	constructor() {
@@ -2345,4 +2345,4 @@ class Octree {
 
 }
 
-export { IntermediateOctant, KeyDesign, KeyIterator, Octant, OctantId, OctantWrapper, Octree, OctreeIterator, OctreeRaycaster };
+export { BinaryUtils, IntermediateOctant, KeyDesign, KeyIterator, Octant, OctantId, OctantWrapper, Octree, OctreeIterator, OctreeRaycaster };
