@@ -8,7 +8,7 @@ import {
 	intersectOctree
 } from "sparse-octree";
 
-import { OctantWrapper } from "./OctantWrapper.js";
+import { OctantWrapper } from "../core/OctantWrapper.js";
 
 /**
  * Raycasting flags.

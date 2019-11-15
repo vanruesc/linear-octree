@@ -1,5 +1,5 @@
 import { Vector3 } from "math-ds";
-import { BinaryUtils } from "./BinaryUtils.js";
+import { BinaryUtils } from "../utils/BinaryUtils.js";
 import { KeyIterator } from "./KeyIterator.js";
 
 /**

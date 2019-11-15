@@ -10,7 +10,7 @@
 export class Octant {
 
 	/**
-	 * Constructs a new world octant.
+	 * Constructs a new octant.
 	 */
 
 	constructor() {
