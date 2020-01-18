@@ -1,7 +1,8 @@
 /**
- * linear-octree v0.0.0 build Fri Nov 15 2019
+ * linear-octree v0.0.0 build Sat Jan 18 2020
  * https://github.com/vanruesc/linear-octree
- * Copyright 2019 Raoul van Rüschen, Zlib
+ * Copyright 2020 Raoul van Rüschen
+ * @license Zlib
  */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('math-ds'), require('iterator-result')) :
@@ -429,6 +430,13 @@
 
     return OctantWrapper;
   }();
+  /**
+   * sparse-octree v6.0.2 build Sat Jan 18 2020
+   * https://github.com/vanruesc/sparse-octree
+   * Copyright 2020 Raoul van Rüschen
+   * @license Zlib
+   */
+
 
   var layout = [new Uint8Array([0, 0, 0]), new Uint8Array([0, 0, 1]), new Uint8Array([0, 1, 0]), new Uint8Array([0, 1, 1]), new Uint8Array([1, 0, 0]), new Uint8Array([1, 0, 1]), new Uint8Array([1, 1, 0]), new Uint8Array([1, 1, 1])];
   var c = new mathDs.Vector3();
