@@ -234,7 +234,7 @@ export class Octree<T> implements Tree, Iterable<Node> {
 		this.bounds = bounds;
 
 		const dimensions = bounds.getDimensions(new Vector3());
-		//this.cellSize = dimensions.divideScalar(1 << levels >>> 0);
+		// this.cellSize = dimensions.divideScalar(1 << levels >>> 0);
 		this.cellSize = dimensions.set(
 			dimensions.x / (1 << keyDesign.x >>> 0),
 			dimensions.y / (1 << keyDesign.y >>> 0),
@@ -316,7 +316,7 @@ export class Octree<T> implements Tree, Iterable<Node> {
 		const cellSize = this.cellSize;
 		const keyDesign = this.keyDesign;
 
-		//return target.copy(this.cellSize).multiplyScalar(1 << level >>> 0);
+		// return target.copy(this.cellSize).multiplyScalar(1 << level >>> 0);
 		return target.set(
 			cellSize.x * (1 << Math.min(level, keyDesign.x) >>> 0),
 			cellSize.y * (1 << Math.min(level, keyDesign.y) >>> 0),
