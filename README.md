@@ -1,8 +1,8 @@
 # Linear Octree
 
-[![Build status](https://travis-ci.org/vanruesc/linear-octree.svg?branch=master)](https://travis-ci.org/vanruesc/linear-octree)
-[![npm version](https://badgen.net/npm/v/linear-octree?color=green)](https://www.npmjs.com/package/linear-octree)
-[![Peer dependencies](https://david-dm.org/vanruesc/linear-octree/peer-status.svg)](https://david-dm.org/vanruesc/linear-octree?type=peer)
+[![CI](https://github.com/vanruesc/linear-octree/actions/workflows/ci.yml/badge.svg)](https://github.com/vanruesc/linear-octree/actions/workflows/ci.yml)
+[![Version](https://badgen.net/npm/v/linear-octree?color=green)](https://www.npmjs.com/package/linear-octree)
+[![Peer dependencies](https://badgen.net/david/peer/vanruesc/linear-octree)](https://david-dm.org/vanruesc/linear-octree?type=peer)
 
 :warning: WIP :warning:
 
@@ -13,14 +13,10 @@ A sparse, linear octree data structure. For a pointer-based implementation see [
 
 ## Installation
 
-This library requires the peer dependencies [iterator-result](https://github.com/vanruesc/iterator-result) and [math-ds](https://github.com/vanruesc/math-ds).
+This library requires the peer dependency [three](https://github.com/mrdoob/three.js/).
 
 ```sh
-npm install iterator-result math-ds
-``` 
-
-```sh
-npm install linear-octree
+npm install three linear-octree
 ``` 
 
 
@@ -47,11 +43,6 @@ import { Octree } from "linear-octree";
   - Uses a 3D supercover variant of the [DDA](https://en.wikipedia.org/wiki/Digital_differential_analyzer_(graphics_algorithm)) line algorithm
 - Supports culling
 - Can be extended to manage any data
-
-
-## Octree Helper
-
-The [octree-helper](https://github.com/vanruesc/octree-helper) module provides an octree visualization tool for [three.js](https://threejs.org/).
 
 
 ## Contributing
