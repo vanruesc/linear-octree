@@ -89,32 +89,30 @@ export class OctreeDemo extends Demo {
 
 		// Octree
 
-		const bbox = new Box3();
-		bbox.min.set(-1, -1, -1);
-		bbox.max.set(1, 1, 1);
+		const keyDesign = new KeyDesign(4, 2, 4);
+		//const cellSize = new Vector3(1, 1, 1);
+		//const bounds = keyDesign.calculateBounds(cellSize);
+		const bounds = new Box3();
+		bounds.min.set(-1, -0.25, -1);
+		bounds.max.set(1, 0.25, 1);
 
-		const octree = new Octree<string>(
-			bbox.min,
-			bbox.max,
-			new KeyDesign(4, 4, 4)
-		);
-
+		const octree = new Octree<string>(bounds, keyDesign, 4);
 		const keyCoordinates = new Vector3();
-		const keyDesign = octree.getKeyDesign();
+		const box = new Box3();
 
-		bbox.min.set(
+		box.min.set(
 			0,
 			0,
 			0
 		);
 
-		bbox.max.set(
+		box.max.set(
 			keyDesign.rangeX - 1,
 			keyDesign.rangeY - 1,
 			keyDesign.rangeZ - 1
 		);
 
-		for(const key of keyDesign.keyRange(bbox.min, bbox.max)) {
+		for(const key of keyDesign.keyRange(box.min, box.max)) {
 
 			octree.set(keyDesign.unpackKey(key, keyCoordinates), 0, "a");
 
@@ -137,10 +135,10 @@ export class OctreeDemo extends Demo {
 
 		// Octree Bounds Helper
 
-		bbox.min.copy(octree.min);
-		bbox.max.copy(octree.max);
+		box.min.copy(octree.min);
+		box.max.copy(octree.max);
 
-		const boundsHelper = new Box3Helper(bbox, new Color(0xffffff));
+		const boundsHelper = new Box3Helper(box, new Color(0xffffff));
 		boundsHelper.visible = octreeHelper.visible;
 
 		this.boundsHelper = boundsHelper;
