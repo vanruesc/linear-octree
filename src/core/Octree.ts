@@ -1,4 +1,4 @@
-import { Raycaster, Vector3 } from "three";
+import { Box3, Raycaster, Vector3 } from "three";
 import { layout, Node, Tree } from "sparse-octree";
 import { IntermediateOctant } from "./IntermediateOctant";
 import { KeyDesign } from "./KeyDesign";
@@ -206,16 +206,28 @@ export class Octree<T> implements Tree, Iterable<Node> {
 	 * Constructs a new octree.
 	 *
 	 * Each octant can be uniquely identified by a 3D coordinate and a level. The
-	 * cell size and tree depth is defined by the key design and bounds.
+	 * tree depth is defined by the key design.
 	 *
-	 * @param min - The lower bounds of the octree.
-	 * @param max - The upper bounds of the octree.
+	 * This linear octree is constructed from the bottom up. The amount of levels
+	 * can be limited to prevent the creation of higher level parent octants. This
+	 * results in a slightly lower memory footprint without degrading search
+	 * performance depending on the use case.
+	 *
+	 * If the bounds of the octree are defined directly, the cell size will depend
+	 * on the bounds and the key design. Alternatively, the bounds can be
+	 * calculated from a desired cell size via {@link KeyDesign.calculateBounds}.
+	 *
+	 * @param bounds - The bounds of the octree.
 	 * @param keyDesign - The bit allotments for the octant coordinates.
+	 * @param maxLevels - The maximum amount of tree levels.
 	 */
 
-	constructor(min: Vector3, max: Vector3, keyDesign = new KeyDesign()) {
+	constructor(bounds: Box3, keyDesign = new KeyDesign(), maxLevels = 32) {
 
-		const levels = Math.max(keyDesign.x, keyDesign.y, keyDesign.z);
+		const levels = Math.min(
+			Math.max(keyDesign.x, keyDesign.y, keyDesign.z),
+			maxLevels
+		);
 
 		this.keyDesign = keyDesign;
 		this.grids = [];
@@ -226,15 +238,14 @@ export class Octree<T> implements Tree, Iterable<Node> {
 
 		}
 
-		const bounds = new OctantWrapper<T>();
-		bounds.min.copy(min);
-		bounds.max.copy(max);
-		Object.freeze(bounds.min);
-		Object.freeze(bounds.max);
-		this.bounds = bounds;
+		const octantWrapper = new OctantWrapper<T>();
+		octantWrapper.min.copy(bounds.min);
+		octantWrapper.max.copy(bounds.max);
+		Object.freeze(octantWrapper.min);
+		Object.freeze(octantWrapper.max);
+		this.bounds = octantWrapper;
 
-		const dimensions = bounds.getDimensions(new Vector3());
-		// this.cellSize = dimensions.divideScalar(1 << levels >>> 0);
+		const dimensions = octantWrapper.getDimensions(new Vector3());
 		this.cellSize = dimensions.set(
 			dimensions.x / (1 << keyDesign.x >>> 0),
 			dimensions.y / (1 << keyDesign.y >>> 0),
@@ -316,7 +327,6 @@ export class Octree<T> implements Tree, Iterable<Node> {
 		const cellSize = this.cellSize;
 		const keyDesign = this.keyDesign;
 
-		// return target.copy(this.cellSize).multiplyScalar(1 << level >>> 0);
 		return target.set(
 			cellSize.x * (1 << Math.min(level, keyDesign.x) >>> 0),
 			cellSize.y * (1 << Math.min(level, keyDesign.y) >>> 0),
