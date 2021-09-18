@@ -13,14 +13,14 @@ const levels = Math.max(keyDesign.x, keyDesign.y, keyDesign.z);
 
 test("can be instantiated", t => {
 
-	const octree = new Octree(bounds.min, bounds.max, keyDesign);
+	const octree = new Octree(bounds, keyDesign);
 	t.pass();
 
 });
 
 test("can return its depth", t => {
 
-	const octree = new Octree(bounds.min, bounds.max, keyDesign);
+	const octree = new Octree(bounds, keyDesign);
 
 	t.is(octree.getDepth(), levels - 1, "should return the tree depth");
 
@@ -28,7 +28,7 @@ test("can return its depth", t => {
 
 test("finds nodes by depth level", t => {
 
-	const octree = new Octree(bounds.min, bounds.max, keyDesign);
+	const octree = new Octree(bounds, keyDesign);
 	octree.set(keyCoordinates.set(0, 0, 0), 0, "test");
 
 	const nodes = octree.findNodesByLevel(0);

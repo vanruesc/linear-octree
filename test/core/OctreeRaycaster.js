@@ -13,7 +13,7 @@ const keyDesign = new KeyDesign(4, 4, 4);
 
 test("can find intersecting octants", t => {
 
-	const octree = new Octree(bounds.min, bounds.max, keyDesign);
+	const octree = new Octree(bounds, keyDesign);
 	const raycaster = new Raycaster(
 		new Vector3(0, 0, -1),
 		new Vector3(0, 0, 0)
