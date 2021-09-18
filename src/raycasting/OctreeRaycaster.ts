@@ -69,7 +69,7 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 
 		if(level > 0 && octant.children > 0) {
 
-			// Look at the next lower LOD.
+			// Go to the next lower LOD.
 			const grid = octree.getGrid(--level);
 			const children = octant.children;
 
@@ -91,12 +91,11 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 
 				v.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);
 
-				let key, child;
+				let child: IntermediateOctant<T>;
 
 				if(childExists) {
 
-					key = keyDesign.packKey(v);
-					child = grid.get(key) as IntermediateOctant<T>;
+					child = grid.get(keyDesign.packKey(v)) as IntermediateOctant<T>;
 
 				}
 
