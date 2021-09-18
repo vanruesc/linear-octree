@@ -1,4 +1,4 @@
-import { Vector3, Vector4 } from "three";
+import { Box3, Vector3, Vector4 } from "three";
 import { Binary } from "../utils/Binary";
 import { KeyIterator } from "./KeyIterator";
 
@@ -118,6 +118,39 @@ export class KeyDesign {
 	get rangeXY(): number { return this.range.w; }
 
 	/**
+	 * Creates bit masks for the extraction of coordinates from keys.
+	 */
+
+	private updateBitMasks(): void {
+
+		const xBits = this.x;
+		const yBits = this.y;
+		const zBits = this.z;
+
+		const maskX = this.maskX;
+		const maskY = this.maskY;
+		const maskZ = this.maskZ;
+
+		const hiShiftX = DWORD_BITS - Math.max(0, xBits - LO_BITS);
+		const hiShiftY = DWORD_BITS - Math.max(0, yBits + xBits - LO_BITS);
+		const hiShiftZ = DWORD_BITS - Math.max(0, zBits + yBits + xBits - LO_BITS);
+
+		maskX[1] = (hiShiftX < DWORD_BITS) ? ~0 >>> hiShiftX : 0;
+		maskX[0] = ~0 >>> Math.max(0, LO_BITS - xBits);
+
+		maskY[1] = (hiShiftY < DWORD_BITS) ? ~0 >>> hiShiftY : 0;
+		maskY[1] = (maskY[1] & ~maskX[1]) >>> 0;
+		maskY[0] = ~0 >>> Math.max(0, LO_BITS - (xBits + yBits));
+		maskY[0] = (maskY[0] & ~maskX[0]) >>> 0;
+
+		maskZ[1] = (hiShiftZ < DWORD_BITS) ? ~0 >>> hiShiftZ : 0;
+		maskZ[1] = (maskZ[1] & ~maskY[1] & ~maskX[1]) >>> 0;
+		maskZ[0] = ~0 >>> Math.max(0, LO_BITS - (xBits + yBits + zBits));
+		maskZ[0] = (maskZ[0] & ~maskY[0] & ~maskX[0]) >>> 0;
+
+	}
+
+	/**
 	 * Sets the bit distribution.
 	 *
 	 * Make sure to clear your octree after changing the key design!
@@ -150,39 +183,6 @@ export class KeyDesign {
 		);
 
 		this.updateBitMasks();
-
-	}
-
-	/**
-	 * Creates bit masks for the extraction of coordinates from keys.
-	 */
-
-	private updateBitMasks(): void {
-
-		const xBits = this.x;
-		const yBits = this.y;
-		const zBits = this.z;
-
-		const maskX = this.maskX;
-		const maskY = this.maskY;
-		const maskZ = this.maskZ;
-
-		const hiShiftX = DWORD_BITS - Math.max(0, xBits - LO_BITS);
-		const hiShiftY = DWORD_BITS - Math.max(0, yBits + xBits - LO_BITS);
-		const hiShiftZ = DWORD_BITS - Math.max(0, zBits + yBits + xBits - LO_BITS);
-
-		maskX[1] = (hiShiftX < DWORD_BITS) ? ~0 >>> hiShiftX : 0;
-		maskX[0] = ~0 >>> Math.max(0, LO_BITS - xBits);
-
-		maskY[1] = (hiShiftY < DWORD_BITS) ? ~0 >>> hiShiftY : 0;
-		maskY[1] = (maskY[1] & ~maskX[1]) >>> 0;
-		maskY[0] = ~0 >>> Math.max(0, LO_BITS - (xBits + yBits));
-		maskY[0] = (maskY[0] & ~maskX[0]) >>> 0;
-
-		maskZ[1] = (hiShiftZ < DWORD_BITS) ? ~0 >>> hiShiftZ : 0;
-		maskZ[1] = (maskZ[1] & ~maskY[1] & ~maskX[1]) >>> 0;
-		maskZ[0] = ~0 >>> Math.max(0, LO_BITS - (xBits + yBits + zBits));
-		maskZ[0] = (maskZ[0] & ~maskY[0] & ~maskX[0]) >>> 0;
 
 	}
 
@@ -222,6 +222,23 @@ export class KeyDesign {
 	packKey(position: Vector3): number {
 
 		return position.z * this.rangeXY + position.y * this.rangeX + position.x;
+
+	}
+
+	/**
+	 * Calculates the bounds that contain the domain of this key design.
+	 *
+	 * @param cellSize - The size of cells.
+	 * @return The bounds.
+	 */
+
+	calculateBounds(cellSize: Vector3): Box3 {
+
+		const bounds = new Box3();
+		bounds.min.copy(this.bits).multiply(cellSize).multiplyScalar(-1);
+		bounds.max.copy(this.bits).multiply(cellSize);
+
+		return bounds;
 
 	}
 
