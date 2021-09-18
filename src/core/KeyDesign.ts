@@ -234,9 +234,12 @@ export class KeyDesign {
 
 	calculateBounds(cellSize: Vector3): Box3 {
 
+		const range = this.range;
 		const bounds = new Box3();
-		bounds.min.copy(this.bits).multiply(cellSize).multiplyScalar(-1);
-		bounds.max.copy(this.bits).multiply(cellSize);
+
+		bounds.max.set(range.x, range.y, range.z);
+		bounds.max.divideScalar(2).multiply(cellSize);
+		bounds.min.copy(bounds.max).multiplyScalar(-1);
 
 		return bounds;
 
