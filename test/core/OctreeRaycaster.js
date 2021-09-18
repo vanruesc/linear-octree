@@ -7,6 +7,7 @@ const bounds = new Box3(
 	new Vector3(1, 1, 1)
 );
 
+const position = new Vector3();
 const keyCoordinates = new Vector3();
 const keyDesign = new KeyDesign(4, 4, 4);
 
@@ -14,11 +15,14 @@ test("can find intersecting octants", t => {
 
 	const octree = new Octree(bounds.min, bounds.max, keyDesign);
 	const raycaster = new Raycaster(
-		new Vector3(0.5, -1, 0.5),
-		new Vector3(1, 1, 1)
+		new Vector3(0, 0, -1),
+		new Vector3(0, 0, 0)
 	);
 
-	octree.set(keyCoordinates.set(0, 0, 0), 0, "test");
+	octree.calculateKeyCoordinates(position.set(0, 0, 0), 0, keyCoordinates);
+	octree.set(keyCoordinates, 0, "test");
+
+	console.log(keyCoordinates);
 
 	const result = octree.getIntersectingNodes(raycaster);
 
