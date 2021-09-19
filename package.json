@@ -56,8 +56,7 @@
 		"prepublishOnly": "run-s test doc",
 		"test": "run-s lint clean build ava",
 		"start": "serve public",
-		"watch": "run-p watch:eslint watch:tsc watch:js",
-		"watch:ava": "ava -w",
+		"watch": "run-p watch:*",
 		"watch:eslint": "esw -w --ext .ts --color src demo/src",
 		"watch:js": "node esbuild -w",
 		"watch:tsc": "tsc --noemit --watch --preserveWatchOutput"
