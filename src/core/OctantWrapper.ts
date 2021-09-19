@@ -3,6 +3,8 @@ import { Node } from "sparse-octree";
 import { Octant } from "./Octant";
 import { OctantId } from "./OctantId";
 
+const p = new Vector3();
+
 /**
  * An octant wrapper that stores positional information.
  *
@@ -81,6 +83,39 @@ export class OctantWrapper<T> implements Node {
 
 		const clone = new (<typeof OctantWrapper> this.constructor)();
 		return clone.copy(this) as OctantWrapper<T>;
+
+	}
+
+	/**
+	 * Calculates the squared distance to the given point.
+	 *
+	 * @param point - A point.
+	 * @return The squared distance.
+	 */
+
+	distanceToSquared(point: Vector3): number {
+
+		const clampedPoint = p.copy(point).clamp(this.min, this.max);
+		return clampedPoint.sub(point).lengthSq();
+
+	}
+
+	/**
+	 * Calculates the squared distance from the center to the given point.
+	 *
+	 * @param point - A point.
+	 * @return The squared distance.
+	 */
+
+	distanceToCenterSquared(point: Vector3): number {
+
+		const center = this.getCenter(p);
+
+		const dx = point.x - center.x;
+		const dy = point.y - center.x;
+		const dz = point.z - center.z;
+
+		return dx * dx + dy * dy + dz * dz;
 
 	}
 
