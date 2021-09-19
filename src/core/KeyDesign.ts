@@ -34,22 +34,22 @@ export class KeyDesign {
 	private range: Vector4;
 
 	/**
-	 * A bit mask for the X-coordinate. The first item holds the low bits while
-	 * the second item holds the high bits.
+	 * A bit mask for the X-coordinate. The first item holds the low bits and the
+	 * second item holds the high bits.
 	 */
 
 	private maskX: number[];
 
 	/**
-	 * A bit mask for the Y-coordinate. The first item holds the low bits while
-	 * the second item holds the high bits.
+	 * A bit mask for the Y-coordinate. The first item holds the low bits and the
+	 * second item holds the high bits.
 	 */
 
 	private maskY: number[];
 
 	/**
-	 * A bit mask for the Z-coordinate. The first item holds the low bits while
-	 * the second item holds the high bits.
+	 * A bit mask for the Z-coordinate. The first item holds the low bits and the
+	 * second item holds the high bits.
 	 */
 
 	private maskZ: number[];
@@ -116,6 +116,36 @@ export class KeyDesign {
 	 */
 
 	get rangeXY(): number { return this.range.w; }
+
+	/**
+	 * Returns the lower key coordinate bounds.
+	 *
+	 * @return The minimum coordinates (always 0).
+	 */
+
+	getMinKeyCoordinates(target: Vector3): Vector3 {
+
+		return target.set(0, 0, 0);
+
+	}
+
+	/**
+	 * Returns the upper key coordinate bounds.
+	 *
+	 * @return The maximum coordinates.
+	 */
+
+	getMaxKeyCoordinates(target: Vector3): Vector3 {
+
+		const range = this.range;
+
+		return target.set(
+			Math.max(range.x - 1, 0),
+			Math.max(range.y - 1, 0),
+			Math.max(range.z - 1, 0)
+		);
+
+	}
 
 	/**
 	 * Creates bit masks for the extraction of coordinates from keys.
