@@ -13,6 +13,7 @@ import { GUI } from "dat.gui";
 import { OctreeHelper } from "sparse-octree";
 import { ControlMode, SpatialControls } from "spatial-controls";
 import { calculateVerticalFoV, Demo } from "three-demo";
+import { OctreeRaycaster } from "../utils/OctreeRaycaster";
 import { KeyDesign, Octree } from "../../../src";
 
 /**
@@ -40,6 +41,12 @@ export class OctreeDemo extends Demo {
 	private boundsHelper: Box3Helper;
 
 	/**
+	 * An octree raycaster.
+	 */
+
+	private octreeRaycaster: OctreeRaycaster<number>;
+
+	/**
 	 * Constructs a new demo.
 	 */
 
@@ -62,7 +69,7 @@ export class OctreeDemo extends Demo {
 
 		const aspect = window.innerWidth / window.innerHeight;
 		const vFoV = calculateVerticalFoV(90, Math.max(aspect, 16 / 9));
-		const camera = new PerspectiveCamera(vFoV, aspect, 0.3, 2000);
+		const camera = new PerspectiveCamera(vFoV, aspect, 0.1, 1000);
 		this.camera = camera;
 
 		// Controls
@@ -89,23 +96,22 @@ export class OctreeDemo extends Demo {
 
 		// Octree
 
-		const keyDesign = new KeyDesign(4, 2, 4);
-		//const cellSize = new Vector3(1, 1, 1);
-		//const bounds = keyDesign.calculateBounds(cellSize);
+		const keyDesign = new KeyDesign(2, 2, 2);
 		const bounds = new Box3();
-		bounds.min.set(-1, -0.25, -1);
-		bounds.max.set(1, 0.25, 1);
+		bounds.min.set(-1, -1, -1);
+		bounds.max.set(1, 1, 1);
 
-		const octree = new Octree<string>(bounds, keyDesign, 4);
+		// Alternative:
+		// const cellSize = new Vector3(1, 1, 1);
+		// const bounds = keyDesign.calculateBounds(cellSize);
+
+		console.log("Bounds:", bounds.min, bounds.max);
+
+		const octree = new Octree<number>(bounds, keyDesign, 32);
 		const keyCoordinates = new Vector3();
 		const box = new Box3();
 
-		box.min.set(
-			0,
-			0,
-			0
-		);
-
+		box.min.set(0, 0, 0);
 		box.max.set(
 			keyDesign.rangeX - 1,
 			keyDesign.rangeY - 1,
@@ -114,7 +120,7 @@ export class OctreeDemo extends Demo {
 
 		for(const key of keyDesign.keyRange(box.min, box.max)) {
 
-			octree.set(keyDesign.unpackKey(key, keyCoordinates), 0, "a");
+			octree.set(keyDesign.unpackKey(key, keyCoordinates), 0, Math.random());
 
 		}
 
@@ -146,12 +152,12 @@ export class OctreeDemo extends Demo {
 
 		// Raycasting
 
-		// this.octreeRaycaster = new OctreeRaycaster(octree, camera, points);
-		// domElement.addEventListener("pointermove", this.octreeRaycaster, {
-		//	passive: true
-		// });
+		this.octreeRaycaster = new OctreeRaycaster(octree, camera);
+		domElement.addEventListener("pointermove", this.octreeRaycaster, {
+			passive: true
+		});
 
-		// scene.add(this.octreeRaycaster.getCursor());
+		scene.add(this.octreeRaycaster.getCursor());
 
 	}
 
@@ -166,34 +172,38 @@ export class OctreeDemo extends Demo {
 		const octreeHelper = this.octreeHelper;
 		const boundsHelper = this.boundsHelper;
 
-		// this.octreeRaycaster.registerOptions(menu);
+		this.octreeRaycaster.registerOptions(menu);
 
 		const params = {
-			"level mask": octreeHelper.children.length
+			"level mask": octreeHelper.children.length + 1
 		};
 
 		const folder = menu.addFolder("Octree Helper");
-		folder.add(octreeHelper, "visible").onChange(() => {
+		folder.add(octreeHelper, "visible").onChange((value: boolean) => {
 
 			boundsHelper.visible = (
-				params["level mask"] === octreeHelper.children.length
+				params["level mask"] >= octreeHelper.children.length &&
+				value
 			);
 
 		});
 
-		folder.add(params, "level mask", 0, octreeHelper.children.length, 1)
+		folder.add(params, "level mask", 0, octreeHelper.children.length + 1, 1)
 			.onChange((value: number) => {
 
 				for(let i = 0, l = octreeHelper.children.length; i < l; ++i) {
 
 					octreeHelper.children[i].visible = (
-						value === octreeHelper.children.length ||
+						value > octreeHelper.children.length ||
 						value === i
 					);
 
-					boundsHelper.visible = value === octreeHelper.children.length;
-
 				}
+
+				boundsHelper.visible = (
+					value >= octreeHelper.children.length &&
+					octreeHelper.visible
+				);
 
 			});
 
@@ -210,7 +220,7 @@ export class OctreeDemo extends Demo {
 	override dispose(): void {
 
 		const domElement = this.renderer.domElement;
-		// domElement.removeEventListener("pointermove", this.octreeRaycaster);
+		domElement.removeEventListener("pointermove", this.octreeRaycaster);
 
 	}
 
