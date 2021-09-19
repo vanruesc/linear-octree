@@ -8,6 +8,7 @@ import { OctreeIterator } from "./OctreeIterator";
 import { OctreeRaycaster } from "../raycasting/OctreeRaycaster";
 import { calculateOffsetIndex } from "../utils/calculateOffsetIndex";
 
+const u = new Vector3();
 const v = new Vector3();
 
 /**
@@ -390,23 +391,23 @@ export class Octree<T> implements Tree, Iterable<Node> {
 
 		}
 
-		const cellSize = this.getCellSize(level, target);
+		const cellSize = this.getCellSize(level, u);
 
 		// Translate to the origin (zero-based unsigned coordinates).
-		v.subVectors(position, this.min);
+		target.subVectors(position, this.min);
 
 		target.set(
-			Math.trunc(v.x / cellSize.x),
-			Math.trunc(v.y / cellSize.y),
-			Math.trunc(v.z / cellSize.z)
+			Math.trunc(target.x / cellSize.x),
+			Math.trunc(target.y / cellSize.y),
+			Math.trunc(target.z / cellSize.z)
 		);
 
-		return target;
+		return target.min(this.keyDesign.getMaxKeyCoordinates(u));
 
 	}
 
 	/**
-	 * Retrieves the node of a specific level that contains the given point.
+	 * Retrieves an octant of a specific level that contains the given point.
 	 *
 	 * @param point - A point.
 	 * @param level - The level.
