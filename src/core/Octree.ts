@@ -384,6 +384,12 @@ export class Octree<T> implements Tree, Iterable<Node> {
 	calculateKeyCoordinates(position: Vector3, level: number,
 		target: Vector3): Vector3 {
 
+		if(!this.containsPoint(position)) {
+
+			throw new Error("Position out of bounds");
+
+		}
+
 		const cellSize = this.getCellSize(level, target);
 
 		// Translate to the origin (zero-based unsigned coordinates).
@@ -416,16 +422,8 @@ export class Octree<T> implements Tree, Iterable<Node> {
 
 		if(grid !== undefined) {
 
-			if(this.containsPoint(point)) {
-
-				this.calculateKeyCoordinates(point, level, v);
-				result = grid.get(keyDesign.packKey(v));
-
-			} else {
-
-				throw new Error("Position out of bounds");
-
-			}
+			this.calculateKeyCoordinates(point, level, v);
+			result = grid.get(keyDesign.packKey(v));
 
 		} else {
 
