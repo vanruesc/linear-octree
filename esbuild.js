@@ -3,6 +3,8 @@ import esbuild from "esbuild";
 
 const require = createRequire(import.meta.url);
 const pkg = require("./package");
+const minify = process.argv.includes("-m");
+const watch = process.argv.includes("-w");
 const date = (new Date()).toDateString();
 const banner = `/**
  * ${pkg.name} v${pkg.version} build ${date}
@@ -18,16 +20,17 @@ await esbuild.build({
 	banner: { js: banner },
 	logLevel: "info",
 	format: "esm",
-	bundle: true
+	bundle: true,
+	watch
 }).catch(() => process.exit(1));
 
 await esbuild.build({
 	entryPoints: ["demo/src/index.ts"],
 	outdir: "public/demo",
-	minify: process.argv.includes("-m"),
-	watch: process.argv.includes("-w"),
 	logLevel: "info",
 	format: "iife",
 	target: "es6",
-	bundle: true
+	bundle: true,
+	minify,
+	watch
 }).catch(() => process.exit(1));
