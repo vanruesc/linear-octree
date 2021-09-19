@@ -56,10 +56,11 @@
 		"prepublishOnly": "run-s test doc",
 		"test": "run-s lint clean build ava",
 		"start": "serve public",
-		"watch": "run-p watch:*",
-		"watch:tsc": "tsc --noemit --watch --preserveWatchOutput",
+		"watch": "run-p watch:eslint watch:tsc watch:js",
+		"watch:ava": "ava -w",
 		"watch:eslint": "esw -w --ext .ts --color src demo/src",
-		"watch:js": "node esbuild -w"
+		"watch:js": "node esbuild -w",
+		"watch:tsc": "tsc --noemit --watch --preserveWatchOutput"
 	},
 	"ava": {
 		"failFast": true,
