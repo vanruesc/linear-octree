@@ -35,7 +35,7 @@ function removeChildren<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 		const children = octant.children;
 
 		// Translate the key coordinates to the next lower level.
-		keyX <<= 1; keyY <<= 1; keyZ <<= 1;
+		keyX = keyX * 2; keyY = keyY * 2; keyZ = keyZ * 2;
 
 		for(let i = 0; i < 8; ++i) {
 
@@ -44,11 +44,7 @@ function removeChildren<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 
 				const offset = layout[i];
 
-				v.set(
-					keyX + offset[0],
-					keyY + offset[1],
-					keyZ + offset[2]
-				);
+				v.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);
 
 				const key = keyDesign.packKey(v);
 
@@ -408,7 +404,7 @@ export class Octree<T> implements Tree, Iterable<Node> {
 	 *
 	 * @param point - A point.
 	 * @param level - The level.
-	 * @return The octant that contains the point, or undefined if it doesn't exist.
+	 * @return The octant, or undefined if it doesn't exist.
 	 */
 
 	getOctantByPoint(point: Vector3, level = 0): Octant<T> {

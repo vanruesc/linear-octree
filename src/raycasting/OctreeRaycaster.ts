@@ -81,7 +81,7 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 			let currentOctant = findEntryOctant(tx0, ty0, tz0, txm, tym, tzm);
 
 			// Translate the key coordinates to the next lower LOD.
-			keyX <<= 1; keyY <<= 1; keyZ <<= 1;
+			keyX = keyX * 2; keyY = keyY * 2; keyZ = keyZ * 2;
 
 			while(currentOctant < 8) {
 
@@ -240,7 +240,7 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 
 						}
 
-						// Far top right octant. No other octants can be reached from here.
+						// Far top right octant: no other octants can be reached from here.
 						currentOctant = 8;
 						break;
 
