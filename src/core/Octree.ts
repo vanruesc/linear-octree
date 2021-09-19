@@ -41,12 +41,10 @@ function removeChildren<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 		for(let i = 0; i < 8; ++i) {
 
 			// Check if the child exists.
-			if((children & (1 << i)) !== 0) {
+			if((children & (1 << i | 0)) !== 0) {
 
 				const offset = layout[i];
-
 				v.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);
-
 				const key = keyDesign.packKey(v);
 
 				// Get the child octant and remove it from the grid.
@@ -81,12 +79,12 @@ function createParents<T>(octree: Octree<T>, keyX: number, keyY: number,
 	// Go to the next higher level.
 	++level;
 
+	// Determine the position of the created octant relative to its parent.
+	const i = calculateOffsetIndex(keyX, keyY, keyZ);
+
 	if(level < octree.getLevels()) {
 
 		const grid = octree.getGrid(level);
-
-		// Determine the position of the created octant relative to its parent.
-		const i = calculateOffsetIndex(keyX, keyY, keyZ);
 
 		// Translate the key coordinates to the next higher level.
 		v.set(keyX >>> 1, keyY >>> 1, keyZ >>> 1);
@@ -100,19 +98,26 @@ function createParents<T>(octree: Octree<T>, keyX: number, keyY: number,
 			// The parent node already exists.
 			parent = grid.get(key) as IntermediateOctant<T>;
 
+			// Set the existence flag of the created child and stop.
+			parent.children |= 1 << i | 0;
+
 		} else {
 
 			// Create a new intermediate node.
 			parent = new IntermediateOctant<T>();
 			grid.set(key, parent);
 
+			// Set the existence flag of the created child and recur.
+			parent.children |= 1 << i | 0;
+			createParents(octree, v.x, v.y, v.z, level);
+
 		}
 
-		// Set the existence flag of the created child.
-		parent.children |= ~(1 << i);
+	} else {
 
-		// Recur.
-		createParents(octree, v.x, v.y, v.z, level);
+		// Set the existence flag of the created child and stop.
+		const rootOctant = octree.root.octant as IntermediateOctant<T>;
+		rootOctant.children |= 1 << i | 0;
 
 	}
 
@@ -134,12 +139,12 @@ function prune<T>(octree: Octree<T>, keyX: number, keyY: number, keyZ: number,
 	// Go to the next higher level.
 	++level;
 
+	// Determine the position of the deleted octant relative to its parent.
+	const i = calculateOffsetIndex(keyX, keyY, keyZ);
+
 	if(level < octree.getLevels()) {
 
 		const grid = octree.getGrid(level);
-
-		// Determine the position of the deleted octant relative to its parent.
-		const i = calculateOffsetIndex(keyX, keyY, keyZ);
 
 		// Translate the key coordinates to the next higher level.
 		v.set(keyX >>> 1, keyY >>> 1, keyZ >>> 1);
@@ -149,7 +154,7 @@ function prune<T>(octree: Octree<T>, keyX: number, keyY: number, keyZ: number,
 		const parent = grid.get(key) as IntermediateOctant<T>;
 
 		// Unset the existence flag of the deleted child.
-		parent.children &= ~(1 << i);
+		parent.children &= ~(1 << i | 0);
 
 		// Check if there are any children left.
 		if(parent.children === 0) {
@@ -159,6 +164,12 @@ function prune<T>(octree: Octree<T>, keyX: number, keyY: number, keyZ: number,
 			prune(octree, v.x, v.y, v.z, level);
 
 		}
+
+	} else {
+
+		// Unset the existence flag of the deleted child and stop.
+		const rootOctant = octree.root.octant as IntermediateOctant<T>;
+		rootOctant.children &= ~(1 << i | 0);
 
 	}
 
@@ -194,10 +205,10 @@ export class Octree<T> implements Tree, Iterable<Node> {
 	private grids: Map<number, Octant<T>>[];
 
 	/**
-	 * An empty node that represents the bounds of this octree.
+	 * The root node of this octree.
 	 */
 
-	private bounds: OctantWrapper<T>;
+	readonly root: OctantWrapper<T>;
 
 	/**
 	 * Constructs a new octree.
@@ -205,26 +216,17 @@ export class Octree<T> implements Tree, Iterable<Node> {
 	 * Each octant can be uniquely identified by a 3D coordinate and a level. The
 	 * tree depth is defined by the key design.
 	 *
-	 * This linear octree is constructed from the bottom up. The amount of levels
-	 * can be limited to prevent the creation of higher level parent octants. This
-	 * results in a slightly lower memory footprint without degrading search
-	 * performance depending on the use case.
-	 *
 	 * If the bounds of the octree are defined directly, the cell size will depend
 	 * on the bounds and the key design. Alternatively, the bounds can be
 	 * calculated from a desired cell size via {@link KeyDesign.calculateBounds}.
 	 *
 	 * @param bounds - The bounds of the octree.
 	 * @param keyDesign - The bit allotments for the octant coordinates.
-	 * @param maxLevels - The maximum amount of tree levels.
 	 */
 
-	constructor(bounds: Box3, keyDesign = new KeyDesign(), maxLevels = 32) {
+	constructor(bounds: Box3, keyDesign = new KeyDesign()) {
 
-		const levels = Math.min(
-			Math.max(keyDesign.x, keyDesign.y, keyDesign.z),
-			maxLevels
-		);
+		const levels = Math.max(keyDesign.x, keyDesign.y, keyDesign.z);
 
 		this.keyDesign = keyDesign;
 		this.grids = [];
@@ -235,14 +237,15 @@ export class Octree<T> implements Tree, Iterable<Node> {
 
 		}
 
-		const octantWrapper = new OctantWrapper<T>();
-		octantWrapper.min.copy(bounds.min);
-		octantWrapper.max.copy(bounds.max);
-		Object.freeze(octantWrapper.min);
-		Object.freeze(octantWrapper.max);
-		this.bounds = octantWrapper;
+		const root = new OctantWrapper<T>(new IntermediateOctant<T>());
+		root.min.copy(bounds.min);
+		root.max.copy(bounds.max);
+		Object.freeze(root.min);
+		Object.freeze(root.max);
+		Object.freeze(root);
+		this.root = root;
 
-		const dimensions = octantWrapper.getDimensions(new Vector3());
+		const dimensions = root.getDimensions(new Vector3());
 		this.cellSize = dimensions.set(
 			dimensions.x / (1 << keyDesign.x >>> 0),
 			dimensions.y / (1 << keyDesign.y >>> 0),
@@ -253,25 +256,25 @@ export class Octree<T> implements Tree, Iterable<Node> {
 
 	get min(): Vector3 {
 
-		return this.bounds.min;
+		return this.root.min;
 
 	}
 
 	get max(): Vector3 {
 
-		return this.bounds.max;
+		return this.root.max;
 
 	}
 
 	getCenter(target: Vector3): Vector3 {
 
-		return this.bounds.getCenter(target);
+		return this.root.getCenter(target);
 
 	}
 
 	getDimensions(target: Vector3): Vector3 {
 
-		return this.bounds.getDimensions(target);
+		return this.root.getDimensions(target);
 
 	}
 
@@ -369,7 +372,7 @@ export class Octree<T> implements Tree, Iterable<Node> {
 
 	containsPoint(point: Vector3): boolean {
 
-		return this.bounds.containsPoint(point);
+		return this.root.containsPoint(point);
 
 	}
 
