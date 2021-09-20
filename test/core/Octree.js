@@ -1,6 +1,6 @@
 import test from "ava";
 import { Box3, Vector3 } from "three";
-import { KeyDesign, Octant, Octree } from "../../dist/linear-octree.js";
+import { KeyDesign, Octree } from "../../dist/linear-octree.js";
 
 const bounds = new Box3(
 	new Vector3(-1, -1, -1),
