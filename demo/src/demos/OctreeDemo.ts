@@ -107,16 +107,13 @@ export class OctreeDemo extends Demo {
 
 		console.log("Bounds:", bounds.min, bounds.max);
 
-		const octree = new Octree<number>(bounds, keyDesign, 32);
+		const octree = new Octree<number>(bounds, keyDesign);
 		const keyCoordinates = new Vector3();
+		const p = new Vector3();
 		const box = new Box3();
 
-		box.min.set(0, 0, 0);
-		box.max.set(
-			keyDesign.rangeX - 1,
-			keyDesign.rangeY - 1,
-			keyDesign.rangeZ - 1
-		);
+		keyDesign.getMinKeyCoordinates(box.min);
+		keyDesign.getMaxKeyCoordinates(box.max);
 
 		for(const key of keyDesign.keyRange(box.min, box.max)) {
 
