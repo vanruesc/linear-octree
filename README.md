@@ -37,10 +37,8 @@ import { Octree } from "linear-octree";
   - Packs positional data into numeric keys
   - Constant time access to octants, parents and neighbors at any depth level
   - Low memory usage
-  - Constant depth
 - Adheres to a [common octant layout](http://vanruesc.github.io/sparse-octree/public/docs/variable/index.html#static-variable-layout)
 - Supports raycasting
-  - Uses a 3D supercover variant of the [DDA](https://en.wikipedia.org/wiki/Digital_differential_analyzer_(graphics_algorithm)) line algorithm
 - Supports culling
 - Can be extended to manage any data
 
