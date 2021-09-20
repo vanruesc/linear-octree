@@ -64,7 +64,7 @@ export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject
 
 		this.octree = octree;
 		this.camera = camera;
-		this.enabled = false;
+		this.enabled = true;
 		this.delta = "";
 
 		this.cursor = new Mesh(
@@ -116,10 +116,6 @@ export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject
 			if(intersections.length > 0) {
 
 				x = intersections[0];
-
-			} else {
-
-				console.log("no");
 
 			}
 
