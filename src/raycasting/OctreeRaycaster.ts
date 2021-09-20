@@ -1,9 +1,4 @@
-import {
-	Box3,
-	Line3,
-	Ray,
-	Vector3
-} from "three";
+import { Ray, Vector3 } from "three";
 
 import {
 	layout,
@@ -21,11 +16,8 @@ import {
 } from "../core";
 
 const flags = new RaycastingFlags();
-const bounds = new Box3();
 const u = new Vector3();
 const v = new Vector3();
-const l = new Line3();
-const r = new Ray();
 
 /**
  * Recursively traverses the given octant to find (pseudo) leaf octants that
@@ -86,7 +78,7 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 			while(currentOctant < 8) {
 
 				const i = flags.value ^ currentOctant;
-				const childExists = ((children & (1 << i)) !== 0);
+				const childExists = ((children & (1 << i | 0)) !== 0);
 				const offset = layout[i];
 
 				v.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);
@@ -259,18 +251,10 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 /**
  * A raycaster for linear octrees.
  *
- * This raycaster is a specialized hybrid that uses a voxel traversal algorithm
- * to iterate over the octants of the highest LOD grid and an octree traversal
- * algorithm to raycast the identified subtrees.
+ * The octree traversal algorithm uses octant child existence bitmasks to avoid
+ * hash table lookup misses.
  *
- * The voxel traversal implementation is a 3D supercover variant of the Digital
- * Differential Analyzer (DDA) line algorithm and is similar to the Bresenham
- * algorithm. The octree traversal algorithm uses octant child existence
- * information to skip empty space and avoids hash table lookup misses.
- *
- * References:
- *  "Voxel Traversal along a 3D Line"
- *  by D. Cohen (1994)
+ * Reference:
  *  "An Efficient Parametric Algorithm for Octree Traversal"
  *  by J. Revelles et al. (2000)
  */
@@ -290,114 +274,30 @@ export class OctreeRaycaster {
 
 		const result: Node[] = [];
 
-		const level = octree.getDepth();
-		const grid = octree.getGrid(level);
-		const cellSize = octree.getCellSize(level, u);
-		const keyDesign = octree.getKeyDesign();
-		const subtree = new OctantWrapper<T>();
+		const level = octree.getDepth() + 1; // Starting at the root octant.
+		const octant = octree.root.octant as IntermediateOctant<T>;
 
-		const keyCoordinates0 = l.start;
-		const keyCoordinates1 = l.end;
+		if(level > 0 && octant.children > 0) {
 
-		bounds.min.copy(octree.min);
-		bounds.max.copy(octree.max);
+			// Calculate the initial raycasting parameters.
+			const t = intersectOctree(octree.root, ray, flags);
 
-		// Find the point at which the ray enters the grid.
-		const a = !octree.containsPoint(r.copy(ray).origin) ?
-			r.intersectBox(bounds, r.origin) : r.origin;
+			if(t !== null) {
 
-		subtree.id.level = level;
-
-		// Check if the ray hits the octree.
-		if(a !== null) {
-
-			// Phase 1: Initialization.
-
-			// Find the ending point.
-			const t = Math.max(cellSize.x * 2, cellSize.y * 2, cellSize.z * 2);
-			const b = r.at(t, v);
-
-			// Calculate the starting and ending cell coordinates.
-			octree.calculateKeyCoordinates(a, level, keyCoordinates0);
-			octree.calculateKeyCoordinates(b, level, keyCoordinates1);
-
-			// Calculate the key coordinate vector from start to end.
-			const dx = keyCoordinates1.x - keyCoordinates0.x;
-			const dy = keyCoordinates1.y - keyCoordinates0.y;
-			const dz = keyCoordinates1.z - keyCoordinates0.z;
-
-			// Prepare step sizes and project the line onto the XY-, XZ- and ZY-plane.
-			const sx = Math.sign(dx), sy = Math.sign(dy), sz = Math.sign(dz);
-			const ax = Math.abs(dx), ay = Math.abs(dy), az = Math.abs(dz);
-			const bx = 2 * ax, by = 2 * ay, bz = 2 * az;
-			let exy = ay - ax, exz = az - ax, ezy = ay - az;
-
-			// Phase 2: Incremental Traversal.
-			for(let n = ax + ay + az; n > 0; --n) {
-
-				const key = keyDesign.packKey(keyCoordinates0);
-
-				// Check if this cell is populated.
-				if(grid.has(key)) {
-
-					const octant = grid.get(key) as IntermediateOctant<T>;
-
-					// Setup a pseudo octree.
-					subtree.id.key = key;
-					subtree.octant = octant;
-					subtree.min.copy(keyCoordinates0);
-					subtree.min.multiply(cellSize);
-					subtree.min.add(octree.min);
-					subtree.max.copy(subtree.min).add(cellSize);
-
-					if(level > 0 && octant.children > 0) {
-
-						// Raycast the subtree and calculate the initial parameters.
-						const t = intersectOctree(subtree, ray, flags);
-
-						if(t !== null) {
-
-							// Find the intersecting children.
-							raycastOctant(
-								octree, octant,
-								keyCoordinates0.x, keyCoordinates0.y, keyCoordinates0.z, level,
-								t[0], t[1], t[2], t[3], t[4], t[5],
-								result
-							);
-
-						}
-
-					}
-
-				}
-
-				if(exy < 0) {
-
-					if(exz < 0) {
-
-						keyCoordinates0.x += sx;
-						exy += by; exz += bz;
-
-					} else {
-
-						keyCoordinates0.z += sz;
-						exz -= bx; ezy += by;
-
-					}
-
-				} else if(ezy < 0) {
-
-					keyCoordinates0.z += sz;
-					exz -= bx; ezy += by;
-
-				} else {
-
-					keyCoordinates0.y += sy;
-					exy -= bx; ezy -= bz;
-
-				}
+				// Find the intersecting children.
+				raycastOctant(
+					octree, octant, 0, 0, 0, level,
+					t[0], t[1], t[2], t[3], t[4], t[5],
+					result
+				);
 
 			}
+
+		}
+
+		if(octant.data !== null) {
+
+			result.push(octree.root.clone());
 
 		}
 
