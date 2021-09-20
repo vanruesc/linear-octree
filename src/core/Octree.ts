@@ -36,7 +36,7 @@ function removeChildren<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 		const children = octant.children;
 
 		// Translate the key coordinates to the next lower level.
-		keyX = keyX * 2; keyY = keyY * 2; keyZ = keyZ * 2;
+		keyX *= 2; keyY *= 2; keyZ *= 2;
 
 		for(let i = 0; i < 8; ++i) {
 

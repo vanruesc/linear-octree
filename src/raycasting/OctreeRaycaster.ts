@@ -73,7 +73,7 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 			let currentOctant = findEntryOctant(tx0, ty0, tz0, txm, tym, tzm);
 
 			// Translate the key coordinates to the next lower LOD.
-			keyX = keyX * 2; keyY = keyY * 2; keyZ = keyZ * 2;
+			keyX *= 2; keyY *= 2; keyZ *= 2;
 
 			while(currentOctant < 8) {
 
@@ -98,10 +98,8 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 						if(childExists) {
 
 							raycastOctant(
-								octree, child,
-								v.x, v.y, v.z, level,
-								tx0, ty0, tz0, txm, tym, tzm,
-								result
+								octree, child, v.x, v.y, v.z, level,
+								tx0, ty0, tz0, txm, tym, tzm, result
 							);
 
 						}
@@ -116,10 +114,8 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 						if(childExists) {
 
 							raycastOctant(
-								octree, child,
-								v.x, v.y, v.z, level,
-								tx0, ty0, tzm, txm, tym, tz1,
-								result
+								octree, child, v.x, v.y, v.z, level,
+								tx0, ty0, tzm, txm, tym, tz1, result
 							);
 
 						}
@@ -134,10 +130,8 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 						if(childExists) {
 
 							raycastOctant(
-								octree, child,
-								v.x, v.y, v.z, level,
-								tx0, tym, tz0, txm, ty1, tzm,
-								result
+								octree, child, v.x, v.y, v.z, level,
+								tx0, tym, tz0, txm, ty1, tzm, result
 							);
 
 						}
@@ -152,10 +146,8 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 						if(childExists) {
 
 							raycastOctant(
-								octree, child,
-								v.x, v.y, v.z, level,
-								tx0, tym, tzm, txm, ty1, tz1,
-								result
+								octree, child, v.x, v.y, v.z, level,
+								tx0, tym, tzm, txm, ty1, tz1, result
 							);
 
 						}
@@ -170,10 +162,8 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 						if(childExists) {
 
 							raycastOctant(
-								octree, child,
-								v.x, v.y, v.z, level,
-								txm, ty0, tz0, tx1, tym, tzm,
-								result
+								octree, child, v.x, v.y, v.z, level,
+								txm, ty0, tz0, tx1, tym, tzm, result
 							);
 
 						}
@@ -188,10 +178,8 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 						if(childExists) {
 
 							raycastOctant(
-								octree, child,
-								v.x, v.y, v.z, level,
-								txm, ty0, tzm, tx1, tym, tz1,
-								result
+								octree, child, v.x, v.y, v.z, level,
+								txm, ty0, tzm, tx1, tym, tz1, result
 							);
 
 						}
@@ -206,10 +194,8 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 						if(childExists) {
 
 							raycastOctant(
-								octree, child,
-								v.x, v.y, v.z, level,
-								txm, tym, tz0, tx1, ty1, tzm,
-								result
+								octree, child, v.x, v.y, v.z, level,
+								txm, tym, tz0, tx1, ty1, tzm, result
 							);
 
 						}
@@ -224,10 +210,8 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 						if(childExists) {
 
 							raycastOctant(
-								octree, child,
-								v.x, v.y, v.z, level,
-								txm, tym, tzm, tx1, ty1, tz1,
-								result
+								octree, child, v.x, v.y, v.z, level,
+								txm, tym, tzm, tx1, ty1, tz1, result
 							);
 
 						}
@@ -251,8 +235,8 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 /**
  * A raycaster for linear octrees.
  *
- * The octree traversal algorithm uses octant child existence bitmasks to avoid
- * hash table lookup misses.
+ * This octree traversal implementation uses octant child existence bitmasks to
+ * avoid hash table lookup misses.
  *
  * Reference:
  *  "An Efficient Parametric Algorithm for Octree Traversal"
@@ -266,7 +250,6 @@ export class OctreeRaycaster {
 	 *
 	 * @param octree - A linear octree.
 	 * @param ray - A ray.
-	 * @param intersects - An array to be filled with the intersecting octants.
 	 * @return The intersecting octants. Sorted by distance, closest first.
 	 */
 
@@ -277,7 +260,7 @@ export class OctreeRaycaster {
 		const level = octree.getDepth() + 1; // Starting at the root octant.
 		const octant = octree.root.octant as IntermediateOctant<T>;
 
-		if(level > 0 && octant.children > 0) {
+		if(octant.children > 0) {
 
 			// Calculate the initial raycasting parameters.
 			const t = intersectOctree(octree.root, ray, flags);
@@ -287,8 +270,7 @@ export class OctreeRaycaster {
 				// Find the intersecting children.
 				raycastOctant(
 					octree, octant, 0, 0, 0, level,
-					t[0], t[1], t[2], t[3], t[4], t[5],
-					result
+					t[0], t[1], t[2], t[3], t[4], t[5], result
 				);
 
 			}
