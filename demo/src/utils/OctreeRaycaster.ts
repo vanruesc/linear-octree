@@ -1,15 +1,11 @@
 import {
 	BoxGeometry,
 	Camera,
-	Group,
 	InstancedMesh,
 	Material,
 	Matrix4,
 	Mesh,
 	MeshBasicMaterial,
-	Object3D,
-	Points,
-	PointsMaterial,
 	Quaternion,
 	Raycaster,
 	Vector2,
@@ -31,7 +27,8 @@ const q = new Quaternion();
  * @param T - The type of the octree data.
  */
 
-export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject {
+export class OctreeRaycaster<T> extends Raycaster
+	implements EventListenerObject {
 
 	/**
 	 * An octree.
@@ -99,9 +96,9 @@ export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject
 	}
 
 	/**
-	 * Returns a group of meshes that indicate intersecting octants.
+	 * Returns a mesh that represents intersecting octants.
 	 *
-	 * @return The intersection markers.
+	 * @return The mesh.
 	 */
 
 	getMesh(): Mesh {
@@ -195,7 +192,7 @@ export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject
 	 * Deletes this raycaster.
 	 */
 
-	dispose() {
+	dispose(): void {
 
 		const domElement = this.domElement;
 		document.removeEventListener("keyup", this);

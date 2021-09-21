@@ -3,8 +3,6 @@ import {
 	Box3Helper,
 	Color,
 	FogExp2,
-	Group,
-	Object3D,
 	PerspectiveCamera,
 	Vector3
 } from "three";
