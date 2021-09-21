@@ -297,6 +297,23 @@ export class KeyDesign {
 	}
 
 	/**
+	 * Checks if this key design equals another key design.
+	 *
+	 * @param keyDesign - A key design.
+	 * @return Whether this key design equals the given one.
+	 */
+
+	equals(keyDesign: KeyDesign): boolean {
+
+		return (this === keyDesign || (
+			this.x === keyDesign.x &&
+			this.y === keyDesign.y &&
+			this.z === keyDesign.z
+		));
+
+	}
+
+	/**
 	 * Converts the information of this key design into a string.
 	 *
 	 * @return The key design as a string.
