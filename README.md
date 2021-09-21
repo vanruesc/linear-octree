@@ -6,7 +6,7 @@
 
 A sparse, linear octree data structure. For a pointer-based implementation see [sparse-octree](https://github.com/vanruesc/sparse-octree).
 
-*[Demo](https://vanruesc.github.io/linear-octree/public/demo)&ensp;&middot;&ensp;[Documentation](https://vanruesc.github.io/linear-octree/public/docs)*
+*[Demo](https://vanruesc.github.io/linear-octree/demo)&ensp;&middot;&ensp;[Documentation](https://vanruesc.github.io/linear-octree/docs)*
 
 
 ## Installation
