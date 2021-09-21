@@ -1,4 +1,4 @@
-import { Ray, Vector3 } from "three";
+import { Box3, Ray, Vector3 } from "three";
 
 import {
 	layout,
@@ -15,7 +15,9 @@ import {
 	Octree
 } from "../core";
 
+const octantWrapper = new OctantWrapper<unknown>();
 const flags = new RaycastingFlags();
+const bounds = new Box3();
 const u = new Vector3();
 const v = new Vector3();
 
@@ -50,7 +52,7 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 		if(octant.data !== null) {
 
 			const cellSize = octree.getCellSize(level, u);
-			const octantWrapper = new OctantWrapper(octant);
+			const octantWrapper = new OctantWrapper<T>(octant);
 			octantWrapper.id.set(level, keyDesign.packKey(v.set(keyX, keyY, keyZ)));
 			octantWrapper.min.copy(v).multiply(cellSize).add(octree.min);
 			octantWrapper.max.copy(octantWrapper.min).add(cellSize);
@@ -257,29 +259,57 @@ export class OctreeRaycaster {
 
 		const result: Node[] = [];
 
-		const level = octree.getDepth() + 1; // Starting at the root octant.
-		const octant = octree.root.octant as IntermediateOctant<T>;
+		bounds.min.copy(octree.min);
+		bounds.max.copy(octree.max);
 
-		if(octant.children > 0) {
+		if(ray.intersectsBox(bounds)) {
 
-			// Calculate the initial raycasting parameters.
-			const t = intersectOctree(octree.root, ray, flags);
+			const level = octree.getDepth() + 1; // Starting at the root octant.
+			const rootOctant = octree.root.octant as IntermediateOctant<T>;
 
-			if(t !== null) {
+			const keyDesign = octree.getKeyDesign();
+			const dimensions = octree.getDimensions(u);
+			const maxBits = Math.max(keyDesign.x, keyDesign.y, keyDesign.z);
 
-				// Find the intersecting children.
-				raycastOctant(
-					octree, octant, 0, 0, 0, level,
-					t[0], t[1], t[2], t[3], t[4], t[5], result
-				);
+			// This vector describes how many times each dimension should be doubled.
+			const bitDifference = v.set(
+				maxBits - keyDesign.x,
+				maxBits - keyDesign.y,
+				maxBits - keyDesign.z
+			);
+
+			// Temporarily stretch the dimensions to account for bit imbalance.
+			dimensions.set(
+				dimensions.x * (1 << bitDifference.x >>> 0),
+				dimensions.y * (1 << bitDifference.y >>> 0),
+				dimensions.z * (1 << bitDifference.z >>> 0)
+			);
+
+			octantWrapper.copy(octree.root);
+			octantWrapper.max.copy(octantWrapper.min).add(dimensions);
+
+			if(rootOctant.children > 0) {
+
+				// Calculate the initial raycasting parameters.
+				const t = intersectOctree(octantWrapper, ray, flags);
+
+				if(t !== null) {
+
+					// Find the intersecting children.
+					raycastOctant(
+						octree, rootOctant, 0, 0, 0, level,
+						t[0], t[1], t[2], t[3], t[4], t[5], result
+					);
+
+				}
 
 			}
 
-		}
+			if(rootOctant.data !== null) {
 
-		if(octant.data !== null) {
+				result.push(octree.root.clone());
 
-			result.push(octree.root.clone());
+			}
 
 		}
 
