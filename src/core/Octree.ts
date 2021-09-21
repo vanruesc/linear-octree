@@ -252,7 +252,6 @@ function cull<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 }
 
 /**
-/**
  * An octree that subdivides space for fast spatial searches.
  *
  * This linear implementation offers constant time access to octants at any
@@ -291,14 +290,14 @@ export class Octree<T> implements Tree, Iterable<Node> {
 	 * Constructs a new octree.
 	 *
 	 * Each octant can be uniquely identified by a 3D coordinate and a level. The
-	 * tree depth is defined by the key design.
+	 * tree depth is defined by the highest number of bits in the key design.
 	 *
 	 * If the bounds of the octree are defined directly, the cell size will depend
 	 * on the bounds and the key design. Alternatively, the bounds can be
 	 * calculated from a desired cell size via {@link KeyDesign.calculateBounds}.
 	 *
 	 * @param bounds - The bounds of the octree.
-	 * @param keyDesign - The bit allotments for the octant coordinates. The highest number of bits determines the octree depth.
+	 * @param keyDesign - The bit allotments for the octant coordinates.
 	 */
 
 	constructor(bounds: Box3, keyDesign = new KeyDesign()) {

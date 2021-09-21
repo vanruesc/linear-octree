@@ -261,7 +261,7 @@ export class KeyDesign {
 	/**
 	 * Calculates the bounds that contain the domain of this key design.
 	 *
-	 * @param cellSize - The size of cells.
+	 * @param cellSize - The cell size.
 	 * @param target - A box to store the result in.
 	 * @return The bounds.
 	 */
@@ -352,11 +352,11 @@ export class KeyDesign {
 	 * JavaScript uses IEEE 754 binary64 Doubles for Numbers and, as a result,
 	 * only supports 53-bit integers natively as of ES2021.
 	 *
-	 * BigInt is not an option due to the following reasons:
+	 * `BigInt` is not an option due to the following reasons:
 	 *  - significant performance impact
-	 *  - operations on BigInts are not constant time
+	 *  - operations on `BigInt` are not constant time
 	 *  - only supports signed integers
-	 *  - doesn't support >>> operator
+	 *  - doesn't support `>>>` operator
 	 *
 	 * For more information see: http://2ality.com/2012/04/number-encoding.html
 	 */

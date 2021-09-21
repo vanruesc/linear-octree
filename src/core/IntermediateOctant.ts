@@ -14,7 +14,7 @@ export class IntermediateOctant<T> extends Octant<T> {
 	 *
 	 * The order of the children follows the octant layout from `sparse-octree`:
 	 *
-	 * ```txt
+	 * ```text
 	 *    3____7
 	 *  2/___6/|
 	 *  | 1__|_5
