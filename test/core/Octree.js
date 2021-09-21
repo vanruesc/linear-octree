@@ -78,7 +78,7 @@ test("can delete data", t => {
 	p.set(0.5, 0, 0);
 	octree.calculateKeyCoordinates(p, 0, keyCoordinates);
 	octree.set(keyCoordinates, 0, data);
-	octree.delete(keyCoordinates, 0, data);
+	octree.delete(keyCoordinates, 0);
 
 	t.not(octree.get(keyCoordinates, 0), data, "should no longer have the data");
 
