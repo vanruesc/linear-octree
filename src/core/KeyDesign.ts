@@ -262,13 +262,14 @@ export class KeyDesign {
 	 * Calculates the bounds that contain the domain of this key design.
 	 *
 	 * @param cellSize - The size of cells.
+	 * @param target - A box to store the result in.
 	 * @return The bounds.
 	 */
 
-	calculateBounds(cellSize: Vector3): Box3 {
+	calculateBounds(cellSize: Vector3, target: Box3): Box3 {
 
 		const range = this.range;
-		const bounds = new Box3();
+		const bounds = target;
 
 		bounds.max.set(range.x, range.y, range.z);
 		bounds.max.divideScalar(2).multiply(cellSize);
