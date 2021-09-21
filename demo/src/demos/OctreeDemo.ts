@@ -55,7 +55,9 @@ export class OctreeDemo extends Demo {
 		super("octree");
 
 		this.controls = null;
+		this.boundsHelper = null;
 		this.octreeHelper = null;
+		this.octreeRaycaster = null;
 
 	}
 
@@ -96,24 +98,24 @@ export class OctreeDemo extends Demo {
 
 		// Octree
 
-		const keyDesign = new KeyDesign(2, 2, 2);
 		const bounds = new Box3();
 		bounds.min.set(-1, -1, -1);
 		bounds.max.set(1, 1, 1);
-
 		// Alternative:
 		// const cellSize = new Vector3(1, 1, 1);
-		// const bounds = keyDesign.calculateBounds(cellSize);
+		// const bounds = keyDesign.calculateBounds(cellSize, new Box3());
 
-		console.log("Bounds:", bounds.min, bounds.max);
-
+		const keyDesign = new KeyDesign(3, 3, 3);
 		const octree = new Octree<number>(bounds, keyDesign);
-		const keyCoordinates = new Vector3();
-		const p = new Vector3();
+		console.log(octree);
+
 		const box = new Box3();
+		const keyCoordinates = new Vector3();
 
 		keyDesign.getMinKeyCoordinates(box.min);
 		keyDesign.getMaxKeyCoordinates(box.max);
+
+		console.time("Octree creation");
 
 		for(const key of keyDesign.keyRange(box.min, box.max)) {
 
@@ -121,7 +123,7 @@ export class OctreeDemo extends Demo {
 
 		}
 
-		console.log(octree);
+		console.timeEnd("Octree creation");
 
 		// Octree Helper
 
@@ -138,10 +140,7 @@ export class OctreeDemo extends Demo {
 
 		// Octree Bounds Helper
 
-		box.min.copy(octree.min);
-		box.max.copy(octree.max);
-
-		const boundsHelper = new Box3Helper(box, new Color(0xffffff));
+		const boundsHelper = new Box3Helper(bounds, new Color(0xffffff));
 		boundsHelper.visible = octreeHelper.visible;
 
 		this.boundsHelper = boundsHelper;
@@ -149,12 +148,8 @@ export class OctreeDemo extends Demo {
 
 		// Raycasting
 
-		this.octreeRaycaster = new OctreeRaycaster(octree, camera);
-		domElement.addEventListener("pointermove", this.octreeRaycaster, {
-			passive: true
-		});
-
-		scene.add(this.octreeRaycaster.getCursor());
+		this.octreeRaycaster = new OctreeRaycaster(octree, camera, domElement);
+		scene.add(this.octreeRaycaster.getMesh());
 
 	}
 
@@ -166,39 +161,32 @@ export class OctreeDemo extends Demo {
 
 	override registerOptions(menu: GUI): void {
 
-		const octreeHelper = this.octreeHelper;
-		const boundsHelper = this.boundsHelper;
-
 		this.octreeRaycaster.registerOptions(menu);
+
+		const boundsHelper = this.boundsHelper;
+		const octreeHelper = this.octreeHelper;
 
 		const params = {
 			"level mask": octreeHelper.children.length + 1
 		};
 
 		const folder = menu.addFolder("Octree Helper");
-		folder.add(octreeHelper, "visible").onChange((value: boolean) => {
-
-			boundsHelper.visible = (
-				params["level mask"] >= octreeHelper.children.length &&
-				value
-			);
-
-		});
-
 		folder.add(params, "level mask", 0, octreeHelper.children.length + 1, 1)
-			.onChange((value: number) => {
+			.onChange(() => {
+
+				const mask = params["level mask"];
 
 				for(let i = 0, l = octreeHelper.children.length; i < l; ++i) {
 
 					octreeHelper.children[i].visible = (
-						value > octreeHelper.children.length ||
-						value === i
+						mask > octreeHelper.children.length ||
+						mask === i
 					);
 
 				}
 
 				boundsHelper.visible = (
-					value >= octreeHelper.children.length &&
+					mask >= octreeHelper.children.length &&
 					octreeHelper.visible
 				);
 
@@ -216,8 +204,7 @@ export class OctreeDemo extends Demo {
 
 	override dispose(): void {
 
-		const domElement = this.renderer.domElement;
-		domElement.removeEventListener("pointermove", this.octreeRaycaster);
+		this.octreeRaycaster.dispose();
 
 	}
 
