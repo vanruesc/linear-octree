@@ -188,10 +188,10 @@ export class OctreeDemo extends Demo {
 		const folder = menu.addFolder("Octree Helper");
 		folder.add(octreeHelper, "visible").onChange((value: boolean) => {
 
-				boundsHelper.visible = (
-					params["level mask"] >= octreeHelper.children.length &&
-					octreeHelper.visible
-				);
+			boundsHelper.visible = (
+				params["level mask"] >= octreeHelper.children.length &&
+				octreeHelper.visible
+			);
 
 		});
 
