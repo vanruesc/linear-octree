@@ -134,7 +134,7 @@ export class FrustumCuller<T> {
 	private updateCamera(): void {
 
 		const cullCamera = this.cullCamera;
-		cullCamera.position.setFromSpherical(this.s);
+		cullCamera.position.setFromSpherical(this.s.makeSafe());
 		cullCamera.lookAt(p.set(0, 0, 0));
 		cullCamera.updateMatrixWorld(true);
 
