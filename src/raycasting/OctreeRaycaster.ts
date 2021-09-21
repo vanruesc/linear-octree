@@ -3,7 +3,6 @@ import { Box3, Ray, Vector3 } from "three";
 import {
 	layout,
 	RaycastingFlags,
-	Node,
 	findEntryOctant,
 	findNextOctant,
 	intersectOctree
@@ -43,7 +42,7 @@ const v = new Vector3();
 function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 	keyX: number, keyY: number, keyZ: number, level: number,
 	tx0: number, ty0: number, tz0: number, tx1: number, ty1: number, tz1: number,
-	result: Node[]): void {
+	result: OctantWrapper<T>[]): void {
 
 	if(tx1 >= 0.0 && ty1 >= 0.0 && tz1 >= 0.0) {
 
@@ -255,9 +254,9 @@ export class OctreeRaycaster {
 	 * @return The intersecting octants. Sorted by distance, closest first.
 	 */
 
-	static intersectOctree<T>(octree: Octree<T>, ray: Ray): Node[] {
+	static intersectOctree<T>(octree: Octree<T>, ray: Ray): OctantWrapper<T>[] {
 
-		const result: Node[] = [];
+		const result: OctantWrapper<T>[] = [];
 
 		bounds.min.copy(octree.min);
 		bounds.max.copy(octree.max);

@@ -649,9 +649,9 @@ export class Octree<T> implements Tree, Iterable<Node> {
 	 * @return The nodes.
 	 */
 
-	cull(region: Frustum | Box3): Node[] {
+	cull(region: Frustum | Box3): OctantWrapper<T>[] {
 
-		const result: Node[] = [];
+		const result: OctantWrapper<T>[] = [];
 		const octant = this.root.octant as IntermediateOctant<T>;
 		cull(this, octant, 0, 0, 0, this.getDepth() + 1, region, result);
 		return result;
@@ -666,7 +666,7 @@ export class Octree<T> implements Tree, Iterable<Node> {
 	 * @return The intersecting nodes.
 	 */
 
-	getIntersectingNodes(raycaster: Raycaster): Node[] {
+	getIntersectingNodes(raycaster: Raycaster): OctantWrapper<T>[] {
 
 		return OctreeRaycaster.intersectOctree(this, raycaster.ray);
 
@@ -694,7 +694,7 @@ export class Octree<T> implements Tree, Iterable<Node> {
 	 * @return An iterator.
 	 */
 
-	[Symbol.iterator](): Iterator<Node> {
+	[Symbol.iterator](): Iterator<OctantWrapper<T>> {
 
 		return this.octants();
 
