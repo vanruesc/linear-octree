@@ -261,6 +261,8 @@ export class KeyDesign {
 	/**
 	 * Calculates the bounds that contain the domain of this key design.
 	 *
+	 * The center of the bounds is (0, 0, 0).
+	 *
 	 * @param cellSize - The cell size.
 	 * @param target - A box to store the result in.
 	 * @return The bounds.
