@@ -192,26 +192,31 @@ export class KeyDesign {
 
 	set(x: number, y: number, z: number): void {
 
-		// Bit operations only work on DWord Numbers.
-		if(x + y + z > BITS || x > DWORD_BITS || y > DWORD_BITS || z > DWORD_BITS) {
+		x = Math.max(x, 0);
+		y = Math.max(y, 0);
+		z = Math.max(z, 0);
 
-			console.warn("Invalid bit allotment");
+		if(x === 0) {
 
-			x = Math.round(BITS * 0.4);
-			y = Math.round(BITS * 0.2);
-			z = x;
+			throw new Error("X must be greater than 0");
+
+		}
+
+		if(x + y + z > BITS) {
+
+			throw new Error(`Cannot use more than ${BITS} bits total`);
+
+		}
+
+		if(x > DWORD_BITS || y > DWORD_BITS || z > DWORD_BITS) {
+
+			// Bit operations only work on DWord Numbers.
+			throw new Error(`Cannot use more than ${DWORD_BITS} bits per coordinate`);
 
 		}
 
 		this.bits.set(x, y, z);
-
-		this.range.set(
-			2 ** x,
-			2 ** y,
-			2 ** z,
-			2 ** (x + y)
-		);
-
+		this.range.set(2 ** x, 2 ** y, 2 ** z, 2 ** (x + y));
 		this.updateBitMasks();
 
 	}
