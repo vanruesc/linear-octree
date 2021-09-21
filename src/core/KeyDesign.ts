@@ -57,12 +57,12 @@ export class KeyDesign {
 	/**
 	 * Constructs a new key design.
 	 *
-	 * @param x - The amount of bits used for the X-coordinate.
+	 * @param x - The amount of bits used for the X-coordinate. Cannot be zero.
 	 * @param y - The amount of bits used for the Y-coordinate.
 	 * @param z - The amount of bits used for the Z-coordinate.
 	 */
 
-	constructor(x = Math.round(BITS * 0.4), y = Math.round(BITS * 0.2), z = x) {
+	constructor(x = 8, y = x, z = x) {
 
 		this.bits = new Vector3();
 		this.range = new Vector4();
@@ -185,7 +185,7 @@ export class KeyDesign {
 	 *
 	 * Make sure to clear your octree after changing the key design!
 	 *
-	 * @param x - The amount of bits used for the X-coordinate.
+	 * @param x - The amount of bits used for the X-coordinate. Cannot be zero.
 	 * @param y - The amount of bits used for the Y-coordinate.
 	 * @param z - The amount of bits used for the Z-coordinate.
 	 */
