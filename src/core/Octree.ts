@@ -1,4 +1,4 @@
-import { Box3, Raycaster, Vector3 } from "three";
+import { Box3, Frustum, Raycaster, Vector3 } from "three";
 import { layout, Node, Tree } from "sparse-octree";
 import { IntermediateOctant } from "./IntermediateOctant";
 import { KeyDesign } from "./KeyDesign";
@@ -10,15 +10,16 @@ import { calculateOffsetIndex } from "../utils/calculateOffsetIndex";
 
 const u = new Vector3();
 const v = new Vector3();
+const b = new Box3();
 
 /**
  * Recursively deletes octant children.
  *
  * @param octree - An octree.
  * @param octant - The current octant.
- * @param keyX - The X-coordinate of the current octant key.
- * @param keyY - The Y-coordinate of the current octant key.
- * @param keyZ - The Z-coordinate of the current octant key.
+ * @param keyX - The X-coordinate of the current octant's key.
+ * @param keyY - The Y-coordinate of the current octant's key.
+ * @param keyZ - The Z-coordinate of the current octant's key.
  * @param level - The level.
  */
 
@@ -44,8 +45,11 @@ function removeChildren<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 			if((children & (1 << i | 0)) !== 0) {
 
 				const offset = layout[i];
-				v.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);
-				const key = keyDesign.packKey(v);
+				const key = keyDesign.packKey(v.set(
+					keyX + offset[0],
+					keyY + offset[1],
+					keyZ + offset[2]
+				));
 
 				// Get the child octant and remove it from the grid.
 				const child = grid.get(key) as IntermediateOctant<T>;
@@ -175,6 +179,79 @@ function prune<T>(octree: Octree<T>, keyX: number, keyY: number, keyZ: number,
 
 }
 
+/**
+ * Recursively collects octants that lie inside the specified region.
+ *
+ * @param octree - An octree.
+ * @param octant - The current octant.
+ * @param keyX - The X-coordinate of the current octant's key.
+ * @param keyY - The Y-coordinate of the current octant's key.
+ * @param keyZ - The Z-coordinate of the current octant's key.
+ * @param level - The level.
+ * @param region - A region.
+ * @param result - A list to be filled with intersecting nodes.
+ */
+
+function cull<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
+	keyX: number, keyY: number, keyZ: number, level: number,
+	region: Frustum | Box3, result: Node[]): void {
+
+	const cellSize = octree.getCellSize(level, u);
+	b.min.copy(v.set(keyX, keyY, keyZ)).multiply(cellSize).add(octree.min);
+	b.max.copy(b.min).add(cellSize);
+
+	if(region.intersectsBox(b)) {
+
+		const keyDesign = octree.getKeyDesign();
+
+		if(octant.data !== null) {
+
+			const octantWrapper = new OctantWrapper<T>(octant);
+			octantWrapper.id.set(level, keyDesign.packKey(v));
+			octantWrapper.min.copy(b.min);
+			octantWrapper.max.copy(b.max);
+			result.push(octantWrapper);
+
+		}
+
+		// The octants in level zero have no children.
+		if(level > 0) {
+
+			// Go to the next lower level.
+			--level;
+
+			const grid = octree.getGrid(level);
+			const children = octant.children;
+
+			// Translate the key coordinates to the next lower level.
+			keyX *= 2; keyY *= 2; keyZ *= 2;
+
+			for(let i = 0; i < 8; ++i) {
+
+				// Check if the child exists.
+				if((children & (1 << i | 0)) !== 0) {
+
+					const offset = layout[i];
+					const key = keyDesign.packKey(v.set(
+						keyX + offset[0],
+						keyY + offset[1],
+						keyZ + offset[2]
+					));
+
+					const child = grid.get(key) as IntermediateOctant<T>;
+					cull(octree, child, v.x, v.y, v.z, level, region, result);
+
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+/**
 /**
  * An octree that subdivides space for fast spatial searches.
  *
@@ -562,6 +639,22 @@ export class Octree<T> implements Tree, Iterable<Node> {
 			throw new Error("Level out of bounds");
 
 		}
+
+	}
+
+	/**
+	 * Recursively collects nodes that intersect with the specified region.
+	 *
+	 * @param region - A region.
+	 * @return The nodes.
+	 */
+
+	cull(region: Frustum | Box3): Node[] {
+
+		const result: Node[] = [];
+		const octant = this.root.octant as IntermediateOctant<T>;
+		cull(this, octant, 0, 0, 0, this.getDepth() + 1, region, result);
+		return result;
 
 	}
 
