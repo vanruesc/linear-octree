@@ -49,7 +49,7 @@ export class OctreeRaycaster<T> extends Raycaster
 	private enabled: boolean;
 
 	/**
-	 * A delta time.
+	 * The measured processing time.
 	 */
 
 	private time: string;

@@ -56,7 +56,7 @@ export class FrustumCuller<T> {
 	private s: Spherical;
 
 	/**
-	 * A delta time.
+	 * The measured processing time.
 	 */
 
 	private time: string;
