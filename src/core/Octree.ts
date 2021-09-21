@@ -221,7 +221,7 @@ export class Octree<T> implements Tree, Iterable<Node> {
 	 * calculated from a desired cell size via {@link KeyDesign.calculateBounds}.
 	 *
 	 * @param bounds - The bounds of the octree.
-	 * @param keyDesign - The bit allotments for the octant coordinates.
+	 * @param keyDesign - The bit allotments for the octant coordinates. The highest number of bits determines the octree depth.
 	 */
 
 	constructor(bounds: Box3, keyDesign = new KeyDesign()) {
