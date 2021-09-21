@@ -4,8 +4,6 @@
 [![Version](https://badgen.net/npm/v/linear-octree?color=green)](https://www.npmjs.com/package/linear-octree)
 [![Peer dependencies](https://badgen.net/david/peer/vanruesc/linear-octree)](https://david-dm.org/vanruesc/linear-octree?type=peer)
 
-:warning: WIP :warning:
-
 A sparse, linear octree data structure. For a pointer-based implementation see [sparse-octree](https://github.com/vanruesc/sparse-octree).
 
 *[Demo](https://vanruesc.github.io/linear-octree/public/demo)&ensp;&middot;&ensp;[Documentation](https://vanruesc.github.io/linear-octree/public/docs)*
@@ -22,12 +20,46 @@ npm install three linear-octree
 
 ## Usage
 
-##### Objects
+```ts
+import { KeyDesign, Octree } from "linear-octree";
+import { Box3, Vector3 } from "three";
 
-```js
-import { Octree } from "linear-octree";
+// Define the bit distribution for the X-, Y- and Z-axis.
+const keyDesign = new KeyDesign(4, 4, 4); // Tree depth = 4, 2^12 leaf octants
 
-// TODO
+// Define the octree world bounds.
+const bounds = new Box3();
+bounds.min.set(-1, -1, -1);
+bounds.max.set(1, 1, 1);
+// Alternatively, define the bounds based on a cell size.
+const cellSize = new Vector3(1, 1, 1);
+const bounds = keyDesign.calculateBounds(cellSize, new Box3());
+
+// Create the octree.
+const octree = new Octree<string>(bounds, keyDesign);
+
+// Octree operations require Uint key coordinates.
+const keyCoordinates = new Vector3();
+const worldPosition = new Vector3(0.5, 0.5, 0.5);
+octree.calculateKeyCoordinates(worldPosition, keyCoordinates);
+
+// Set and retrieve data.
+const level = 0; // Octants of every level can store data.
+octree.set(keyCoordinates, level, "my data");
+octree.get(keyCoordinates, level); // => "my data"
+octree.delete(keyCoordinates, level);
+octree.get(keyCoordinates, level); // => undefined
+```
+
+## Key Design
+
+```ts
+// The largest uniform octree can contain 2^51 octants.
+const keyDesign = new KeyDesign(17, 17, 17);
+// Octrees can be non-uniform with uneven bit distributions.
+const keyDesign = new KeyDesign(21, 11, 21);
+// Bits for Y (and Z) can be set to zero to emulate a quad tree.
+const keyDesign = new KeyDesign(26, 0, 26);
 ```
 
 
@@ -36,7 +68,7 @@ import { Octree } from "linear-octree";
 - Linear structure
   - Packs positional data into numeric keys
   - Constant time access to octants, parents and neighbors at any depth level
-  - Low memory usage
+  - Low memory usage (no explicit positional data stored in octants)
 - Adheres to a [common octant layout](http://vanruesc.github.io/sparse-octree/public/docs/variable/index.html#static-variable-layout)
 - Supports raycasting
 - Supports culling
