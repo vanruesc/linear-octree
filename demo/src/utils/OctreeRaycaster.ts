@@ -1,20 +1,29 @@
 import {
+	BoxGeometry,
 	Camera,
 	Group,
+	InstancedMesh,
+	Material,
+	Matrix4,
 	Mesh,
 	MeshBasicMaterial,
 	Object3D,
 	Points,
 	PointsMaterial,
+	Quaternion,
 	Raycaster,
-	SphereBufferGeometry,
-	Vector2
+	Vector2,
+	Vector3
 } from "three";
 
 import { GUI } from "dat.gui";
 import { Octree } from "../../../src";
 
 const pointer = new Vector2();
+const m = new Matrix4();
+const s = new Vector3();
+const p = new Vector3();
+const q = new Quaternion();
 
 /**
  * An octree raycaster.
@@ -28,7 +37,13 @@ export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject
 	 * An octree.
 	 */
 
-	private octree: Octree<T>;
+	octree: Octree<T>;
+
+	/**
+	 * A DOM element.
+	 */
+
+	private domElement: HTMLElement;
 
 	/**
 	 * Indicates whether this raycaster is active.
@@ -40,23 +55,23 @@ export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject
 	 * A delta time.
 	 */
 
-	private delta: string;
+	private time: string;
 
 	/**
-	 * A mesh that indicates the current point of intersection.
+	 * A mesh that represents intersecting octants.
 	 */
 
-	private cursor: Mesh;
+	private mesh: InstancedMesh;
 
 	/**
 	 * Constructs a new octree raycaster.
 	 *
 	 * @param octree - An octree.
 	 * @param camera - A camera.
-	 * @param group - A group of points.
+	 * @param domElement - A DOM element.
 	 */
 
-	constructor(octree: Octree<T>, camera: Camera) {
+	constructor(octree: Octree<T>, camera: Camera, domElement: HTMLElement) {
 
 		super();
 
@@ -64,31 +79,34 @@ export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject
 
 		this.octree = octree;
 		this.camera = camera;
+		this.domElement = domElement;
 		this.enabled = true;
-		this.delta = "";
+		this.time = "";
 
-		this.cursor = new Mesh(
-			new SphereBufferGeometry(0.2, 16, 16),
+		this.mesh = new InstancedMesh(
+			new BoxGeometry(1, 1, 1),
 			new MeshBasicMaterial({
 				transparent: true,
 				color: 0x00ccff,
 				opacity: 0.75
-			})
+			}),
+			100
 		);
 
-		this.cursor.visible = false;
+		document.addEventListener("keyup", this, { passive: true });
+		domElement.addEventListener("pointermove", this, { passive: true });
 
 	}
 
 	/**
-	 * Returns a mesh that represents the current point of intersection.
+	 * Returns a group of meshes that indicate intersecting octants.
 	 *
-	 * @return The selected point.
+	 * @return The intersection markers.
 	 */
 
-	getCursor(): Mesh {
+	getMesh(): Mesh {
 
-		return this.cursor;
+		return this.mesh;
 
 	}
 
@@ -100,33 +118,33 @@ export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject
 
 	raycast(event: PointerEvent): void {
 
-		pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
-		pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
-		this.setFromCamera(pointer, this.camera);
-
-		const t0 = performance.now();
-		let x;
-
-		this.cursor.visible = false;
-
 		if(this.enabled) {
 
+			pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+			pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
+			this.setFromCamera(pointer, this.camera);
+
+			const t0 = performance.now();
 			const intersections = this.octree.getIntersectingNodes(this);
+			this.time = (performance.now() - t0).toFixed(2) + " ms";
+
+			const mesh = this.mesh;
+			mesh.count = intersections.length;
 
 			if(intersections.length > 0) {
 
-				x = intersections[0];
+				for(let i = 0, l = intersections.length; i < l; ++i) {
+
+					const x = intersections[i];
+					x.getCenter(p);
+					x.getDimensions(s);
+					mesh.setMatrixAt(i, m.compose(p, q, s));
+
+				}
+
+				mesh.instanceMatrix.needsUpdate = true;
 
 			}
-
-		}
-
-		this.delta = (performance.now() - t0).toFixed(2) + " ms";
-
-		if(x !== undefined) {
-
-			this.cursor.visible = true;
-			x.getCenter(this.cursor.position);
 
 		}
 
@@ -141,9 +159,19 @@ export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject
 	registerOptions(menu: GUI): void {
 
 		const folder = menu.addFolder("Raycasting");
-		folder.add(this, "enabled");
-		folder.add(this, "delta").listen();
+		folder.add(this, "enabled").name("enabled (press E)").listen();
+		folder.add(this, "time").listen();
 		folder.open();
+
+	}
+
+	handleKeyboardEvent(event: KeyboardEvent): void {
+
+		if(event.key === "e") {
+
+			this.enabled = !this.enabled;
+
+		}
 
 	}
 
@@ -151,11 +179,33 @@ export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject
 
 		switch(event.type) {
 
+			case "keyup":
+				this.handleKeyboardEvent(event as KeyboardEvent);
+				break;
+
 			case "pointermove":
 				this.raycast(event as PointerEvent);
 				break;
 
 		}
+
+	}
+
+	/**
+	 * Deletes this raycaster.
+	 */
+
+	dispose() {
+
+		const domElement = this.domElement;
+		document.removeEventListener("keyup", this);
+		domElement.removeEventListener("pointermove", this);
+
+		const geometry = this.mesh.geometry;
+		const material = this.mesh.material as Material;
+
+		geometry.dispose();
+		material.dispose();
 
 	}
 
