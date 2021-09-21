@@ -183,14 +183,12 @@ export class KeyDesign {
 	/**
 	 * Sets the bit distribution.
 	 *
-	 * Make sure to clear your octree after changing the key design!
-	 *
 	 * @param x - The amount of bits used for the X-coordinate. Cannot be zero.
 	 * @param y - The amount of bits used for the Y-coordinate.
 	 * @param z - The amount of bits used for the Z-coordinate.
 	 */
 
-	set(x: number, y: number, z: number): void {
+	private set(x: number, y: number, z: number): void {
 
 		x = Math.max(x, 0);
 		y = Math.max(y, 0);
