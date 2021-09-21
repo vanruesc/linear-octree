@@ -247,9 +247,9 @@ export class Octree<T> implements Tree, Iterable<Node> {
 
 		const dimensions = root.getDimensions(new Vector3());
 		this.cellSize = dimensions.set(
-			dimensions.x / (1 << keyDesign.x >>> 0),
-			dimensions.y / (1 << keyDesign.y >>> 0),
-			dimensions.z / (1 << keyDesign.z >>> 0)
+			dimensions.x / keyDesign.rangeX,
+			dimensions.y / keyDesign.rangeY,
+			dimensions.z / keyDesign.rangeZ
 		);
 
 	}
