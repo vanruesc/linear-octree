@@ -11,6 +11,7 @@ import { GUI } from "dat.gui";
 import { OctreeHelper } from "sparse-octree";
 import { ControlMode, SpatialControls } from "spatial-controls";
 import { calculateVerticalFoV, Demo } from "three-demo";
+import { FrustumCuller } from "../utils/FrustumCuller";
 import { OctreeRaycaster } from "../utils/OctreeRaycaster";
 import { KeyDesign, Octree } from "../../../src";
 
@@ -45,6 +46,12 @@ export class OctreeDemo extends Demo {
 	private octreeRaycaster: OctreeRaycaster<number>;
 
 	/**
+	 * A frustum culler.
+	 */
+
+	private frustumCuller: FrustumCuller<number>;
+
+	/**
 	 * Constructs a new demo.
 	 */
 
@@ -56,6 +63,7 @@ export class OctreeDemo extends Demo {
 		this.boundsHelper = null;
 		this.octreeHelper = null;
 		this.octreeRaycaster = null;
+		this.frustumCuller = null;
 
 	}
 
@@ -146,8 +154,16 @@ export class OctreeDemo extends Demo {
 
 		// Raycasting
 
-		this.octreeRaycaster = new OctreeRaycaster(octree, camera, domElement);
-		scene.add(this.octreeRaycaster.getMesh());
+		const octreeRaycaster = new OctreeRaycaster(octree, camera, domElement);
+		this.octreeRaycaster = octreeRaycaster;
+		scene.add(octreeRaycaster.getMesh());
+
+		// Frustum culling
+
+		const frustumCuller = new FrustumCuller(octree);
+		this.frustumCuller = frustumCuller;
+		scene.add(frustumCuller.getCameraHelper());
+		scene.add(frustumCuller.getMesh());
 
 	}
 
@@ -160,6 +176,7 @@ export class OctreeDemo extends Demo {
 	override registerOptions(menu: GUI): void {
 
 		this.octreeRaycaster.registerOptions(menu);
+		this.frustumCuller.registerOptions(menu);
 
 		const boundsHelper = this.boundsHelper;
 		const octreeHelper = this.octreeHelper;
@@ -169,6 +186,15 @@ export class OctreeDemo extends Demo {
 		};
 
 		const folder = menu.addFolder("Octree Helper");
+		folder.add(octreeHelper, "visible").onChange((value: boolean) => {
+
+				boundsHelper.visible = (
+					params["level mask"] >= octreeHelper.children.length &&
+					octreeHelper.visible
+				);
+
+		});
+
 		folder.add(params, "level mask", 0, octreeHelper.children.length + 1, 1)
 			.onChange(() => {
 
@@ -203,6 +229,7 @@ export class OctreeDemo extends Demo {
 	override dispose(): void {
 
 		this.octreeRaycaster.dispose();
+		this.frustumCuller.dispose();
 
 	}
 
