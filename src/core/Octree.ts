@@ -260,7 +260,7 @@ function cull<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
  * @param T - The type of the octant data.
  */
 
-export class Octree<T> implements Tree, Iterable<Node> {
+export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 
 	/**
 	 * The level zero cell size.
