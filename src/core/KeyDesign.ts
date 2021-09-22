@@ -224,7 +224,7 @@ export class KeyDesign {
 	 *
 	 * @param key - The key.
 	 * @param target - A vector to store the result in.
-	 * @return The extracted coordinates.
+	 * @return The extracted key coordinates.
 	 */
 
 	unpackKey(key: number, target: Vector3): Vector3 {
@@ -246,15 +246,15 @@ export class KeyDesign {
 	}
 
 	/**
-	 * Packs a 3D position into a unique key.
+	 * Packs key coordinates into a unique key.
 	 *
-	 * @param position - A position.
+	 * @param coords - The key coordinates (Uint).
 	 * @return The key.
 	 */
 
-	packKey(position: Vector3): number {
+	packKey(coords: Vector3): number {
 
-		return position.z * this.rangeXY + position.y * this.rangeX + position.x;
+		return coords.z * this.rangeXY + coords.y * this.rangeX + coords.x;
 
 	}
 
