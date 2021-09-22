@@ -437,6 +437,9 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 
 		}
 
+		const octant = this.root.octant as IntermediateOctant<T>;
+		octant.children = 0;
+
 	}
 
 	/**
