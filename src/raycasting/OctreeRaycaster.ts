@@ -62,7 +62,7 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 
 		if(level > 0 && octant.children > 0) {
 
-			// Go to the next lower LOD.
+			// Go to the next lower level.
 			const grid = octree.getGrid(--level);
 			const children = octant.children;
 
@@ -73,7 +73,7 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 
 			let currentOctant = findEntryOctant(tx0, ty0, tz0, txm, tym, tzm);
 
-			// Translate the key coordinates to the next lower LOD.
+			// Translate the key coordinates to the next lower level.
 			keyX *= 2; keyY *= 2; keyZ *= 2;
 
 			while(currentOctant < 8) {
