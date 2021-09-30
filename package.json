@@ -1,6 +1,6 @@
 {
 	"name": "linear-octree",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "A sparse, linear octree data structure.",
 	"homepage": "https://github.com/vanruesc/linear-octree",
 	"main": "dist/linear-octree.js",
