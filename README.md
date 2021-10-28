@@ -2,7 +2,6 @@
 
 [![CI](https://github.com/vanruesc/linear-octree/actions/workflows/ci.yml/badge.svg)](https://github.com/vanruesc/linear-octree/actions/workflows/ci.yml)
 [![Version](https://badgen.net/npm/v/linear-octree?color=green)](https://www.npmjs.com/package/linear-octree)
-[![Peer dependencies](https://badgen.net/david/peer/vanruesc/linear-octree)](https://david-dm.org/vanruesc/linear-octree?type=peer)
 
 A sparse, linear octree data structure. For a pointer-based implementation see [sparse-octree](https://github.com/vanruesc/sparse-octree).
 
