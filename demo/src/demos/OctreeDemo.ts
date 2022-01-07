@@ -104,14 +104,14 @@ export class OctreeDemo extends Demo {
 
 		// Octree
 
+		const keyDesign = new KeyDesign(3, 3, 3);
 		const bounds = new Box3();
 		bounds.min.set(-1, -1, -1);
 		bounds.max.set(1, 1, 1);
 		// Alternative:
-		// const cellSize = new Vector3(1, 1, 1);
+		// const cellSize = new Vector3(0.25, 0.25, 0.25);
 		// const bounds = keyDesign.calculateBounds(cellSize, new Box3());
 
-		const keyDesign = new KeyDesign(3, 3, 3);
 		const octree = new Octree<number>(bounds, keyDesign);
 		console.log(octree);
 

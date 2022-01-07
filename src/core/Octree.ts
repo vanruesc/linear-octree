@@ -77,8 +77,7 @@ function removeChildren<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
  * @param level - The current level.
  */
 
-function createParents<T>(octree: Octree<T>, keyX: number, keyY: number,
-	keyZ: number, level: number): void {
+function createParents<T>(octree: Octree<T>, keyX: number, keyY: number, keyZ: number, level: number): void {
 
 	// Go to the next higher level.
 	++level;
@@ -95,12 +94,11 @@ function createParents<T>(octree: Octree<T>, keyX: number, keyY: number,
 
 		// The resulting coordinates identify the parent octant.
 		const key = octree.getKeyDesign().packKey(v);
-		let parent;
 
 		if(grid.has(key)) {
 
 			// The parent node already exists.
-			parent = grid.get(key) as IntermediateOctant<T>;
+			const parent = grid.get(key) as IntermediateOctant<T>;
 
 			// Set the existence flag of the created child and stop.
 			parent.children |= 1 << i | 0;
@@ -108,7 +106,7 @@ function createParents<T>(octree: Octree<T>, keyX: number, keyY: number,
 		} else {
 
 			// Create a new intermediate node.
-			parent = new IntermediateOctant<T>();
+			const parent = new IntermediateOctant<T>();
 			grid.set(key, parent);
 
 			// Set the existence flag of the created child and recur.
@@ -137,8 +135,7 @@ function createParents<T>(octree: Octree<T>, keyX: number, keyY: number,
  * @param level - The current level.
  */
 
-function prune<T>(octree: Octree<T>, keyX: number, keyY: number, keyZ: number,
-	level: number): void {
+function prune<T>(octree: Octree<T>, keyX: number, keyY: number, keyZ: number, level: number): void {
 
 	// Go to the next higher level.
 	++level;
@@ -420,8 +417,7 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 
 	getGrid(level: number): Map<number, Octant<T>> {
 
-		return (level >= 0 && level < this.grids.length) ?
-			this.grids[level] : undefined;
+		return (level >= 0 && level < this.grids.length) ? this.grids[level] : undefined;
 
 	}
 
@@ -464,8 +460,7 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	 * @return The key coordinates.
 	 */
 
-	calculateKeyCoordinates(position: Vector3, level: number,
-		target: Vector3): Vector3 {
+	calculateKeyCoordinates(position: Vector3, level: number, target: Vector3): Vector3 {
 
 		if(!this.containsPoint(position)) {
 
@@ -625,8 +620,7 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 				const { x, y, z } = keyCoordinates;
 
 				// Create the octant.
-				const octant = (level === 0) ?
-					new Octant<T>() : new IntermediateOctant<T>();
+				const octant = (level === 0) ? new Octant<T>() : new IntermediateOctant<T>();
 
 				octant.data = data;
 				grid.set(key, octant);

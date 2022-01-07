@@ -12,9 +12,8 @@ const LO_BITS = 32;
 /**
  * A design for octant keys.
  *
- * 3D coordinates are packed into a single integer to obtain a unique key. This
- * class describes the bit allotment for each coordinate and provides methods
- * for key packing and unpacking.
+ * 3D coordinates are packed into a single integer to obtain a unique key. This class describes the bit allotment for
+ * each coordinate and provides methods for key packing and unpacking.
  *
  * See {@link KeyDesign.BITS} for the total amount of available bits.
  */
@@ -34,22 +33,19 @@ export class KeyDesign {
 	private range: Vector4;
 
 	/**
-	 * A bit mask for the X-coordinate. The first item holds the low bits and the
-	 * second item holds the high bits.
+	 * A bit mask for the X-coordinate. The first item holds the low bits, the second one holds the high bits.
 	 */
 
 	private maskX: number[];
 
 	/**
-	 * A bit mask for the Y-coordinate. The first item holds the low bits and the
-	 * second item holds the high bits.
+	 * A bit mask for the Y-coordinate. The first item holds the low bits, the second one holds the high bits.
 	 */
 
 	private maskY: number[];
 
 	/**
-	 * A bit mask for the Z-coordinate. The first item holds the low bits and the
-	 * second item holds the high bits.
+	 * A bit mask for the Z-coordinate. The first item holds the low bits, the second one holds the high bits.
 	 */
 
 	private maskZ: number[];
@@ -168,15 +164,11 @@ export class KeyDesign {
 		maskX[1] = (hiShiftX < DWORD_BITS) ? ~0 >>> hiShiftX : 0;
 		maskX[0] = ~0 >>> Math.max(0, LO_BITS - xBits);
 
-		maskY[1] = (hiShiftY < DWORD_BITS) ? ~0 >>> hiShiftY : 0;
-		maskY[1] = (maskY[1] & ~maskX[1]) >>> 0;
-		maskY[0] = ~0 >>> Math.max(0, LO_BITS - (xBits + yBits));
-		maskY[0] = (maskY[0] & ~maskX[0]) >>> 0;
+		maskY[1] = (((hiShiftY < DWORD_BITS) ? ~0 >>> hiShiftY : 0) & ~maskX[1]) >>> 0;
+		maskY[0] = ((~0 >>> Math.max(0, LO_BITS - (xBits + yBits))) & ~maskX[0]) >>> 0;
 
-		maskZ[1] = (hiShiftZ < DWORD_BITS) ? ~0 >>> hiShiftZ : 0;
-		maskZ[1] = (maskZ[1] & ~maskY[1] & ~maskX[1]) >>> 0;
-		maskZ[0] = ~0 >>> Math.max(0, LO_BITS - (xBits + yBits + zBits));
-		maskZ[0] = (maskZ[0] & ~maskY[0] & ~maskX[0]) >>> 0;
+		maskZ[1] = (((hiShiftZ < DWORD_BITS) ? ~0 >>> hiShiftZ : 0) & ~maskY[1] & ~maskX[1]) >>> 0;
+		maskZ[0] = ((~0 >>> Math.max(0, LO_BITS - (xBits + yBits + zBits))) & ~maskY[0] & ~maskX[0]) >>> 0;
 
 	}
 
@@ -275,7 +267,7 @@ export class KeyDesign {
 
 		bounds.max.set(range.x, range.y, range.z);
 		bounds.max.divideScalar(2).multiply(cellSize);
-		bounds.min.copy(bounds.max).multiplyScalar(-1);
+		bounds.min.copy(bounds.max).negate();
 
 		return bounds;
 
@@ -284,8 +276,7 @@ export class KeyDesign {
 	/**
 	 * Returns a new key range iterator.
 	 *
-	 * The key iterator will return all keys in the specified coordinate range,
-	 * including those at min and max.
+	 * The iterator returns all keys in the specified coordinate range, including those at min and max.
 	 *
 	 * @param min - The lower key index bounds (zero-based uint coordinates).
 	 * @param max - The upper key index bounds (zero-based uint coordinates).
@@ -351,8 +342,7 @@ export class KeyDesign {
 	/**
 	 * The total amount of available bits for safe integers.
 	 *
-	 * JavaScript uses IEEE 754 binary64 Doubles for Numbers and, as a result,
-	 * only supports 53-bit integers natively as of ES2021.
+	 * JavaScript uses IEEE 754 binary64 Doubles for all numbers and, as a result, only supports 53-bit Integers natively.
 	 *
 	 * `BigInt` is not an option due to the following reasons:
 	 *  - significant performance impact

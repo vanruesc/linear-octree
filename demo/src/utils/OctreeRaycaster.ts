@@ -27,8 +27,7 @@ const q = new Quaternion();
  * @param T - The type of the octree data.
  */
 
-export class OctreeRaycaster<T> extends Raycaster
-	implements EventListenerObject {
+export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject {
 
 	/**
 	 * An octree.
