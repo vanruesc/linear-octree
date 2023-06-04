@@ -1,12 +1,12 @@
 import test from "ava";
-import { Binary, KeyDesign } from "../../dist/linear-octree.js";
+import { Binary, KeyDesign } from "linear-octree";
 
 const DEBUG = false;
 
 test("can be instantiated", t => {
 
 	const object = new KeyDesign();
-	t.pass();
+	t.truthy(object);
 
 });
 

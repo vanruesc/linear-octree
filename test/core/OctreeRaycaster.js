@@ -1,6 +1,6 @@
 import test from "ava";
 import { Box3, Raycaster, Vector3 } from "three";
-import { KeyDesign, Octree } from "../../dist/linear-octree.js";
+import { KeyDesign, Octree } from "linear-octree";
 
 const bounds = new Box3(
 	new Vector3(-1, -1, -1),
@@ -15,8 +15,8 @@ test("can find intersecting octants", t => {
 	const keyDesign = new KeyDesign(1, 1, 1);
 	const octree = new Octree(bounds, keyDesign);
 	const raycaster = new Raycaster(
-		 new Vector3(0.5, 0.5, 2),
-		 new Vector3(0, 0, -1)
+		new Vector3(0.5, 0.5, 2),
+		new Vector3(0, 0, -1)
 	);
 
 	p.set(0.5, 0.5, 0.5);

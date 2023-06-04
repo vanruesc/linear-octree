@@ -1,6 +1,6 @@
 import test from "ava";
 import { Box3, Vector3 } from "three";
-import { KeyDesign, Octree } from "../../dist/linear-octree.js";
+import { KeyDesign, Octree } from "linear-octree";
 
 const bounds = new Box3(
 	new Vector3(-1, -1, -1),
@@ -15,7 +15,7 @@ test("can be instantiated", t => {
 
 	const keyDesign = new KeyDesign(1, 1, 1);
 	const octree = new Octree(bounds, keyDesign);
-	t.pass();
+	t.truthy(octree);
 
 });
 
@@ -25,6 +25,7 @@ test("can return its depth", t => {
 	const octree = new Octree(bounds, keyDesign);
 	const levels = Math.max(keyDesign.x, keyDesign.y, keyDesign.z);
 	t.is(octree.getDepth(), levels - 1, "should return the tree depth");
+	t.is(octree.getLevels(), levels, "should return the levels");
 
 });
 
@@ -36,22 +37,18 @@ test("correctly calculates key coordinates", t => {
 	p.set(1, 1, 1);
 	keyDesign.getMaxKeyCoordinates(v);
 	octree.calculateKeyCoordinates(p, 0, keyCoordinates);
+	let key = keyDesign.packKey(keyCoordinates.x, keyCoordinates.y, keyCoordinates.z);
 
-	t.deepEqual(keyCoordinates, v,
-		"should return the max key coordinates");
-
-	t.is(keyDesign.packKey(keyCoordinates), keyDesign.packKey(v),
-		"should return the last key");
+	t.deepEqual(keyCoordinates, v, "should return the max key coordinates");
+	t.is(key, keyDesign.packKey(v.x, v.y, v.z), "should return the last key");
 
 	p.set(0, 0, 0);
 	v.divideScalar(2).round();
 	octree.calculateKeyCoordinates(p, 0, keyCoordinates);
+	key = keyDesign.packKey(keyCoordinates.x, keyCoordinates.y, keyCoordinates.z);
 
-	t.deepEqual(keyCoordinates, v,
-		"should return the center (+0.5) key coordinates");
-
-	t.is(keyDesign.packKey(keyCoordinates), keyDesign.packKey(v),
-		"should return the center (+0.5) key");
+	t.deepEqual(keyCoordinates, v, "should return the center (+0.5) key coordinates");
+	t.is(key, keyDesign.packKey(v.x, v.y, v.z), "should return the center (+0.5) key");
 
 });
 

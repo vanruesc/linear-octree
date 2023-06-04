@@ -1,9 +1,9 @@
 import test from "ava";
-import { Octant } from "../../dist/linear-octree.js";
+import { Octant } from "linear-octree";
 
 test("can be instantiated", t => {
 
 	const object = new Octant();
-	t.pass();
+	t.truthy(object);
 
 });

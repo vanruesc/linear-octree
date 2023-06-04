@@ -1,6 +1,6 @@
 import test from "ava";
 import { Box3, Vector3 } from "three";
-import { OctantWrapper } from "../../dist/linear-octree.js";
+import { OctantWrapper } from "linear-octree";
 
 const box = new Box3(
 	new Vector3(-1, -1, -1),
@@ -10,7 +10,7 @@ const box = new Box3(
 test("can be instantiated", t => {
 
 	const object = new OctantWrapper();
-	t.pass();
+	t.truthy(object);
 
 });
 
