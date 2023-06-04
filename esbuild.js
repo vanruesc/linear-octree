@@ -1,36 +1,42 @@
-import { createRequire } from "module";
+import pkg from "./package.json" assert { type: "json" };
 import esbuild from "esbuild";
 
-const require = createRequire(import.meta.url);
-const pkg = require("./package");
-const minify = process.argv.includes("-m");
-const watch = process.argv.includes("-w");
-const date = (new Date()).toDateString();
+const date = new Date();
 const banner = `/**
- * ${pkg.name} v${pkg.version} build ${date}
+ * ${pkg.name} v${pkg.version} build ${date.toDateString()}
  * ${pkg.homepage}
- * Copyright ${date.slice(-4)} ${pkg.author.name}
+ * Copyright 2019 ${pkg.author.name}
  * @license ${pkg.license}
  */`;
 
-await esbuild.build({
-	entryPoints: ["src/index.ts"],
-	outfile: `dist/${pkg.name}.js`,
-	external: Object.keys(pkg.peerDependencies || {}),
+const lib = {
+	entryPoints: ["./src/index.ts"],
+	outfile: "./dist/index.js",
 	banner: { js: banner },
+	external: ["three"],
 	logLevel: "info",
 	format: "esm",
-	bundle: true,
-	watch
-}).catch(() => process.exit(1));
+	bundle: true
+};
 
-await esbuild.build({
-	entryPoints: ["demo/src/index.ts"],
-	outdir: "public/demo",
+const demo = {
+	entryPoints: ["./demo/src/index.ts"],
+	outdir: "./public/demo",
+	minify: process.argv.includes("-m"),
 	logLevel: "info",
 	format: "iife",
 	target: "es6",
-	bundle: true,
-	minify,
-	watch
-}).catch(() => process.exit(1));
+	bundle: true
+};
+
+if(process.argv.includes("-w")) {
+
+	const ctxDemo = await esbuild.context(demo);
+	await ctxDemo.watch();
+
+} else {
+
+	await esbuild.build(lib);
+	await esbuild.build(demo);
+
+}
