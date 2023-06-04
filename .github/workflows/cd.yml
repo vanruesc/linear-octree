@@ -12,21 +12,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git checkout
-        uses: actions/checkout@v2
-      - name: Install Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
+        uses: actions/checkout@v3
       - name: Install PNPM
-        run: npm install -g pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          cache: "pnpm"
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile=false
-      - name: Build and deploy
-        run: pnpm run deploy
-      - uses: JamesIves/github-pages-deploy-action@4.1.5
+        run: pnpm install --frozen-lockfile
+      - name: Publish
+        id: publish
+        uses: JS-DevTools/npm-publish@v2
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          ignore-scripts: false
+      - if: ${{ steps.publish.outputs.type }}
+        run: |
+          echo "Version changed: ${{ steps.publish.outputs.old-version }} → ${{ steps.publish.outputs.version }}"
+      - if: ${{ !steps.publish.outputs.type }}
+        run: |
+          pnpm run prepublishOnly
+      - uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: public
           single-commit: true
-          silent: true
-          clean: true
