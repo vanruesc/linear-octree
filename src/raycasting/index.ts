@@ -1,1 +1,1 @@
-export { OctreeRaycaster } from "./OctreeRaycaster";
+export { OctreeRaycaster } from "./OctreeRaycaster.js";

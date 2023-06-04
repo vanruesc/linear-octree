@@ -1,18 +1,6 @@
 import { Box3, Ray, Vector3 } from "three";
-
-import {
-	layout,
-	RaycastingFlags,
-	findEntryOctant,
-	findNextOctant,
-	intersectOctree
-} from "sparse-octree";
-
-import {
-	IntermediateOctant,
-	OctantWrapper,
-	Octree
-} from "../core";
+import { layout, RaycastingFlags, findEntryOctant, findNextOctant, intersectOctree } from "sparse-octree";
+import { IntermediateOctant, OctantWrapper, Octree } from "../core/index.js";
 
 const octantWrapper = new OctantWrapper<unknown>();
 const flags = new RaycastingFlags();
@@ -21,8 +9,7 @@ const u = new Vector3();
 const v = new Vector3();
 
 /**
- * Recursively traverses the given octant to find (pseudo) leaf octants that
- * intersect with the given ray.
+ * Recursively traverses the given octant to find (pseudo) leaf octants that intersect with the given ray.
  *
  * @param octree - The octree.
  * @param octant - The current octant.
@@ -46,14 +33,14 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 
 	if(tx1 >= 0.0 && ty1 >= 0.0 && tz1 >= 0.0) {
 
-		const keyDesign = octree.getKeyDesign();
+		const keyDesign = octree.keyDesign;
 
 		if(octant.data !== null) {
 
 			const cellSize = octree.getCellSize(level, u);
 			const octantWrapper = new OctantWrapper<T>(octant);
-			octantWrapper.id.set(level, keyDesign.packKey(v.set(keyX, keyY, keyZ)));
-			octantWrapper.min.copy(v).multiply(cellSize).add(octree.min);
+			octantWrapper.id.set(keyDesign.packKey(keyX, keyY, keyZ), level);
+			octantWrapper.min.set(keyX, keyY, keyZ).multiply(cellSize).add(octree.min);
 			octantWrapper.max.copy(octantWrapper.min).add(cellSize);
 
 			result.push(octantWrapper);
@@ -84,11 +71,11 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 
 				v.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);
 
-				let child: IntermediateOctant<T>;
+				let child = null;
 
 				if(childExists) {
 
-					child = grid.get(keyDesign.packKey(v)) as IntermediateOctant<T>;
+					child = grid.get(keyDesign.packKey(v.x, v.y, v.z)) as IntermediateOctant<T>;
 
 				}
 
@@ -96,7 +83,7 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 
 					case 0: {
 
-						if(childExists) {
+						if(child !== null) {
 
 							raycastOctant(
 								octree, child, v.x, v.y, v.z, level,
@@ -112,7 +99,7 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 
 					case 1: {
 
-						if(childExists) {
+						if(child !== null) {
 
 							raycastOctant(
 								octree, child, v.x, v.y, v.z, level,
@@ -128,7 +115,7 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 
 					case 2: {
 
-						if(childExists) {
+						if(child !== null) {
 
 							raycastOctant(
 								octree, child, v.x, v.y, v.z, level,
@@ -144,7 +131,7 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 
 					case 3: {
 
-						if(childExists) {
+						if(child !== null) {
 
 							raycastOctant(
 								octree, child, v.x, v.y, v.z, level,
@@ -160,7 +147,7 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 
 					case 4: {
 
-						if(childExists) {
+						if(child !== null) {
 
 							raycastOctant(
 								octree, child, v.x, v.y, v.z, level,
@@ -176,7 +163,7 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 
 					case 5: {
 
-						if(childExists) {
+						if(child !== null) {
 
 							raycastOctant(
 								octree, child, v.x, v.y, v.z, level,
@@ -192,7 +179,7 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 
 					case 6: {
 
-						if(childExists) {
+						if(child !== null) {
 
 							raycastOctant(
 								octree, child, v.x, v.y, v.z, level,
@@ -208,7 +195,7 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 
 					case 7: {
 
-						if(childExists) {
+						if(child !== null) {
 
 							raycastOctant(
 								octree, child, v.x, v.y, v.z, level,
@@ -263,10 +250,10 @@ export class OctreeRaycaster {
 
 		if(ray.intersectsBox(bounds)) {
 
-			const level = octree.getDepth() + 1; // Starting at the root octant.
+			const level = octree.getLevels(); // Starting at the root octant.
 			const rootOctant = octree.root.octant as IntermediateOctant<T>;
 
-			const keyDesign = octree.getKeyDesign();
+			const keyDesign = octree.keyDesign;
 			const dimensions = octree.getDimensions(u);
 			const maxBits = Math.max(keyDesign.x, keyDesign.y, keyDesign.z);
 

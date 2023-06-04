@@ -1,8 +1,8 @@
-export { IntermediateOctant } from "./IntermediateOctant";
-export { KeyDesign } from "./KeyDesign";
-export { KeyIterator } from "./KeyIterator";
-export { Octant } from "./Octant";
-export { OctantId } from "./OctantId";
-export { OctantWrapper } from "./OctantWrapper";
-export { Octree } from "./Octree";
-export { OctreeIterator } from "./OctreeIterator";
+export { IntermediateOctant } from "./IntermediateOctant.js";
+export { KeyDesign } from "./KeyDesign.js";
+export { KeyIterator } from "./KeyIterator.js";
+export { Octant } from "./Octant.js";
+export { OctantId } from "./OctantId.js";
+export { OctantWrapper } from "./OctantWrapper.js";
+export { Octree } from "./Octree.js";
+export { OctreeIterator } from "./OctreeIterator.js";

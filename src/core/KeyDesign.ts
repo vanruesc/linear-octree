@@ -1,6 +1,6 @@
 import { Box3, Vector3, Vector4 } from "three";
-import { Binary } from "../utils/Binary";
-import { KeyIterator } from "./KeyIterator";
+import { Binary } from "../utils/Binary.js";
+import { KeyIterator } from "./KeyIterator.js";
 
 const DWORD_BITS = 32;
 const RANGE_DWORD = Math.pow(2, DWORD_BITS);
@@ -240,13 +240,15 @@ export class KeyDesign {
 	/**
 	 * Packs key coordinates into a unique key.
 	 *
-	 * @param coords - The key coordinates (Uint).
+	 * @param x - The X-coordinate (Uint).
+	 * @param y - The Y-coordinate (Uint).
+	 * @param z - The Z-coordinate (Uint).
 	 * @return The key.
 	 */
 
-	packKey(coords: Vector3): number {
+	packKey(x: number, y: number, z: number): number {
 
-		return coords.z * this.rangeXY + coords.y * this.rangeX + coords.x;
+		return z * this.rangeXY + y * this.rangeX + x;
 
 	}
 

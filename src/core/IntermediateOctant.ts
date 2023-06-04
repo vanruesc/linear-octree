@@ -1,4 +1,4 @@
-import { Octant } from "./Octant";
+import { Octant } from "./Octant.js";
 
 /**
  * An octant that stores information about the existence of child octants.

@@ -28,7 +28,7 @@ export class Binary {
 	static toString(n: number, minBits = 64): string {
 
 		const sign = (n < 0) ? "-" : "";
-		return sign + Math.abs(n).toString(2).padStart(64, "0");
+		return sign + Math.abs(n).toString(2).padStart(minBits, "0");
 
 	}
 

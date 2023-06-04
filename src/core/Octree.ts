@@ -1,12 +1,12 @@
 import { Box3, Frustum, Raycaster, Vector3 } from "three";
 import { layout, Node, Tree } from "sparse-octree";
-import { IntermediateOctant } from "./IntermediateOctant";
-import { KeyDesign } from "./KeyDesign";
-import { Octant } from "./Octant";
-import { OctantWrapper } from "./OctantWrapper";
-import { OctreeIterator } from "./OctreeIterator";
-import { OctreeRaycaster } from "../raycasting/OctreeRaycaster";
-import { calculateOffsetIndex } from "../utils/calculateOffsetIndex";
+import { IntermediateOctant } from "./IntermediateOctant.js";
+import { KeyDesign } from "./KeyDesign.js";
+import { Octant } from "./Octant.js";
+import { OctantWrapper } from "./OctantWrapper.js";
+import { OctreeIterator } from "./OctreeIterator.js";
+import { OctreeRaycaster } from "../raycasting/OctreeRaycaster.js";
+import { calculateOffsetIndex } from "../utils/calculateOffsetIndex.js";
 
 const u = new Vector3();
 const v = new Vector3();
@@ -33,7 +33,7 @@ function removeChildren<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 		--level;
 
 		const grid = octree.getGrid(level);
-		const keyDesign = octree.getKeyDesign();
+		const keyDesign = octree.keyDesign;
 		const children = octant.children;
 
 		// Translate the key coordinates to the next lower level.
@@ -45,11 +45,8 @@ function removeChildren<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 			if((children & (1 << i | 0)) !== 0) {
 
 				const offset = layout[i];
-				const key = keyDesign.packKey(v.set(
-					keyX + offset[0],
-					keyY + offset[1],
-					keyZ + offset[2]
-				));
+				v.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);
+				const key = keyDesign.packKey(v.x, v.y, v.z);
 
 				// Get the child octant and remove it from the grid.
 				const child = grid.get(key) as IntermediateOctant<T>;
@@ -93,7 +90,7 @@ function createParents<T>(octree: Octree<T>, keyX: number, keyY: number, keyZ: n
 		v.set(keyX >>> 1, keyY >>> 1, keyZ >>> 1);
 
 		// The resulting coordinates identify the parent octant.
-		const key = octree.getKeyDesign().packKey(v);
+		const key = octree.keyDesign.packKey(v.x, v.y, v.z);
 
 		if(grid.has(key)) {
 
@@ -151,7 +148,7 @@ function prune<T>(octree: Octree<T>, keyX: number, keyY: number, keyZ: number, l
 		v.set(keyX >>> 1, keyY >>> 1, keyZ >>> 1);
 
 		// The resulting coordinates identify the parent octant.
-		const key = octree.getKeyDesign().packKey(v);
+		const key = octree.keyDesign.packKey(v.x, v.y, v.z);
 		const parent = grid.get(key) as IntermediateOctant<T>;
 
 		// Unset the existence flag of the deleted child.
@@ -199,12 +196,12 @@ function cull<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 
 	if(region.intersectsBox(b)) {
 
-		const keyDesign = octree.getKeyDesign();
+		const keyDesign = octree.keyDesign;
 
 		if(octant.data !== null) {
 
 			const octantWrapper = new OctantWrapper<T>(octant);
-			octantWrapper.id.set(level, keyDesign.packKey(v));
+			octantWrapper.id.set(keyDesign.packKey(v.x, v.y, v.z), level);
 			octantWrapper.min.copy(b.min);
 			octantWrapper.max.copy(b.max);
 			result.push(octantWrapper);
@@ -229,11 +226,8 @@ function cull<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 				if((children & (1 << i | 0)) !== 0) {
 
 					const offset = layout[i];
-					const key = keyDesign.packKey(v.set(
-						keyX + offset[0],
-						keyY + offset[1],
-						keyZ + offset[2]
-					));
+					v.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);
+					const key = keyDesign.packKey(v.x, v.y, v.z);
 
 					const child = grid.get(key) as IntermediateOctant<T>;
 					cull(octree, child, v.x, v.y, v.z, level, region, result);
@@ -251,8 +245,8 @@ function cull<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 /**
  * An octree that subdivides space for fast spatial searches.
  *
- * This linear implementation offers constant time access to octants at any
- * depth level as well as octant neighbours and parents.
+ * This linear implementation offers constant time access to octants at any depth level as well as octant neighbours
+ * and parent nodes.
  *
  * @param T - The type of the octant data.
  */
@@ -266,10 +260,10 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	private cellSize: Vector3;
 
 	/**
-	 * The octant key design.
+	 * @see {@link keyDesign}
 	 */
 
-	private keyDesign: KeyDesign;
+	private _keyDesign: KeyDesign;
 
 	/**
 	 * The hierarchical octant grids.
@@ -286,12 +280,11 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	/**
 	 * Constructs a new octree.
 	 *
-	 * Each octant can be uniquely identified by a 3D coordinate and a level. The
-	 * tree depth is defined by the highest number of bits in the key design.
+	 * Each octant can be uniquely identified by a 3D coordinate and a level. The tree depth is defined by the highest
+	 * number of bits in the key design.
 	 *
-	 * If the bounds of the octree are defined directly, the cell size will depend
-	 * on the bounds and the key design. Alternatively, the bounds can be
-	 * calculated from a desired cell size via {@link KeyDesign.calculateBounds}.
+	 * If the bounds of the octree are defined directly, the cell size will depend on the bounds and the key design.
+	 * Alternatively, the bounds can be calculated from a desired cell size via {@link KeyDesign.calculateBounds}.
 	 *
 	 * @param bounds - The bounds of the octree.
 	 * @param keyDesign - The bit allotments for the octant coordinates.
@@ -301,7 +294,7 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 
 		const levels = Math.max(keyDesign.x, keyDesign.y, keyDesign.z);
 
-		this.keyDesign = keyDesign;
+		this._keyDesign = keyDesign;
 		this.grids = [];
 
 		while(this.grids.length < levels) {
@@ -376,14 +369,12 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	}
 
 	/**
-	 * Returns the key design.
-	 *
-	 * @return The key design.
+	 * The key design.
 	 */
 
-	getKeyDesign(): KeyDesign {
+	get keyDesign(): KeyDesign {
 
-		return this.keyDesign;
+		return this._keyDesign;
 
 	}
 
@@ -411,13 +402,20 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	/**
 	 * Returns the grid of the specified level.
 	 *
+	 * @throws If the given level is out of bounds.
 	 * @param level - The level of the grid.
 	 * @return The requested grid, or undefined if the level is out of bounds.
 	 */
 
 	getGrid(level: number): Map<number, Octant<T>> {
 
-		return (level >= 0 && level < this.grids.length) ? this.grids[level] : undefined;
+		if(level < 0 || level >= this.grids.length) {
+
+			throw new Error(`Level ${level} is out of bounds [0, ${this.grids.length - 1}]`);
+
+		}
+
+		return this.grids[level];
 
 	}
 
@@ -491,25 +489,13 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	 * @return The octant, or undefined if it doesn't exist.
 	 */
 
-	getOctantByPoint(point: Vector3, level = 0): Octant<T> {
+	getOctantByPoint(point: Vector3, level = 0): Octant<T> | undefined {
 
 		const keyDesign = this.keyDesign;
 		const grid = this.getGrid(level);
+		this.calculateKeyCoordinates(point, level, v);
 
-		let result: Octant<T>;
-
-		if(grid !== undefined) {
-
-			this.calculateKeyCoordinates(point, level, v);
-			result = grid.get(keyDesign.packKey(v));
-
-		} else {
-
-			throw new Error("Level out of bounds");
-
-		}
-
-		return result;
+		return grid.get(keyDesign.packKey(v.x, v.y, v.z));
 
 	}
 
@@ -527,29 +513,20 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 		const keyDesign = this.keyDesign;
 		const grid = this.getGrid(level);
 
-		if(grid !== undefined) {
+		const { x, y, z } = keyCoordinates;
+		const key = keyDesign.packKey(x, y, z);
 
-			const key = keyDesign.packKey(keyCoordinates);
+		if(grid.has(key)) {
 
-			if(grid.has(key)) {
+			// Recursively delete all children in the lower level grids.
+			const octant = grid.get(key) as IntermediateOctant<T>;
+			removeChildren(this, octant, x, y, z, level);
 
-				const { x, y, z } = keyCoordinates;
+			// Remove the octant.
+			grid.delete(key);
 
-				// Recursively delete all children in the lower level grids.
-				const octant = grid.get(key) as IntermediateOctant<T>;
-				removeChildren(this, octant, x, y, z, level);
-
-				// Remove the octant.
-				grid.delete(key);
-
-				// Recursively delete empty parent nodes.
-				prune(this, x, y, z, level);
-
-			}
-
-		} else {
-
-			throw new Error("Level out of bounds");
+			// Recursively delete empty parent nodes.
+			prune(this, x, y, z, level);
 
 		}
 
@@ -563,31 +540,15 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	 * @return The data, or undefined if the octant doesn't exist.
 	 */
 
-	get(keyCoordinates: Vector3, level: number): T {
+	get(keyCoordinates: Vector3, level: number): T | null | undefined {
 
 		const keyDesign = this.keyDesign;
 		const grid = this.getGrid(level);
 
-		let result;
+		const { x, y, z } = keyCoordinates;
+		const key = keyDesign.packKey(x, y, z);
 
-		if(grid !== undefined) {
-
-			const key = keyDesign.packKey(keyCoordinates);
-
-			if(grid.has(key)) {
-
-				const octant = grid.get(key);
-				result = octant.data;
-
-			}
-
-		} else {
-
-			throw new Error("Level out of bounds");
-
-		}
-
-		return result;
+		return grid.get(key)?.data;
 
 	}
 
@@ -601,38 +562,34 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	 * @param data - The data.
 	 */
 
-	set(keyCoordinates: Vector3, level: number, data: T): void {
+	set(keyCoordinates: Vector3, level: number, data: T | null): void {
 
 		const keyDesign = this.keyDesign;
 		const grid = this.getGrid(level);
 
-		if(grid !== undefined) {
+		const { x, y, z } = keyCoordinates;
+		const key = keyDesign.packKey(x, y, z);
 
-			const key = keyDesign.packKey(keyCoordinates);
+		if(grid.has(key)) {
 
-			if(grid.has(key)) {
+			const octant = grid.get(key);
 
-				const octant = grid.get(key);
-				octant.data = data;
-
-			} else {
-
-				const { x, y, z } = keyCoordinates;
-
-				// Create the octant.
-				const octant = (level === 0) ? new Octant<T>() : new IntermediateOctant<T>();
+			if(octant !== undefined) {
 
 				octant.data = data;
-				grid.set(key, octant);
-
-				// Recursively create intermediate parent nodes.
-				createParents(this, x, y, z, level);
 
 			}
 
 		} else {
 
-			throw new Error("Level out of bounds");
+			// Create the octant.
+			const octant = (level === 0) ? new Octant<T>() : new IntermediateOctant<T>();
+
+			octant.data = data;
+			grid.set(key, octant);
+
+			// Recursively create intermediate parent nodes.
+			createParents(this, x, y, z, level);
 
 		}
 
@@ -655,8 +612,7 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	}
 
 	/**
-	 * Finds nodes that intersect with the given ray. The intersecting nodes are
-	 * sorted by distance, closest first.
+	 * Finds nodes that intersect with the given ray. The intersecting nodes are sorted by distance, closest first.
 	 *
 	 * @param raycaster - A raycaster.
 	 * @return The intersecting nodes.
@@ -671,9 +627,9 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	/**
 	 * Returns a new octree iterator.
 	 *
-	 * The octants returned by this iterator are augmented with explicit
-	 * positional information. See {@link OctantWrapper} for more details.
+	 * The octants returned by this iterator are augmented wrappers with explicit positional information.
 	 *
+	 * @see {@link OctantWrapper}
 	 * @param level - The depth level.
 	 * @return An octree iterator.
 	 */

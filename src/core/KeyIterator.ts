@@ -1,5 +1,5 @@
 import { Vector3 } from "three";
-import { KeyDesign } from "./KeyDesign";
+import { KeyDesign } from "./KeyDesign.js";
 
 /**
  * A key range iterator.
@@ -47,13 +47,12 @@ export class KeyIterator implements Iterator<number>, Iterable<number> {
 	 * An iterator result.
 	 */
 
-	private result: IteratorResult<number>;
+	private result!: IteratorResult<number>;
 
 	/**
 	 * Constructs a new key iterator.
 	 *
-	 * This iterator returns all keys in the specified coordinate range, including
-	 * those at min and max.
+	 * This iterator returns all keys in the specified coordinate range, including those at min and max.
 	 *
 	 * @param keyDesign - A key design.
 	 * @param min - The lower index bounds (zero-based uint coordinates).
@@ -82,8 +81,7 @@ export class KeyIterator implements Iterator<number>, Iterable<number> {
 		const min = this.min;
 		const max = this.max;
 
-		if(min.x >= 0 && min.y >= 0 && min.z >= 0 &&
-			min.x <= max.x && min.y <= max.y && min.z <= max.z) {
+		if(min.x >= 0 && min.y >= 0 && min.z >= 0 && min.x <= max.x && min.y <= max.y && min.z <= max.z) {
 
 			keyBase.set(min.x, min.y * keyDesign.rangeX, min.z * keyDesign.rangeXY);
 			limit.set(max.x, max.y * keyDesign.rangeX, max.z * keyDesign.rangeXY);
@@ -101,9 +99,8 @@ export class KeyIterator implements Iterator<number>, Iterable<number> {
 		}
 
 		this.result = {
-			done: false,
-			value: null
-		};
+			done: false
+		} as IteratorResult<number>;
 
 		return this;
 

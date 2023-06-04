@@ -1,7 +1,7 @@
 import { Vector3 } from "three";
-import { Octant } from "./Octant";
-import { OctantWrapper } from "./OctantWrapper";
-import { Octree } from "./Octree";
+import { Octant } from "./Octant.js";
+import { OctantWrapper } from "./OctantWrapper.js";
+import { Octree } from "./Octree.js";
 
 /**
  * An octree iterator.
@@ -9,8 +9,7 @@ import { Octree } from "./Octree";
  * @param T - The type of the octant data.
  */
 
-export class OctreeIterator<T> implements Iterator<OctantWrapper<T>>,
-	Iterable<OctantWrapper<T>> {
+export class OctreeIterator<T> implements Iterator<OctantWrapper<T>>, Iterable<OctantWrapper<T>> {
 
 	/**
 	 * The octree.
@@ -34,13 +33,13 @@ export class OctreeIterator<T> implements Iterator<OctantWrapper<T>>,
 	 * An internal octant grid entry iterator.
 	 */
 
-	private iterator: Iterator<[number, Octant<T>]>;
+	private iterator!: Iterator<[number, Octant<T>]>;
 
 	/**
 	 * An iterator result.
 	 */
 
-	private result: IteratorResult<OctantWrapper<T>>;
+	private result!: IteratorResult<OctantWrapper<T>>;
 
 	/**
 	 * Constructs a new octant iterator.
@@ -54,7 +53,6 @@ export class OctreeIterator<T> implements Iterator<OctantWrapper<T>>,
 		this.octree = octree;
 		this.cellSize = new Vector3();
 		this.level = level;
-		this.iterator = null;
 
 		this.reset();
 
@@ -71,21 +69,12 @@ export class OctreeIterator<T> implements Iterator<OctantWrapper<T>>,
 		const level = this.level;
 		const grid = this.octree.getGrid(level);
 
-		if(grid !== undefined) {
-
-			this.octree.getCellSize(level, this.cellSize);
-			this.iterator = grid.entries();
-
-		} else {
-
-			throw new Error("Level out of bounds");
-
-		}
+		this.octree.getCellSize(level, this.cellSize);
+		this.iterator = grid.entries();
 
 		this.result = {
-			done: false,
-			value: null
-		};
+			done: false
+		} as IteratorResult<OctantWrapper<T>>;
 
 		return this;
 
@@ -103,10 +92,10 @@ export class OctreeIterator<T> implements Iterator<OctantWrapper<T>>,
 		const internalResult = this.iterator.next();
 		const value = internalResult.value as [number, Octant<T>];
 
-		if(!internalResult.done) {
+		if(internalResult.done === undefined || !internalResult.done) {
 
 			const octantWrapper = new OctantWrapper<T>();
-			this.octree.getKeyDesign().unpackKey(value[0], octantWrapper.min);
+			this.octree.keyDesign.unpackKey(value[0], octantWrapper.min);
 			octantWrapper.min.multiply(this.cellSize).add(this.octree.min);
 			octantWrapper.max.copy(octantWrapper.min).add(this.cellSize);
 			octantWrapper.id.key = value[0];

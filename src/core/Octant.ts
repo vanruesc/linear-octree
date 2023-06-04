@@ -8,7 +8,7 @@ import { DataContainer } from "sparse-octree";
 
 export class Octant<T> implements DataContainer<T> {
 
-	data: T;
+	data: T | null;
 
 	/**
 	 * Constructs a new octant.

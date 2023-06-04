@@ -1,7 +1,7 @@
 import { Vector3 } from "three";
 import { Node } from "sparse-octree";
-import { Octant } from "./Octant";
-import { OctantId } from "./OctantId";
+import { Octant } from "./Octant.js";
+import { OctantId } from "./OctantId.js";
 
 const p = new Vector3();
 
@@ -20,7 +20,7 @@ export class OctantWrapper<T> implements Node {
 	 * The octant.
 	 */
 
-	octant: Octant<T>;
+	octant: Octant<T> | null;
 
 	/**
 	 * The octant ID.
@@ -34,12 +34,13 @@ export class OctantWrapper<T> implements Node {
 	 * @param octant - An octant.
 	 */
 
-	constructor(octant: Octant<T> = null) {
+	constructor(octant: Octant<T> | null = null) {
+
+		this.min = new Vector3();
+		this.max = new Vector3();
 
 		this.octant = octant;
 		this.id = new OctantId();
-		this.min = new Vector3();
-		this.max = new Vector3();
 
 	}
 

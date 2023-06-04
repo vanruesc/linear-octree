@@ -42,8 +42,8 @@ export class OctantId {
 
 	set(key: number, level: number): OctantId {
 
-		this.level = level;
 		this.key = key;
+		this.level = level;
 
 		return this;
 
