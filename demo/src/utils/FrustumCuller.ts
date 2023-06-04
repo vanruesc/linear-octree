@@ -14,8 +14,8 @@ import {
 	Vector3
 } from "three";
 
-import { GUI } from "dat.gui";
-import { Octree } from "../../../src";
+import { Pane } from "tweakpane";
+import { Octree } from "linear-octree";
 
 const frustum = new Frustum();
 const m = new Matrix4();
@@ -38,12 +38,6 @@ export class FrustumCuller<T> {
 	private octree: Octree<T>;
 
 	/**
-	 * Indicates whether frustum culling is enabled.
-	 */
-
-	private enabled: boolean;
-
-	/**
 	 * A camera.
 	 */
 
@@ -56,12 +50,6 @@ export class FrustumCuller<T> {
 	private s: Spherical;
 
 	/**
-	 * The measured processing time.
-	 */
-
-	private time: string;
-
-	/**
 	 * A camera helper.
 	 */
 
@@ -72,6 +60,18 @@ export class FrustumCuller<T> {
 	 */
 
 	private mesh: InstancedMesh;
+
+	/**
+	 * Indicates whether frustum culling is enabled.
+	 */
+
+	enabled: boolean;
+
+	/**
+	 * The measured processing time.
+	 */
+
+	time: string;
 
 	/**
 	 * Constructs a new octree culler.
@@ -153,32 +153,33 @@ export class FrustumCuller<T> {
 
 	cull(): void {
 
+		if(!this.enabled) {
+
+			return;
+
+		}
+
+		this.updateCamera();
+
+		const t0 = performance.now();
+		const intersections = this.octree.cull(frustum);
+		this.time = (performance.now() - t0).toFixed(2) + " ms";
+
 		const mesh = this.mesh;
+		mesh.count = intersections.length;
 
-		if(this.enabled) {
+		if(intersections.length > 0) {
 
-			this.updateCamera();
+			for(let i = 0, l = intersections.length; i < l; ++i) {
 
-			const t0 = performance.now();
-			const intersections = this.octree.cull(frustum);
-			this.time = (performance.now() - t0).toFixed(2) + " ms";
-
-			mesh.count = intersections.length;
-
-			if(intersections.length > 0) {
-
-				for(let i = 0, l = intersections.length; i < l; ++i) {
-
-					const x = intersections[i];
-					x.getCenter(p);
-					x.getDimensions(s);
-					mesh.setMatrixAt(i, m.compose(p, q, s));
-
-				}
-
-				mesh.instanceMatrix.needsUpdate = true;
+				const x = intersections[i];
+				x.getCenter(p);
+				x.getDimensions(s);
+				mesh.setMatrixAt(i, m.compose(p, q, s));
 
 			}
+
+			mesh.instanceMatrix.needsUpdate = true;
 
 		}
 
@@ -187,34 +188,30 @@ export class FrustumCuller<T> {
 	/**
 	 * Registers configuration options.
 	 *
-	 * @param menu - A menu.
+	 * @param pane - A settings pane.
 	 */
 
-	registerOptions(menu: GUI): void {
+	registerOptions(pane: Pane): void {
 
-		const folder = menu.addFolder("Frustum Culling");
+		const folder = pane.addFolder({ title: "Frustum Culling" });
 
-		folder.add(this, "enabled").onChange((value: boolean) => {
+		folder.addInput(this, "enabled").on("change", (e) => {
 
-			this.cameraHelper.visible = value;
-			this.mesh.visible = value;
+			this.cameraHelper.visible = e.value;
+			this.mesh.visible = e.value;
 			this.cull();
 
 		});
 
-		folder.add(this, "time").listen();
-		folder.open();
+		folder.addMonitor(this, "time");
 
-		const subFolder = folder.addFolder("Camera Adjustment");
-
-		subFolder.add(this.s, "radius", 0.01, 4.0, 0.01)
-			.onChange(() => this.cull());
-
-		subFolder.add(this.s, "phi", 1e-6, Math.PI - 1e-6, 0.0001)
-			.onChange(() => this.cull());
-
-		subFolder.add(this.s, "theta", 0.0, Math.PI * 2.0, 0.0001)
-			.onChange(() => this.cull());
+		const subfolder = folder.addFolder({ title: "Camera Adjustment" });
+		subfolder.addInput(this.s, "radius", { min: 0.01, max: 4.0, step: 0.01 })
+			.on("change", (e) => this.cull());
+		subfolder.addInput(this.s, "phi", { min: 1e-6, max: Math.PI - 1e-6, step: 0.0001 })
+			.on("change", (e) => this.cull());
+		subfolder.addInput(this.s, "theta", { min: 0.0, max: Math.PI * 2.0, step: 0.0001 })
+			.on("change", (e) => this.cull());
 
 	}
 

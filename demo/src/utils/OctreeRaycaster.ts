@@ -12,8 +12,8 @@ import {
 	Vector3
 } from "three";
 
-import { GUI } from "dat.gui";
-import { Octree } from "../../../src";
+import { Pane } from "tweakpane";
+import { Octree } from "linear-octree";
 
 const pointer = new Vector2();
 const m = new Matrix4();
@@ -42,22 +42,22 @@ export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject
 	private domElement: HTMLElement;
 
 	/**
+	 * A mesh that represents intersecting octants.
+	 */
+
+	private mesh: InstancedMesh;
+
+	/**
 	 * Indicates whether this raycaster is active.
 	 */
 
-	private enabled: boolean;
+	enabled: boolean;
 
 	/**
 	 * The measured processing time.
 	 */
 
-	private time: string;
-
-	/**
-	 * A mesh that represents intersecting octants.
-	 */
-
-	private mesh: InstancedMesh;
+	time: string;
 
 	/**
 	 * Constructs a new octree raycaster.
@@ -71,7 +71,11 @@ export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject
 
 		super();
 
-		this.params.Points.threshold = 1e-1;
+		if(this.params.Points !== undefined) {
+
+			this.params.Points.threshold = 1e-1;
+
+		}
 
 		this.octree = octree;
 		this.camera = camera;
@@ -88,6 +92,8 @@ export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject
 			}),
 			100
 		);
+
+		this.mesh.count = 0;
 
 		document.addEventListener("keyup", this, { passive: true });
 		domElement.addEventListener("pointermove", this, { passive: true });
@@ -114,33 +120,35 @@ export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject
 
 	raycast(event: PointerEvent): void {
 
-		if(this.enabled) {
+		if(!this.enabled) {
 
-			pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
-			pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
-			this.setFromCamera(pointer, this.camera);
+			return;
 
-			const t0 = performance.now();
-			const intersections = this.octree.getIntersectingNodes(this);
-			this.time = (performance.now() - t0).toFixed(2) + " ms";
+		}
 
-			const mesh = this.mesh;
-			mesh.count = intersections.length;
+		pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+		pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
+		this.setFromCamera(pointer, this.camera);
 
-			if(intersections.length > 0) {
+		const t0 = performance.now();
+		const intersections = this.octree.getIntersectingNodes(this);
+		this.time = (performance.now() - t0).toFixed(2) + " ms";
 
-				for(let i = 0, l = intersections.length; i < l; ++i) {
+		const mesh = this.mesh;
+		mesh.count = intersections.length;
 
-					const x = intersections[i];
-					x.getCenter(p);
-					x.getDimensions(s);
-					mesh.setMatrixAt(i, m.compose(p, q, s));
+		if(intersections.length > 0) {
 
-				}
+			for(let i = 0, l = intersections.length; i < l; ++i) {
 
-				mesh.instanceMatrix.needsUpdate = true;
+				const x = intersections[i];
+				x.getCenter(p);
+				x.getDimensions(s);
+				mesh.setMatrixAt(i, m.compose(p, q, s));
 
 			}
+
+			mesh.instanceMatrix.needsUpdate = true;
 
 		}
 
@@ -149,15 +157,14 @@ export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject
 	/**
 	 * Registers configuration options.
 	 *
-	 * @param menu - A menu.
+	 * @param pane - A settings pane.
 	 */
 
-	registerOptions(menu: GUI): void {
+	registerOptions(pane: Pane): void {
 
-		const folder = menu.addFolder("Raycasting");
-		folder.add(this, "enabled").name("enabled (press E)").listen();
-		folder.add(this, "time").listen();
-		folder.open();
+		const folder = pane.addFolder({ title: "Rayasting" });
+		folder.addInput(this, "enabled", { label: "freeze (press E)" });
+		folder.addMonitor(this, "time");
 
 	}
 
