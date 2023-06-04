@@ -3,15 +3,18 @@
 	"version": "0.1.4",
 	"description": "A sparse, linear octree data structure.",
 	"homepage": "https://github.com/vanruesc/linear-octree",
-	"main": "dist/linear-octree.js",
-	"module": "dist/linear-octree.js",
-	"types": "dist/types/index.d.ts",
-	"exports": {
-		".": "./dist/linear-octree.js"
-	},
+	"license": "Zlib",
 	"type": "module",
 	"sideEffects": false,
-	"license": "Zlib",
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
+	"types": "./dist/types/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/types/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
 	"keywords": [
 		"partition",
 		"hierarchy",
@@ -22,8 +25,7 @@
 		"voxel",
 		"points",
 		"frustum",
-		"culling",
-		"hashmap"
+		"culling"
 	],
 	"author": {
 		"name": "Raoul van Rüschen",
@@ -40,26 +42,7 @@
 		"dist"
 	],
 	"engines": {
-		"node": ">= 0.14.0"
-	},
-	"scripts": {
-		"ava": "ava",
-		"build": "run-s build:*",
-		"build:js": "node esbuild -m",
-		"build:dts": "tsc -p tsconfig.d.json",
-		"clean": "del-cli dist public",
-		"copy": "cpy --cwd=demo/static --parents \"**/*\" \"../../public/demo\"",
-		"deploy": "run-s test copy doc",
-		"dev": "run-s clean copy && run-p start watch",
-		"doc": "typedoc",
-		"lint": "tsc --noemit && eslint --ext .ts --fix src demo/src",
-		"prepublishOnly": "run-s test doc",
-		"test": "run-s lint clean build ava",
-		"start": "serve public",
-		"watch": "run-p watch:*",
-		"watch:eslint": "esw -w --ext .ts --color src demo/src",
-		"watch:js": "node esbuild -w",
-		"watch:tsc": "tsc --noemit --watch --preserveWatchOutput"
+		"node": ">= 0.16.0"
 	},
 	"ava": {
 		"failFast": true,
@@ -70,32 +53,54 @@
 	"eslintConfig": {
 		"extends": "aether/typescript"
 	},
-	"dependencies": {
-		"sparse-octree": "7.x.x"
+	"scripts": {
+		"ava": "ava",
+		"build": "run-s build:js:min build:dts",
+		"build:js": "node esbuild",
+		"build:js:min": "node esbuild -m",
+		"build:dts": "tsc -p tsconfig.d.json",
+		"postbuild": "copyfiles -u 2 demo/static/**/* public/demo",
+		"clean": "del-cli dist public",
+		"doc": "typedoc --plugin typedoc-plugin-mdn-links",
+		"lint": "run-s lint:*",
+		"lint:js": "eslint --ext .ts --fix src demo/src",
+		"lint:tsc": "tsc --noemit",
+		"prepublishOnly": "run-s test doc",
+		"start": "serve public",
+		"test": "run-s lint clean build ava",
+		"prewatch": "run-s clean build:js build:dts postbuild",
+		"watch": "run-p watch:* start",
+		"watch:tsc": "tsc --noemit --watch --preserveWatchOutput",
+		"watch:eslint": "esw -w --ext .ts --color src demo/src",
+		"watch:js": "node esbuild -w"
 	},
 	"peerDependencies": {
 		"three": "0.x.x"
 	},
+	"dependencies": {
+		"sparse-octree": "7.x.x"
+	},
 	"devDependencies": {
-		"@types/dat.gui": "0.x.x",
+		"@tweakpane/core": "1.x.x",
+		"@types/node": "20.x.x",
 		"@types/three": "0.x.x",
 		"@typescript-eslint/eslint-plugin": "5.x.x",
 		"@typescript-eslint/parser": "5.x.x",
-		"ava": "4.x.x",
-		"cpy-cli": "3.x.x",
-		"dat.gui": "0.x.x",
-		"del-cli": "4.x.x",
+		"ava": "5.x.x",
+		"copyfiles": "2.x.x",
+		"del-cli": "5.x.x",
 		"esbuild": "0.x.x",
 		"eslint": "8.x.x",
 		"eslint-config-aether": "1.x.x",
 		"eslint-watch": "8.x.x",
 		"npm-run-all": "4.x.x",
-		"serve": "13.x.x",
-		"spatial-controls": "5.x.x",
+		"serve": "14.x.x",
+		"spatial-controls": "6.x.x",
 		"three": "0.x.x",
-		"three-demo": "5.x.x",
 		"tslib": "2.x.x",
+		"tweakpane": "3.x.x",
 		"typedoc": "0.x.x",
-		"typescript": "4.x.x"
+		"typedoc-plugin-mdn-links": "3.x.x",
+		"typescript": "5.x.x"
 	}
 }
