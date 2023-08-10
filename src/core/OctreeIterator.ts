@@ -92,7 +92,7 @@ export class OctreeIterator<T> implements Iterator<OctantWrapper<T>>, Iterable<O
 		const internalResult = this.iterator.next();
 		const value = internalResult.value as [number, Octant<T>];
 
-		if(internalResult.done === undefined || !internalResult.done) {
+		if(internalResult.done !== true) {
 
 			const octantWrapper = new OctantWrapper<T>();
 			this.octree.keyDesign.unpackKey(value[0], octantWrapper.min);
