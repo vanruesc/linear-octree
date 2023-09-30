@@ -163,8 +163,8 @@ export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject
 	registerOptions(pane: Pane): void {
 
 		const folder = pane.addFolder({ title: "Rayasting" });
-		folder.addInput(this, "enabled", { label: "freeze (press E)" });
-		folder.addMonitor(this, "time");
+		folder.addBinding(this, "enabled", { label: "freeze (press E)" });
+		folder.addBinding(this, "time", { readonly: true });
 
 	}
 

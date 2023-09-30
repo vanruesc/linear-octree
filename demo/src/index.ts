@@ -123,35 +123,30 @@ window.addEventListener("load", () => {
 	octreeRaycaster.registerOptions(pane);
 	frustumCuller.registerOptions(pane);
 
+	const levels = octreeHelper.children.length;
 	const params = {
-		"level mask": octreeHelper.children.length + 1
+		"level mask": levels + 1
 	};
 
 	const folder = pane.addFolder({ title: "Octree Helper" });
-	folder.addInput(octreeHelper, "visible").on("change", (e) => {
+	folder.addBinding(octreeHelper, "visible").on("change", (e) => {
 
-		boundsHelper.visible = (params["level mask"] >= octreeHelper.children.length && octreeHelper.visible);
+		boundsHelper.visible = (params["level mask"] >= levels && octreeHelper.visible);
 
 	});
 
-	folder.addInput(params, "level mask", { min: 0, max: octreeHelper.children.length + 1, step: 1 })
+	folder.addBinding(params, "level mask", { min: 0, max: levels + 1, step: 1 })
 		.on("change", (e) => {
 
 			const mask = params["level mask"];
 
-			for(let i = 0, l = octreeHelper.children.length; i < l; ++i) {
+			for(let i = 0, l = levels; i < l; ++i) {
 
-				octreeHelper.children[i].visible = (
-					mask > octreeHelper.children.length ||
-					mask === i
-				);
+				octreeHelper.children[i].visible = (mask > levels || mask === i);
 
 			}
 
-			boundsHelper.visible = (
-				mask >= octreeHelper.children.length &&
-				octreeHelper.visible
-			);
+			boundsHelper.visible = (mask >= levels && octreeHelper.visible);
 
 		});
 

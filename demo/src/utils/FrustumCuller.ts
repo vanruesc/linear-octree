@@ -195,7 +195,7 @@ export class FrustumCuller<T> {
 
 		const folder = pane.addFolder({ title: "Frustum Culling" });
 
-		folder.addInput(this, "enabled").on("change", (e) => {
+		folder.addBinding(this, "enabled").on("change", (e) => {
 
 			this.cameraHelper.visible = e.value;
 			this.mesh.visible = e.value;
@@ -203,14 +203,14 @@ export class FrustumCuller<T> {
 
 		});
 
-		folder.addMonitor(this, "time");
+		folder.addBinding(this, "time", { readonly: true });
 
 		const subfolder = folder.addFolder({ title: "Camera Adjustment" });
-		subfolder.addInput(this.s, "radius", { min: 0.01, max: 4.0, step: 0.01 })
+		subfolder.addBinding(this.s, "radius", { min: 0.01, max: 4.0, step: 0.01 })
 			.on("change", (e) => this.cull());
-		subfolder.addInput(this.s, "phi", { min: 1e-6, max: Math.PI - 1e-6, step: 0.0001 })
+		subfolder.addBinding(this.s, "phi", { min: 1e-6, max: Math.PI - 1e-6, step: 0.0001 })
 			.on("change", (e) => this.cull());
-		subfolder.addInput(this.s, "theta", { min: 0.0, max: Math.PI * 2.0, step: 0.0001 })
+		subfolder.addBinding(this.s, "theta", { min: 0.0, max: Math.PI * 2.0, step: 0.0001 })
 			.on("change", (e) => this.cull());
 
 	}
