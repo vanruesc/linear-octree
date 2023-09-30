@@ -81,11 +81,11 @@
 		"sparse-octree": "7.x.x"
 	},
 	"devDependencies": {
-		"@tweakpane/core": "1.x.x",
+		"@tweakpane/core": "2.x.x",
 		"@types/node": "20.x.x",
 		"@types/three": "0.x.x",
-		"@typescript-eslint/eslint-plugin": "5.x.x",
-		"@typescript-eslint/parser": "5.x.x",
+		"@typescript-eslint/eslint-plugin": "6.x.x",
+		"@typescript-eslint/parser": "6.x.x",
 		"ava": "5.x.x",
 		"copyfiles": "2.x.x",
 		"del-cli": "5.x.x",
@@ -98,7 +98,7 @@
 		"spatial-controls": "6.x.x",
 		"three": "0.x.x",
 		"tslib": "2.x.x",
-		"tweakpane": "3.x.x",
+		"tweakpane": "4.x.x",
 		"typedoc": "0.x.x",
 		"typedoc-plugin-mdn-links": "3.x.x",
 		"typescript": "5.x.x"
