@@ -89,8 +89,7 @@ test("extracting specific bits from a 53bit integer", t => {
 
 	t.is(x, Math.pow(2, xBits) - 1, "X");
 	t.is(y, (Math.pow(2, yBits + xBits) - 1) - (Math.pow(2, xBits) - 1), "Y");
-	t.is(z, (Math.pow(2, zBits + yBits + xBits) - 1) -
-		(Math.pow(2, yBits + xBits) - 1), "Z");
+	t.is(z, (Math.pow(2, zBits + yBits + xBits) - 1) - (Math.pow(2, yBits + xBits) - 1), "Z");
 
 });
 
