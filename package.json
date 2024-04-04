@@ -32,8 +32,7 @@
 		"email": "vanruesc@outlook.de"
 	},
 	"repository": {
-		"type": "git",
-		"url": "https://github.com/vanruesc/linear-octree.git"
+		"url": "git+https://github.com/vanruesc/linear-octree.git"
 	},
 	"bugs": {
 		"url": "https://github.com/vanruesc/linear-octree/issues"
