@@ -1,3 +1,4 @@
+export { BaseEventMap } from "./BaseEventMap.js";
 export { IntermediateOctant } from "./IntermediateOctant.js";
 export { KeyDesign } from "./KeyDesign.js";
 export { KeyIterator } from "./KeyIterator.js";
