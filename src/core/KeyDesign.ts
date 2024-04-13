@@ -1,5 +1,6 @@
-import { Box3, Vector3, Vector4 } from "three";
+import { Box3, EventDispatcher, Vector3, Vector4 } from "three";
 import { Binary } from "../utils/Binary.js";
+import { BaseEventMap } from "./BaseEventMap.js";
 import { KeyIterator } from "./KeyIterator.js";
 
 const DWORD_BITS = 32;
@@ -18,7 +19,47 @@ const LO_BITS = 32;
  * See {@link KeyDesign.BITS} for the total amount of available bits.
  */
 
-export class KeyDesign {
+export class KeyDesign extends EventDispatcher<BaseEventMap> {
+
+	/**
+	 * Triggers when a key design has changed.
+	 *
+	 * @event
+	 */
+
+	static readonly EVENT_CHANGE = "change";
+
+	/**
+	 * The total amount of available bits for safe integers.
+	 *
+	 * JavaScript uses IEEE 754 binary64 Doubles for all numbers and, as a result, only supports 53-bit Integers natively.
+	 *
+	 * `BigInt` is not an option due to the following reasons:
+	 *  - operations on `BigInt` are not constant time (unpredictable performance)
+	 *  - only supports signed integers (no `>>>` operator)
+	 *
+	 * For more information see: http://2ality.com/2012/04/number-encoding.html
+	 */
+
+	static readonly BITS = BITS;
+
+	/**
+	 * The amount of available bits in the high DWord (21).
+	 *
+	 * In JavaScript, bit operations can only be applied to DWords (32-bit).
+	 * All 53-bit keys must be split into a high and a low part for processing.
+	 */
+
+	static readonly HI_BITS = HI_BITS;
+
+	/**
+	 * The amount of available bits in the low DWord (32).
+	 *
+	 * In JavaScript, bit operations can only be applied to DWords (32-bit).
+	 * All 53-bit keys must be split into a high and a low part for processing.
+	 */
+
+	static readonly LO_BITS = LO_BITS;
 
 	/**
 	 * The bit allotments.
@@ -59,6 +100,8 @@ export class KeyDesign {
 	 */
 
 	constructor(x = 8, y = x, z = x) {
+
+		super();
 
 		this.bits = new Vector3();
 		this.range = new Vector4();
@@ -149,33 +192,35 @@ export class KeyDesign {
 
 	private updateBitMasks(): void {
 
+		const { maskX, maskY, maskZ } = this;
+
 		const xBits = this.x;
 		const yBits = this.y;
 		const zBits = this.z;
 
-		const maskX = this.maskX;
-		const maskY = this.maskY;
-		const maskZ = this.maskZ;
+		const xyBits = xBits + yBits;
+		const xyzBits = xyBits + zBits;
 
 		const hiShiftX = DWORD_BITS - Math.max(0, xBits - LO_BITS);
 		const hiShiftY = DWORD_BITS - Math.max(0, yBits + xBits - LO_BITS);
 		const hiShiftZ = DWORD_BITS - Math.max(0, zBits + yBits + xBits - LO_BITS);
 
 		maskX[1] = (hiShiftX < DWORD_BITS) ? ~0 >>> hiShiftX : 0;
-		maskX[0] = ~0 >>> Math.max(0, LO_BITS - xBits);
+		maskX[0] = (xBits === 0) ? 0 : (~0 >>> Math.max(0, LO_BITS - xBits));
 
 		maskY[1] = (((hiShiftY < DWORD_BITS) ? ~0 >>> hiShiftY : 0) & ~maskX[1]) >>> 0;
-		maskY[0] = ((~0 >>> Math.max(0, LO_BITS - (xBits + yBits))) & ~maskX[0]) >>> 0;
+		maskY[0] = (xyBits === 0) ? 0 : (((~0 >>> Math.max(0, LO_BITS - xyBits)) & ~maskX[0]) >>> 0);
 
 		maskZ[1] = (((hiShiftZ < DWORD_BITS) ? ~0 >>> hiShiftZ : 0) & ~maskY[1] & ~maskX[1]) >>> 0;
-		maskZ[0] = ((~0 >>> Math.max(0, LO_BITS - (xBits + yBits + zBits))) & ~maskY[0] & ~maskX[0]) >>> 0;
+		maskZ[0] = (xyzBits === 0) ? 0 : (((~0 >>> Math.max(0, LO_BITS - xyzBits)) & ~maskY[0] & ~maskX[0]) >>> 0);
 
 	}
 
 	/**
 	 * Sets the bit distribution.
 	 *
-	 * @param x - The amount of bits used for the X-coordinate. Cannot be zero.
+	 * @throws If the bit allotment is invalid.
+	 * @param x - The amount of bits used for the X-coordinate.
 	 * @param y - The amount of bits used for the Y-coordinate.
 	 * @param z - The amount of bits used for the Z-coordinate.
 	 */
@@ -186,9 +231,9 @@ export class KeyDesign {
 		y = Math.max(y, 0);
 		z = Math.max(z, 0);
 
-		if(x === 0) {
+		if(x === this.x && y === this.y && z === this.z) {
 
-			throw new Error("X must be greater than 0");
+			return;
 
 		}
 
@@ -208,6 +253,7 @@ export class KeyDesign {
 		this.bits.set(x, y, z);
 		this.range.set(2 ** x, 2 ** y, 2 ** z, 2 ** (x + y));
 		this.updateBitMasks();
+		this.dispatchEvent({ type: KeyDesign.EVENT_CHANGE });
 
 	}
 
@@ -225,7 +271,7 @@ export class KeyDesign {
 		const maskY = this.maskY;
 		const maskZ = this.maskZ;
 
-		// Split the QWord key in a high and a low DWord.
+		// Split the QWord key into a high and a low DWord.
 		const hi = Math.trunc(key / RANGE_DWORD);
 		const lo = key % RANGE_DWORD;
 
@@ -240,6 +286,7 @@ export class KeyDesign {
 	/**
 	 * Packs key coordinates into a unique key.
 	 *
+	 * @throws If any value is out of bounds.
 	 * @param x - The X-coordinate (Uint).
 	 * @param y - The Y-coordinate (Uint).
 	 * @param z - The Z-coordinate (Uint).
@@ -314,7 +361,7 @@ export class KeyDesign {
 	 * @return The key design as a string.
 	 */
 
-	toString(): string {
+	override toString(): string {
 
 		const maskX = this.maskX;
 		const maskY = this.maskY;
@@ -324,66 +371,18 @@ export class KeyDesign {
 
 			"Key Design\n\n" +
 
-			`X-Bits: ${this.x}\n` +
-			`Y-Bits: ${this.y}\n` +
-			`Z-Bits: ${this.z}\n\n` +
+			`Bits [X: ${this.x}, Y: ${this.y}, Z: ${this.z}]\n\n` +
 
-			Binary.toString(maskX[1], DWORD_BITS) + ` ${maskX[1]} (HI-Mask X)\n` +
-			Binary.toString(maskX[0], DWORD_BITS) + ` ${maskX[0]} (LO-Mask X)\n\n` +
+			`HI-Mask X: ${Binary.toString(maskX[1], DWORD_BITS)} ${maskX[1]}\n` +
+			`LO-Mask X: ${Binary.toString(maskX[0], DWORD_BITS)} ${maskX[0]}\n\n` +
 
-			Binary.toString(maskY[1], DWORD_BITS) + ` ${maskY[1]} (HI-Mask Y)\n` +
-			Binary.toString(maskY[0], DWORD_BITS) + ` ${maskY[0]} (LO-Mask Y)\n\n` +
+			`HI-Mask Y: ${Binary.toString(maskY[1], DWORD_BITS)} ${maskY[1]}\n` +
+			`LO-Mask Y: ${Binary.toString(maskY[0], DWORD_BITS)} ${maskY[0]}\n\n` +
 
-			Binary.toString(maskZ[1], DWORD_BITS) + ` ${maskZ[1]} (HI-Mask Z)\n` +
-			Binary.toString(maskZ[0], DWORD_BITS) + ` ${maskZ[0]} (LO-Mask Z)\n`
+			`HI-Mask Z: ${Binary.toString(maskZ[1], DWORD_BITS)} ${maskZ[1]}\n` +
+			`LO-Mask Z: ${Binary.toString(maskZ[0], DWORD_BITS)} ${maskZ[0]}\n`
 
 		);
-
-	}
-
-	/**
-	 * The total amount of available bits for safe integers.
-	 *
-	 * JavaScript uses IEEE 754 binary64 Doubles for all numbers and, as a result, only supports 53-bit Integers natively.
-	 *
-	 * `BigInt` is not an option due to the following reasons:
-	 *  - significant performance impact
-	 *  - operations on `BigInt` are not constant time
-	 *  - only supports signed integers
-	 *  - doesn't support `>>>` operator
-	 *
-	 * For more information see: http://2ality.com/2012/04/number-encoding.html
-	 */
-
-	static get BITS(): number {
-
-		return BITS;
-
-	}
-
-	/**
-	 * The amount of available bits in the high DWord (21).
-	 *
-	 * In JavaScript, bit operations can only be applied to DWords (32-bit).
-	 * All 53-bit keys must be split into a high and a low part for processing.
-	 */
-
-	static get HI_BITS(): number {
-
-		return HI_BITS;
-
-	}
-
-	/**
-	 * The amount of available bits in the low DWord (32).
-	 *
-	 * In JavaScript, bit operations can only be applied to DWords (32-bit).
-	 * All 53-bit keys must be split into a high and a low part for processing.
-	 */
-
-	static get LO_BITS(): number {
-
-		return LO_BITS;
 
 	}
 

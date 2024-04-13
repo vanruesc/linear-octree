@@ -292,16 +292,13 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 
 	constructor(bounds: Box3, keyDesign = new KeyDesign()) {
 
-		const levels = Math.max(keyDesign.x, keyDesign.y, keyDesign.z);
-
 		this._keyDesign = keyDesign;
-		this.grids = [];
+		this._keyDesign.addEventListener(KeyDesign.EVENT_CHANGE, () => {
 
-		while(this.grids.length < levels) {
+			this.createGrids();
+			this.updateCellSize();
 
-			this.grids.push(new Map<number, Octant<T>>());
-
-		}
+		});
 
 		const root = new OctantWrapper<T>(new IntermediateOctant<T>());
 		root.min.copy(bounds.min);
@@ -311,12 +308,11 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 		Object.freeze(root);
 		this.root = root;
 
-		const dimensions = root.getDimensions(new Vector3());
-		this.cellSize = dimensions.set(
-			dimensions.x / keyDesign.rangeX,
-			dimensions.y / keyDesign.rangeY,
-			dimensions.z / keyDesign.rangeZ
-		);
+		this.grids = [];
+		this.createGrids();
+
+		this.cellSize = new Vector3();
+		this.updateCellSize();
 
 	}
 
@@ -375,6 +371,41 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	get keyDesign(): KeyDesign {
 
 		return this._keyDesign;
+
+	}
+
+	/**
+	 * Creates new grids based on the current key design. Existing grids will be removed.
+	 */
+
+	private createGrids(): void {
+
+		const keyDesign = this.keyDesign;
+		const levels = 1 + Math.max(keyDesign.x, keyDesign.y, keyDesign.z);
+
+		this.grids = [];
+
+		while(this.grids.length < levels) {
+
+			this.grids.push(new Map<number, Octant<T>>());
+
+		}
+
+	}
+
+	/**
+	 * Updates the cell size based on the current key design and root dimensions.
+	 */
+
+	private updateCellSize(): void {
+
+		const cellSize = this.root.getDimensions(this.cellSize);
+
+		cellSize.set(
+			cellSize.x / this.keyDesign.rangeX,
+			cellSize.y / this.keyDesign.rangeY,
+			cellSize.z / this.keyDesign.rangeZ
+		);
 
 	}
 
