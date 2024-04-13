@@ -257,13 +257,13 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	 * The level zero cell size.
 	 */
 
-	private cellSize: Vector3;
+	private readonly cellSize: Vector3;
 
 	/**
 	 * @see {@link keyDesign}
 	 */
 
-	private _keyDesign: KeyDesign;
+	private readonly _keyDesign: KeyDesign;
 
 	/**
 	 * The hierarchical octant grids.

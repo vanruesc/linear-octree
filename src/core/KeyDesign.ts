@@ -24,31 +24,31 @@ export class KeyDesign {
 	 * The bit allotments.
 	 */
 
-	private bits: Vector3;
+	private readonly bits: Vector3;
 
 	/**
 	 * The key range.
 	 */
 
-	private range: Vector4;
+	private readonly range: Vector4;
 
 	/**
 	 * A bit mask for the X-coordinate. The first item holds the low bits, the second one holds the high bits.
 	 */
 
-	private maskX: number[];
+	private readonly maskX: [number, number];
 
 	/**
 	 * A bit mask for the Y-coordinate. The first item holds the low bits, the second one holds the high bits.
 	 */
 
-	private maskY: number[];
+	private readonly maskY: [number, number];
 
 	/**
 	 * A bit mask for the Z-coordinate. The first item holds the low bits, the second one holds the high bits.
 	 */
 
-	private maskZ: number[];
+	private readonly maskZ: [number, number];
 
 	/**
 	 * Constructs a new key design.

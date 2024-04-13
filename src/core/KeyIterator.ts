@@ -11,37 +11,37 @@ export class KeyIterator implements Iterator<number>, Iterable<number> {
 	 * The key design.
 	 */
 
-	private keyDesign: KeyDesign;
+	private readonly keyDesign: KeyDesign;
 
 	/**
 	 * The lower index bounds.
 	 */
 
-	private min: Vector3;
+	private readonly min: Vector3;
 
 	/**
 	 * The upper index bounds.
 	 */
 
-	private max: Vector3;
+	private readonly max: Vector3;
 
 	/**
 	 * The base key coordinates.
 	 */
 
-	private keyBase: Vector3;
+	private readonly keyBase: Vector3;
 
 	/**
 	 * The current key iteration coordinates.
 	 */
 
-	private key: Vector3;
+	private readonly key: Vector3;
 
 	/**
 	 * The iteration limits.
 	 */
 
-	private limit: Vector3;
+	private readonly limit: Vector3;
 
 	/**
 	 * An iterator result.
