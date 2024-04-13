@@ -1,7 +1,7 @@
 /**
  * An octant identifier.
  *
- * Each octant can be identified by a level and a positional key.
+ * Each octant can be identified by a positional key and a level.
  */
 
 export class OctantId {
