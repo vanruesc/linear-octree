@@ -23,7 +23,7 @@ test("can return its depth", t => {
 
 	const keyDesign = new KeyDesign(32, 0, 21);
 	const octree = new Octree(bounds, keyDesign);
-	const levels = Math.max(keyDesign.x, keyDesign.y, keyDesign.z);
+	const levels = 1 + Math.max(keyDesign.x, keyDesign.y, keyDesign.z);
 	t.is(octree.getDepth(), levels - 1, "should return the tree depth");
 	t.is(octree.getLevels(), levels, "should return the levels");
 
