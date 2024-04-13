@@ -225,7 +225,7 @@ export class KeyDesign extends EventDispatcher<BaseEventMap> {
 	 * @param z - The amount of bits used for the Z-coordinate.
 	 */
 
-	private set(x: number, y: number, z: number): void {
+	set(x: number, y: number, z: number): void {
 
 		x = Math.max(x, 0);
 		y = Math.max(y, 0);
