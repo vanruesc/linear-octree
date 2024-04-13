@@ -95,7 +95,6 @@
 		"npm-run-all": "4.x.x",
 		"serve": "14.x.x",
 		"spatial-controls": "6.x.x",
-		"three": "0.x.x",
 		"tslib": "2.x.x",
 		"tweakpane": "4.x.x",
 		"typedoc": "0.x.x",
