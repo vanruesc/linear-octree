@@ -27,40 +27,42 @@ function removeChildren<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 	keyX: number, keyY: number, keyZ: number, level: number): void {
 
 	// The octants in level zero have no children.
-	if(level > 0) {
+	if(level === 0) {
 
-		// Go to the next lower level.
-		--level;
+		return;
 
-		const grid = octree.getGrid(level);
-		const keyDesign = octree.keyDesign;
-		const children = octant.children;
+	}
 
-		// Translate the key coordinates to the next lower level.
-		keyX *= 2; keyY *= 2; keyZ *= 2;
+	// Go to the next lower level.
+	--level;
 
-		for(let i = 0; i < 8; ++i) {
+	const grid = octree.getGrid(level);
+	const keyDesign = octree.keyDesign;
+	const children = octant.children;
 
-			// Check if the child exists.
-			if((children & (1 << i | 0)) !== 0) {
+	// Translate the key coordinates to the next lower level.
+	keyX *= 2; keyY *= 2; keyZ *= 2;
 
-				const offset = layout[i];
-				v.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);
-				const key = keyDesign.packKey(v.x, v.y, v.z);
+	for(let i = 0; i < 8; ++i) {
 
-				// Get the child octant and remove it from the grid.
-				const child = grid.get(key) as IntermediateOctant<T>;
-				grid.delete(key);
+		// Check if the child exists.
+		if((children & (1 << i | 0)) !== 0) {
 
-				removeChildren(octree, child, v.x, v.y, v.z, level);
+			const offset = layout[i];
+			v.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);
+			const key = keyDesign.packKey(v.x, v.y, v.z);
 
-			}
+			// Get the child octant and remove it from the grid.
+			const child = grid.get(key) as IntermediateOctant<T>;
+			grid.delete(key);
+
+			removeChildren(octree, child, v.x, v.y, v.z, level);
 
 		}
 
-		octant.children = 0;
-
 	}
+
+	octant.children = 0;
 
 }
 
@@ -194,47 +196,51 @@ function cull<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 	b.min.copy(v.set(keyX, keyY, keyZ)).multiply(cellSize).add(octree.min);
 	b.max.copy(b.min).add(cellSize);
 
-	if(region.intersectsBox(b)) {
+	if(!region.intersectsBox(b)) {
 
-		const keyDesign = octree.keyDesign;
+		return;
 
-		if(octant.data !== null) {
+	}
 
-			const octantWrapper = new OctantWrapper<T>(octant);
-			octantWrapper.id.set(keyDesign.packKey(v.x, v.y, v.z), level);
-			octantWrapper.min.copy(b.min);
-			octantWrapper.max.copy(b.max);
-			result.push(octantWrapper);
+	const keyDesign = octree.keyDesign;
 
-		}
+	if(octant.data !== null) {
 
-		// The octants in level zero have no children.
-		if(level > 0) {
+		const octantWrapper = new OctantWrapper<T>(octant);
+		octantWrapper.id.set(keyDesign.packKey(v.x, v.y, v.z), level);
+		octantWrapper.min.copy(b.min);
+		octantWrapper.max.copy(b.max);
+		result.push(octantWrapper);
 
-			// Go to the next lower level.
-			--level;
+	}
 
-			const grid = octree.getGrid(level);
-			const children = octant.children;
+	// The octants in level zero have no children.
+	if(level === 0) {
 
-			// Translate the key coordinates to the next lower level.
-			keyX *= 2; keyY *= 2; keyZ *= 2;
+		return;
 
-			for(let i = 0; i < 8; ++i) {
+	}
 
-				// Check if the child exists.
-				if((children & (1 << i | 0)) !== 0) {
+	// Go to the next lower level.
+	--level;
 
-					const offset = layout[i];
-					v.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);
-					const key = keyDesign.packKey(v.x, v.y, v.z);
+	const grid = octree.getGrid(level);
+	const children = octant.children;
 
-					const child = grid.get(key) as IntermediateOctant<T>;
-					cull(octree, child, v.x, v.y, v.z, level, region, result);
+	// Translate the key coordinates to the next lower level.
+	keyX *= 2; keyY *= 2; keyZ *= 2;
 
-				}
+	for(let i = 0; i < 8; ++i) {
 
-			}
+		// Check if the child exists.
+		if((children & (1 << i | 0)) !== 0) {
+
+			const offset = layout[i];
+			v.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);
+			const key = keyDesign.packKey(v.x, v.y, v.z);
+
+			const child = grid.get(key) as IntermediateOctant<T>;
+			cull(octree, child, v.x, v.y, v.z, level, region, result);
 
 		}
 
@@ -328,15 +334,15 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 
 	}
 
-	getCenter(target: Vector3): Vector3 {
+	getCenter(result: Vector3): Vector3 {
 
-		return this.root.getCenter(target);
+		return this.root.getCenter(result);
 
 	}
 
-	getDimensions(target: Vector3): Vector3 {
+	getDimensions(result: Vector3): Vector3 {
 
-		return this.root.getDimensions(target);
+		return this.root.getDimensions(result);
 
 	}
 
@@ -413,16 +419,16 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	 * Returns the size of the cells in the specified grid.
 	 *
 	 * @param level - The level. Must be a positive integer.
-	 * @param target - A vector to store the result in.
+	 * @param result - A vector to store the result in.
 	 * @return The cell size.
 	 */
 
-	getCellSize(level: number, target: Vector3): Vector3 {
+	getCellSize(level: number, result: Vector3): Vector3 {
 
 		const cellSize = this.cellSize;
 		const keyDesign = this.keyDesign;
 
-		return target.set(
+		return result.set(
 			cellSize.x * (1 << Math.min(level, keyDesign.x) >>> 0),
 			cellSize.y * (1 << Math.min(level, keyDesign.y) >>> 0),
 			cellSize.z * (1 << Math.min(level, keyDesign.z) >>> 0)
@@ -435,7 +441,7 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	 *
 	 * @throws If the given level is out of bounds.
 	 * @param level - The level of the grid.
-	 * @return The requested grid, or undefined if the level is out of bounds.
+	 * @return The requested grid.
 	 */
 
 	getGrid(level: number): Map<number, Octant<T>> {
@@ -485,11 +491,11 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	 *
 	 * @param position - A position.
 	 * @param level - The level.
-	 * @param target - A vector to store the result in.
+	 * @param result - A vector to store the result in.
 	 * @return The key coordinates.
 	 */
 
-	calculateKeyCoordinates(position: Vector3, level: number, target: Vector3): Vector3 {
+	calculateKeyCoordinates(position: Vector3, level: number, result: Vector3): Vector3 {
 
 		if(!this.containsPoint(position)) {
 
@@ -500,15 +506,15 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 		const cellSize = this.getCellSize(level, u);
 
 		// Translate to the origin (zero-based unsigned coordinates).
-		target.subVectors(position, this.min);
+		result.subVectors(position, this.min);
 
-		target.set(
-			Math.trunc(target.x / cellSize.x),
-			Math.trunc(target.y / cellSize.y),
-			Math.trunc(target.z / cellSize.z)
+		result.set(
+			Math.trunc(result.x / cellSize.x),
+			Math.trunc(result.y / cellSize.y),
+			Math.trunc(result.z / cellSize.z)
 		);
 
-		return target.min(this.keyDesign.getMaxKeyCoordinates(u));
+		return result.min(this.keyDesign.getMaxKeyCoordinates(u));
 
 	}
 
@@ -637,7 +643,7 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 
 		const result: OctantWrapper<T>[] = [];
 		const octant = this.root.octant as IntermediateOctant<T>;
-		cull(this, octant, 0, 0, 0, this.getDepth() + 1, region, result);
+		cull(this, octant, 0, 0, 0, this.getLevels(), region, result);
 		return result;
 
 	}
