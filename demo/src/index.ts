@@ -1,7 +1,5 @@
 import {
 	Box3,
-	Box3Helper,
-	Color,
 	FogExp2,
 	PerspectiveCamera,
 	Scene,
@@ -71,39 +69,47 @@ window.addEventListener("load", () => {
 	const octree = new Octree<number>(bounds, keyDesign);
 	console.log(octree);
 
-	const box = new Box3();
-	const keyCoordinates = new Vector3();
+	function fillOctree() {
 
-	keyDesign.getMinKeyCoordinates(box.min);
-	keyDesign.getMaxKeyCoordinates(box.max);
+		const box = new Box3();
+		const keyCoordinates = new Vector3();
 
-	console.time("Octree creation");
+		keyDesign.getMinKeyCoordinates(box.min);
+		keyDesign.getMaxKeyCoordinates(box.max);
 
-	for(const key of keyDesign.keyRange(box.min, box.max)) {
+		console.time("Filling octree");
 
-		octree.set(keyDesign.unpackKey(key, keyCoordinates), 0, Math.random());
+		// Populate all cells for demo purposes.
+		for(const key of keyDesign.keyRange(box.min, box.max)) {
+
+			octree.set(keyDesign.unpackKey(key, keyCoordinates), 0, Math.random());
+
+		}
+
+		console.timeEnd("Filling octree");
 
 	}
 
-	console.timeEnd("Octree creation");
+	fillOctree();
 
 	// Octree Helper
 
-	console.time("Octree helper");
+	console.time("Creating octree helper");
 
 	const octreeHelper = new OctreeHelper(octree);
 	octreeHelper.visible = true;
 
-	console.timeEnd("Octree helper");
+	console.timeEnd("Creating octree helper");
 	console.log(octreeHelper);
 
 	scene.add(octreeHelper);
 
-	// Octree Bounds Helper
+	keyDesign.addEventListener(KeyDesign.EVENT_CHANGE, () => {
 
-	const boundsHelper = new Box3Helper(bounds, new Color(0xffffff));
-	boundsHelper.visible = octreeHelper.visible;
-	scene.add(boundsHelper);
+		fillOctree();
+		octreeHelper.update();
+
+	});
 
 	// Raycasting
 
@@ -123,32 +129,39 @@ window.addEventListener("load", () => {
 	octreeRaycaster.registerOptions(pane);
 	frustumCuller.registerOptions(pane);
 
-	const levels = octreeHelper.children.length;
+	const maxLevels = 4;
 	const params = {
-		"level mask": levels + 1
+		"level mask": maxLevels,
+		"bits": {
+			"x": keyDesign.x,
+			"y": keyDesign.y,
+			"z": keyDesign.z
+		}
 	};
 
-	const folder = pane.addFolder({ title: "Octree Helper" });
-	folder.addBinding(octreeHelper, "visible").on("change", (e) => {
+	let folder = pane.addFolder({ title: "Key Design", expanded: false });
+	folder.addBinding(params.bits, "x", { min: 0, max: 4, step: 1 })
+		.on("change", () => keyDesign.set(params.bits.x, params.bits.y, params.bits.z));
+	folder.addBinding(params.bits, "y", { min: 0, max: 4, step: 1 })
+		.on("change", () => keyDesign.set(params.bits.x, params.bits.y, params.bits.z));
+	folder.addBinding(params.bits, "z", { min: 0, max: 4, step: 1 })
+		.on("change", () => keyDesign.set(params.bits.x, params.bits.y, params.bits.z));
 
-		boundsHelper.visible = (params["level mask"] >= levels && octreeHelper.visible);
+	folder = pane.addFolder({ title: "Octree Helper" });
+	folder.addBinding(octreeHelper, "visible");
+
+	folder.addBinding(params, "level mask", { min: 0, max: maxLevels, step: 1 }).on("change", () => {
+
+		const mask = params["level mask"];
+		const levels = octreeHelper.children.length;
+
+		for(let i = 0, l = levels; i < l; ++i) {
+
+			octreeHelper.children[i].visible = (mask === levels || mask === i);
+
+		}
 
 	});
-
-	folder.addBinding(params, "level mask", { min: 0, max: levels + 1, step: 1 })
-		.on("change", (e) => {
-
-			const mask = params["level mask"];
-
-			for(let i = 0, l = levels; i < l; ++i) {
-
-				octreeHelper.children[i].visible = (mask > levels || mask === i);
-
-			}
-
-			boundsHelper.visible = (mask >= levels && octreeHelper.visible);
-
-		});
 
 	// Resize Handler
 
