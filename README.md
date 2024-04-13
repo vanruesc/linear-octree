@@ -37,7 +37,7 @@ const bounds = keyDesign.calculateBounds(cellSize, new Box3());
 // Create the octree.
 const octree = new Octree<string>(bounds, keyDesign);
 
-// Octree operations require Uint key coordinates.
+// Octree operations expect Uint key coordinates.
 const keyCoordinates = new Vector3();
 const worldPosition = new Vector3(0.5, 0.5, 0.5);
 octree.calculateKeyCoordinates(worldPosition, keyCoordinates);
@@ -57,7 +57,7 @@ octree.get(keyCoordinates, level); // => undefined
 const keyDesign = new KeyDesign(17, 17, 17);
 // Octrees can be non-uniform with uneven bit distributions.
 const keyDesign = new KeyDesign(21, 11, 21);
-// Bits for Y (and Z) can be set to zero to emulate a quad tree.
+// Bits can be set to zero to emulate a quad tree.
 const keyDesign = new KeyDesign(26, 0, 26);
 ```
 
@@ -72,6 +72,7 @@ const keyDesign = new KeyDesign(26, 0, 26);
 - Supports raycasting
 - Supports culling
 - Can be extended to manage any data
+- Fully customizable 3-dimensional subdivisions
 
 
 ## Contributing
