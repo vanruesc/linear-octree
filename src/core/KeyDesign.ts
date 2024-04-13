@@ -295,6 +295,24 @@ export class KeyDesign extends EventDispatcher<BaseEventMap> {
 
 	packKey(x: number, y: number, z: number): number {
 
+		if(x >= this.rangeX) {
+
+			throw new Error("X value out of bounds");
+
+		}
+
+		if(y >= this.rangeY) {
+
+			throw new Error("Y value out of bounds");
+
+		}
+
+		if(z >= this.rangeZ) {
+
+			throw new Error("Z value out of bounds");
+
+		}
+
 		return z * this.rangeXY + y * this.rangeX + x;
 
 	}
