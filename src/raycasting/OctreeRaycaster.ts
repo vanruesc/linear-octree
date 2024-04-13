@@ -1,6 +1,8 @@
 import { Box3, Ray, Vector3 } from "three";
 import { layout, RaycastingFlags, findEntryOctant, findNextOctant, intersectOctree } from "sparse-octree";
-import { IntermediateOctant, OctantWrapper, Octree } from "../core/index.js";
+import { IntermediateOctant } from "../core/IntermediateOctant.js";
+import { OctantWrapper } from "../core/OctantWrapper.js";
+import { Octree } from "../core/Octree.js";
 
 const octantWrapper = new OctantWrapper<unknown>();
 const flags = new RaycastingFlags();
@@ -31,186 +33,190 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 	tx0: number, ty0: number, tz0: number, tx1: number, ty1: number, tz1: number,
 	result: OctantWrapper<T>[]): void {
 
-	if(tx1 >= 0.0 && ty1 >= 0.0 && tz1 >= 0.0) {
+	if(tx1 < 0 || ty1 < 0 || tz1 < 0.0) {
 
-		const keyDesign = octree.keyDesign;
+		return;
 
-		if(octant.data !== null) {
+	}
 
-			const cellSize = octree.getCellSize(level, u);
-			const octantWrapper = new OctantWrapper<T>(octant);
-			octantWrapper.id.set(keyDesign.packKey(keyX, keyY, keyZ), level);
-			octantWrapper.min.set(keyX, keyY, keyZ).multiply(cellSize).add(octree.min);
-			octantWrapper.max.copy(octantWrapper.min).add(cellSize);
+	const keyDesign = octree.keyDesign;
 
-			result.push(octantWrapper);
+	if(octant.data !== null) {
+
+		const cellSize = octree.getCellSize(level, u);
+		const octantWrapper = new OctantWrapper<T>(octant);
+		octantWrapper.id.set(keyDesign.packKey(keyX, keyY, keyZ), level);
+		octantWrapper.min.set(keyX, keyY, keyZ).multiply(cellSize).add(octree.min);
+		octantWrapper.max.copy(octantWrapper.min).add(cellSize);
+
+		result.push(octantWrapper);
+
+	}
+
+	if(level === 0 || octant.children === 0) {
+
+		return;
+
+	}
+
+	// Go to the next lower level.
+	const grid = octree.getGrid(--level);
+	const children = octant.children;
+
+	// Compute means.
+	const txm = 0.5 * (tx0 + tx1);
+	const tym = 0.5 * (ty0 + ty1);
+	const tzm = 0.5 * (tz0 + tz1);
+
+	let currentOctant = findEntryOctant(tx0, ty0, tz0, txm, tym, tzm);
+
+	// Translate the key coordinates to the next lower level.
+	keyX *= 2; keyY *= 2; keyZ *= 2;
+
+	while(currentOctant < 8) {
+
+		const i = flags.value ^ currentOctant;
+		const childExists = ((children & (1 << i | 0)) !== 0);
+		const offset = layout[i];
+
+		v.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);
+
+		let child = null;
+
+		if(childExists) {
+
+			child = grid.get(keyDesign.packKey(v.x, v.y, v.z)) as IntermediateOctant<T>;
 
 		}
 
-		if(level > 0 && octant.children > 0) {
+		switch(currentOctant) {
 
-			// Go to the next lower level.
-			const grid = octree.getGrid(--level);
-			const children = octant.children;
+			case 0: {
 
-			// Compute means.
-			const txm = 0.5 * (tx0 + tx1);
-			const tym = 0.5 * (ty0 + ty1);
-			const tzm = 0.5 * (tz0 + tz1);
+				if(child !== null) {
 
-			let currentOctant = findEntryOctant(tx0, ty0, tz0, txm, tym, tzm);
-
-			// Translate the key coordinates to the next lower level.
-			keyX *= 2; keyY *= 2; keyZ *= 2;
-
-			while(currentOctant < 8) {
-
-				const i = flags.value ^ currentOctant;
-				const childExists = ((children & (1 << i | 0)) !== 0);
-				const offset = layout[i];
-
-				v.set(keyX + offset[0], keyY + offset[1], keyZ + offset[2]);
-
-				let child = null;
-
-				if(childExists) {
-
-					child = grid.get(keyDesign.packKey(v.x, v.y, v.z)) as IntermediateOctant<T>;
+					raycastOctant(
+						octree, child, v.x, v.y, v.z, level,
+						tx0, ty0, tz0, txm, tym, tzm, result
+					);
 
 				}
 
-				switch(currentOctant) {
+				currentOctant = findNextOctant(currentOctant, txm, tym, tzm);
+				break;
 
-					case 0: {
+			}
 
-						if(child !== null) {
+			case 1: {
 
-							raycastOctant(
-								octree, child, v.x, v.y, v.z, level,
-								tx0, ty0, tz0, txm, tym, tzm, result
-							);
+				if(child !== null) {
 
-						}
-
-						currentOctant = findNextOctant(currentOctant, txm, tym, tzm);
-						break;
-
-					}
-
-					case 1: {
-
-						if(child !== null) {
-
-							raycastOctant(
-								octree, child, v.x, v.y, v.z, level,
-								tx0, ty0, tzm, txm, tym, tz1, result
-							);
-
-						}
-
-						currentOctant = findNextOctant(currentOctant, txm, tym, tz1);
-						break;
-
-					}
-
-					case 2: {
-
-						if(child !== null) {
-
-							raycastOctant(
-								octree, child, v.x, v.y, v.z, level,
-								tx0, tym, tz0, txm, ty1, tzm, result
-							);
-
-						}
-
-						currentOctant = findNextOctant(currentOctant, txm, ty1, tzm);
-						break;
-
-					}
-
-					case 3: {
-
-						if(child !== null) {
-
-							raycastOctant(
-								octree, child, v.x, v.y, v.z, level,
-								tx0, tym, tzm, txm, ty1, tz1, result
-							);
-
-						}
-
-						currentOctant = findNextOctant(currentOctant, txm, ty1, tz1);
-						break;
-
-					}
-
-					case 4: {
-
-						if(child !== null) {
-
-							raycastOctant(
-								octree, child, v.x, v.y, v.z, level,
-								txm, ty0, tz0, tx1, tym, tzm, result
-							);
-
-						}
-
-						currentOctant = findNextOctant(currentOctant, tx1, tym, tzm);
-						break;
-
-					}
-
-					case 5: {
-
-						if(child !== null) {
-
-							raycastOctant(
-								octree, child, v.x, v.y, v.z, level,
-								txm, ty0, tzm, tx1, tym, tz1, result
-							);
-
-						}
-
-						currentOctant = findNextOctant(currentOctant, tx1, tym, tz1);
-						break;
-
-					}
-
-					case 6: {
-
-						if(child !== null) {
-
-							raycastOctant(
-								octree, child, v.x, v.y, v.z, level,
-								txm, tym, tz0, tx1, ty1, tzm, result
-							);
-
-						}
-
-						currentOctant = findNextOctant(currentOctant, tx1, ty1, tzm);
-						break;
-
-					}
-
-					case 7: {
-
-						if(child !== null) {
-
-							raycastOctant(
-								octree, child, v.x, v.y, v.z, level,
-								txm, tym, tzm, tx1, ty1, tz1, result
-							);
-
-						}
-
-						// Far top right octant: no other octants can be reached from here.
-						currentOctant = 8;
-						break;
-
-					}
+					raycastOctant(
+						octree, child, v.x, v.y, v.z, level,
+						tx0, ty0, tzm, txm, tym, tz1, result
+					);
 
 				}
+
+				currentOctant = findNextOctant(currentOctant, txm, tym, tz1);
+				break;
+
+			}
+
+			case 2: {
+
+				if(child !== null) {
+
+					raycastOctant(
+						octree, child, v.x, v.y, v.z, level,
+						tx0, tym, tz0, txm, ty1, tzm, result
+					);
+
+				}
+
+				currentOctant = findNextOctant(currentOctant, txm, ty1, tzm);
+				break;
+
+			}
+
+			case 3: {
+
+				if(child !== null) {
+
+					raycastOctant(
+						octree, child, v.x, v.y, v.z, level,
+						tx0, tym, tzm, txm, ty1, tz1, result
+					);
+
+				}
+
+				currentOctant = findNextOctant(currentOctant, txm, ty1, tz1);
+				break;
+
+			}
+
+			case 4: {
+
+				if(child !== null) {
+
+					raycastOctant(
+						octree, child, v.x, v.y, v.z, level,
+						txm, ty0, tz0, tx1, tym, tzm, result
+					);
+
+				}
+
+				currentOctant = findNextOctant(currentOctant, tx1, tym, tzm);
+				break;
+
+			}
+
+			case 5: {
+
+				if(child !== null) {
+
+					raycastOctant(
+						octree, child, v.x, v.y, v.z, level,
+						txm, ty0, tzm, tx1, tym, tz1, result
+					);
+
+				}
+
+				currentOctant = findNextOctant(currentOctant, tx1, tym, tz1);
+				break;
+
+			}
+
+			case 6: {
+
+				if(child !== null) {
+
+					raycastOctant(
+						octree, child, v.x, v.y, v.z, level,
+						txm, tym, tz0, tx1, ty1, tzm, result
+					);
+
+				}
+
+				currentOctant = findNextOctant(currentOctant, tx1, ty1, tzm);
+				break;
+
+			}
+
+			case 7: {
+
+				if(child !== null) {
+
+					raycastOctant(
+						octree, child, v.x, v.y, v.z, level,
+						txm, tym, tzm, tx1, ty1, tz1, result
+					);
+
+				}
+
+				// Far top right octant: no other octants can be reached from here.
+				currentOctant = 8;
+				break;
 
 			}
 
@@ -223,12 +229,10 @@ function raycastOctant<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 /**
  * A raycaster for linear octrees.
  *
- * This octree traversal implementation uses octant child existence bitmasks to
- * avoid hash table lookup misses.
+ * This octree traversal implementation uses octant child existence bitmasks to avoid hash table lookup misses.
  *
- * Reference:
- *  "An Efficient Parametric Algorithm for Octree Traversal"
- *  by J. Revelles et al. (2000)
+ * Based on "An Efficient Parametric Algorithm for Octree Traversal" by J. Revelles et al. (2000)
+ * @see https://www.researchgate.net/publication/2395157_An_Efficient_Parametric_Algorithm_for_Octree_Traversal
  */
 
 export class OctreeRaycaster {
@@ -248,54 +252,56 @@ export class OctreeRaycaster {
 		bounds.min.copy(octree.min);
 		bounds.max.copy(octree.max);
 
-		if(ray.intersectsBox(bounds)) {
+		if(!ray.intersectsBox(bounds)) {
 
-			const level = octree.getLevels(); // Starting at the root octant.
-			const rootOctant = octree.root.octant as IntermediateOctant<T>;
+			return result;
 
-			const keyDesign = octree.keyDesign;
-			const dimensions = octree.getDimensions(u);
-			const maxBits = Math.max(keyDesign.x, keyDesign.y, keyDesign.z);
+		}
 
-			// This vector describes how many times each dimension should be doubled.
-			const bitDifference = v.set(
-				maxBits - keyDesign.x,
-				maxBits - keyDesign.y,
-				maxBits - keyDesign.z
-			);
+		const level = octree.getLevels(); // Starting at the root octant.
+		const rootOctant = octree.root.octant as IntermediateOctant<T>;
 
-			// Temporarily stretch the dimensions to account for bit imbalance.
-			dimensions.set(
-				dimensions.x * (1 << bitDifference.x >>> 0),
-				dimensions.y * (1 << bitDifference.y >>> 0),
-				dimensions.z * (1 << bitDifference.z >>> 0)
-			);
+		const keyDesign = octree.keyDesign;
+		const dimensions = octree.getDimensions(u);
+		const maxBits = level; // = 1 + Math.max(keyDesign.x, keyDesign.y, keyDesign.z)
 
-			octantWrapper.copy(octree.root);
-			octantWrapper.max.copy(octantWrapper.min).add(dimensions);
+		// This vector describes how many times each dimension should be doubled.
+		const bitDifference = v.set(
+			maxBits - keyDesign.x,
+			maxBits - keyDesign.y,
+			maxBits - keyDesign.z
+		);
 
-			if(rootOctant.children > 0) {
+		// Temporarily stretch the dimensions to account for bit imbalance.
+		dimensions.set(
+			dimensions.x * (1 << bitDifference.x >>> 0),
+			dimensions.y * (1 << bitDifference.y >>> 0),
+			dimensions.z * (1 << bitDifference.z >>> 0)
+		);
 
-				// Calculate the initial raycasting parameters.
-				const t = intersectOctree(octantWrapper, ray, flags);
+		octantWrapper.copy(octree.root);
+		octantWrapper.max.copy(octantWrapper.min).add(dimensions);
 
-				if(t !== null) {
+		if(rootOctant.children > 0) {
 
-					// Find the intersecting children.
-					raycastOctant(
-						octree, rootOctant, 0, 0, 0, level,
-						t[0], t[1], t[2], t[3], t[4], t[5], result
-					);
+			// Calculate the initial raycasting parameters.
+			const t = intersectOctree(octantWrapper, ray, flags);
 
-				}
+			if(t !== null) {
 
-			}
-
-			if(rootOctant.data !== null) {
-
-				result.push(octree.root.clone());
+				// Find the intersecting children.
+				raycastOctant(
+					octree, rootOctant, 0, 0, 0, level,
+					t[0], t[1], t[2], t[3], t[4], t[5], result
+				);
 
 			}
+
+		}
+
+		if(rootOctant.data !== null) {
+
+			result.push(octree.root.clone());
 
 		}
 
