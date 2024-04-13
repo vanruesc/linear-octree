@@ -99,8 +99,9 @@ export class KeyIterator implements Iterator<number>, Iterable<number> {
 		}
 
 		this.result = {
-			done: false
-		} as IteratorResult<number>;
+			done: false,
+			value: -1
+		};
 
 		return this;
 
@@ -138,7 +139,7 @@ export class KeyIterator implements Iterator<number>, Iterable<number> {
 
 		} else {
 
-			result.value = null;
+			result.value = -1;
 			result.done = true;
 
 		}
