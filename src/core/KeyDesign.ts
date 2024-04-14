@@ -94,7 +94,7 @@ export class KeyDesign extends EventDispatcher<BaseEventMap> {
 	/**
 	 * Constructs a new key design.
 	 *
-	 * @param x - The amount of bits used for the X-coordinate. Cannot be zero.
+	 * @param x - The amount of bits used for the X-coordinate.
 	 * @param y - The amount of bits used for the Y-coordinate.
 	 * @param z - The amount of bits used for the Z-coordinate.
 	 */
