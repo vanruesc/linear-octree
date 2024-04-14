@@ -1,6 +1,6 @@
 {
 	"name": "linear-octree",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"description": "A sparse, linear octree data structure.",
 	"homepage": "https://github.com/vanruesc/linear-octree",
 	"license": "Zlib",
