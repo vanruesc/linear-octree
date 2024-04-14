@@ -103,8 +103,8 @@ export class KeyDesign extends EventDispatcher<BaseEventMap> {
 
 		super();
 
-		this.bits = new Vector3();
-		this.range = new Vector4();
+		this.bits = new Vector3(0, 0, 0);
+		this.range = new Vector4(1, 1, 1, 1);
 
 		this.maskX = [0, 0];
 		this.maskY = [0, 0];
