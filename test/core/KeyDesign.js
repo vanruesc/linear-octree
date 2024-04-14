@@ -121,18 +121,25 @@ test("handles bit allotment edge cases", t => {
 
 });
 
-test("blocks bad values", t => {
+test("can unpack with zero bits", t => {
 
 	const keyDesign = new KeyDesign(0, 0, 0);
+	t.notThrows(() => keyDesign.unpackKey(0, new Vector3()));
 
-	t.throws(() => keyDesign.packKey(1, 0, 0));
-	t.notThrows(() => keyDesign.packKey(0, 0, 0));
+});
 
-	t.throws(() => keyDesign.set(33, 0, 0));
-	t.notThrows(() => keyDesign.set(32, 0, 0));
+test("blocks bad values", t => {
+
+	const keyDesign = new KeyDesign(1, 1, 1);
+
 	t.notThrows(() => keyDesign.set(0, 0, 0));
-	t.notThrows(() => keyDesign.set(1, 0, 0));
-	t.notThrows(() => keyDesign.set(0, 1, 0));
-	t.notThrows(() => keyDesign.set(0, 0, 1));
+	t.notThrows(() => keyDesign.set(32, 0, 0));
+	t.throws(() => keyDesign.set(33, 0, 0));
+	t.throws(() => keyDesign.set(32, 32, 32));
+
+	keyDesign.set(0, 0, 0);
+
+	t.notThrows(() => keyDesign.packKey(0, 0, 0));
+	t.throws(() => keyDesign.packKey(1, 0, 0));
 
 });
