@@ -125,13 +125,14 @@ window.addEventListener("load", () => {
 	// Settings
 
 	const pane = new Pane({ container: container.querySelector(".tp") as HTMLElement });
+	const folder = pane.addFolder({ title: "Settings" });
 
-	octreeRaycaster.registerOptions(pane);
-	frustumCuller.registerOptions(pane);
+	octreeRaycaster.registerOptions(folder);
+	frustumCuller.registerOptions(folder);
 
 	const maxLevels = 4;
 	const params = {
-		"level mask": maxLevels,
+		"level mask": maxLevels + 1,
 		"bits": {
 			"x": keyDesign.x,
 			"y": keyDesign.y,
@@ -139,25 +140,25 @@ window.addEventListener("load", () => {
 		}
 	};
 
-	let folder = pane.addFolder({ title: "Key Design", expanded: false });
-	folder.addBinding(params.bits, "x", { min: 0, max: 4, step: 1 })
+	let subfolder = folder.addFolder({ title: "Key Design", expanded: false });
+	subfolder.addBinding(params.bits, "x", { min: 0, max: maxLevels, step: 1 })
 		.on("change", () => keyDesign.set(params.bits.x, params.bits.y, params.bits.z));
-	folder.addBinding(params.bits, "y", { min: 0, max: 4, step: 1 })
+	subfolder.addBinding(params.bits, "y", { min: 0, max: maxLevels, step: 1 })
 		.on("change", () => keyDesign.set(params.bits.x, params.bits.y, params.bits.z));
-	folder.addBinding(params.bits, "z", { min: 0, max: 4, step: 1 })
+	subfolder.addBinding(params.bits, "z", { min: 0, max: maxLevels, step: 1 })
 		.on("change", () => keyDesign.set(params.bits.x, params.bits.y, params.bits.z));
 
-	folder = pane.addFolder({ title: "Octree Helper" });
-	folder.addBinding(octreeHelper, "visible");
+	subfolder = folder.addFolder({ title: "Octree Helper" });
+	subfolder.addBinding(octreeHelper, "visible");
 
-	folder.addBinding(params, "level mask", { min: 0, max: maxLevels, step: 1 }).on("change", () => {
+	subfolder.addBinding(params, "level mask", { min: 0, max: maxLevels + 1, step: 1 }).on("change", () => {
 
 		const mask = params["level mask"];
 		const levels = octreeHelper.children.length;
 
 		for(let i = 0, l = levels; i < l; ++i) {
 
-			octreeHelper.children[i].visible = (mask === levels || mask === i);
+			octreeHelper.children[i].visible = (mask >= levels || mask === i);
 
 		}
 
