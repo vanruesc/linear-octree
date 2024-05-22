@@ -12,7 +12,7 @@ import {
 	Vector3
 } from "three";
 
-import { Pane } from "tweakpane";
+import { FolderApi, Pane } from "tweakpane";
 import { Octree } from "linear-octree";
 
 const pointer = new Vector2();
@@ -160,7 +160,7 @@ export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject
 	 * @param pane - A settings pane.
 	 */
 
-	registerOptions(pane: Pane): void {
+	registerOptions(pane: Pane | FolderApi): void {
 
 		const folder = pane.addFolder({ title: "Rayasting" });
 		folder.addBinding(this, "enabled", { label: "freeze (press E)" });
