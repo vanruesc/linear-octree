@@ -41,7 +41,7 @@
 		"dist"
 	],
 	"engines": {
-		"node": ">= 0.18.0"
+		"node": ">= 0.22.0"
 	},
 	"ava": {
 		"failFast": true,
@@ -88,7 +88,7 @@
 		"ava": "6.x.x",
 		"copyfiles": "2.x.x",
 		"del-cli": "5.x.x",
-		"esbuild": "0.x.x",
+		"esbuild": "0.21.x",
 		"eslint": "8.x.x",
 		"eslint-config-aether": "1.x.x",
 		"eslint-watch": "8.x.x",
