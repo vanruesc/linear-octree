@@ -14,7 +14,7 @@ import {
 	Vector3
 } from "three";
 
-import { Pane } from "tweakpane";
+import { FolderApi, Pane } from "tweakpane";
 import { Octree } from "linear-octree";
 
 const frustum = new Frustum();
@@ -191,7 +191,7 @@ export class FrustumCuller<T> {
 	 * @param pane - A settings pane.
 	 */
 
-	registerOptions(pane: Pane): void {
+	registerOptions(pane: Pane | FolderApi): void {
 
 		const folder = pane.addFolder({ title: "Frustum Culling" });
 
