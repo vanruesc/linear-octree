@@ -86,7 +86,7 @@ test("storing values in specific bit slots of a 53bit integer", t => {
 	const rangeX = Math.pow(2, xBits);
 	const rangeXY = Math.pow(2, xBits + yBits);
 
-	t.is(key, z * rangeXY + y * rangeX + x, "Incorrect key");
+	t.is(key, z * rangeXY + y * rangeX + x, "incorrect key");
 	t.is(keyCoordinates.x, x, "X");
 	t.is(keyCoordinates.y, y, "Y");
 	t.is(keyCoordinates.z, z, "Z");
