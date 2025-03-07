@@ -94,6 +94,7 @@ export class OctreeRaycaster<T> extends Raycaster implements EventListenerObject
 		);
 
 		this.mesh.count = 0;
+		this.mesh.frustumCulled = false;
 
 		document.addEventListener("keyup", this, { passive: true });
 		domElement.addEventListener("pointermove", this, { passive: true });
