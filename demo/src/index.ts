@@ -3,7 +3,6 @@ import {
 	FogExp2,
 	PerspectiveCamera,
 	Scene,
-	Vector3,
 	WebGLRenderer
 } from "three";
 
@@ -72,8 +71,6 @@ window.addEventListener("load", () => {
 	function fillOctree() {
 
 		const box = new Box3();
-		const keyCoordinates = new Vector3();
-
 		keyDesign.getMinKeyCoordinates(box.min);
 		keyDesign.getMaxKeyCoordinates(box.max);
 
@@ -82,7 +79,7 @@ window.addEventListener("load", () => {
 		// Populate all cells for demo purposes.
 		for(const key of keyDesign.keyRange(box.min, box.max)) {
 
-			octree.set(keyDesign.unpackKey(key, keyCoordinates), 0, Math.random());
+			octree.set(key, 0, Math.random());
 
 		}
 

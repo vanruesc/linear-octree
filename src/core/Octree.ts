@@ -541,22 +541,29 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	 *
 	 * Children and empty intermediate parent octants will be removed as well.
 	 *
-	 * @param keyCoordinates - The key coordinates of the octant that should be removed.
+	 * @param key - A packed key or key coordinates.
 	 * @param level - The level of the octant.
 	 */
 
-	delete(keyCoordinates: Vector3, level = 0): void {
+	delete(key: number | Vector3, level = 0): void {
 
 		const keyDesign = this.keyDesign;
 		const grid = this.getGrid(level);
 
-		const { x, y, z } = keyCoordinates;
-		const key = keyDesign.packKey(x, y, z);
+		let keyCoordinates: Vector3 | null = null;
+
+		if(typeof key !== "number") {
+
+			keyCoordinates = key;
+			key = keyDesign.packKey(key.x, key.y, key.z);
+
+		}
 
 		if(grid.has(key)) {
 
 			// Recursively delete all children in the lower level grids.
 			const octant = grid.get(key) as IntermediateOctant<T>;
+			const { x, y, z } = keyCoordinates ?? keyDesign.unpackKey(key, v);
 			removeChildren(this, octant, x, y, z, level);
 
 			// Remove the octant.
@@ -572,18 +579,21 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	/**
 	 * Retrieves data from a specific octant.
 	 *
-	 * @param keyCoordinates - The key coordinates of the octant.
+	 * @param key - A packed key or key coordinates.
 	 * @param level - The level of the octant.
 	 * @return The data, or undefined if the octant doesn't exist.
 	 */
 
-	get(keyCoordinates: Vector3, level: number): T | null | undefined {
+	get(key: number | Vector3, level: number): T | null | undefined {
 
 		const keyDesign = this.keyDesign;
 		const grid = this.getGrid(level);
 
-		const { x, y, z } = keyCoordinates;
-		const key = keyDesign.packKey(x, y, z);
+		if(typeof key !== "number") {
+
+			key = keyDesign.packKey(key.x, key.y, key.z);
+
+		}
 
 		return grid.get(key)?.data;
 
@@ -594,18 +604,24 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	 *
 	 * Missing intermediate octants will be created automatically.
 	 *
-	 * @param keyCoordinates - The key coordinates of the octant.
+	 * @param key - A packed key or key coordinates.
 	 * @param level - The level of the octant.
 	 * @param data - The data.
 	 */
 
-	set(keyCoordinates: Vector3, level: number, data: T | null): void {
+	set(key: number | Vector3, level: number, data: T | null): void {
 
 		const keyDesign = this.keyDesign;
 		const grid = this.getGrid(level);
 
-		const { x, y, z } = keyCoordinates;
-		const key = keyDesign.packKey(x, y, z);
+		let keyCoordinates: Vector3 | null = null;
+
+		if(typeof key !== "number") {
+
+			keyCoordinates = key;
+			key = keyDesign.packKey(key.x, key.y, key.z);
+
+		}
 
 		if(grid.has(key)) {
 
@@ -626,6 +642,7 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 			grid.set(key, octant);
 
 			// Recursively create intermediate parent nodes.
+			const { x, y, z } = keyCoordinates ?? keyDesign.unpackKey(key, v);
 			createParents(this, x, y, z, level);
 
 		}
