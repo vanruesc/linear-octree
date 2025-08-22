@@ -452,7 +452,7 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 
 		}
 
-		return this.grids[level];
+		return this.grids[level]!;
 
 	}
 
