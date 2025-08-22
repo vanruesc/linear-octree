@@ -73,7 +73,7 @@ export class OctantId {
 
 	clone(): OctantId {
 
-		const clone = new (<typeof OctantId> this.constructor)();
+		const clone = new (this.constructor as typeof OctantId)();
 		return clone.copy(this);
 
 	}

@@ -82,7 +82,7 @@ export class OctantWrapper<T> implements Node {
 
 	clone(): OctantWrapper<T> {
 
-		const clone = new (<typeof OctantWrapper> this.constructor)();
+		const clone = new (this.constructor as typeof OctantWrapper)();
 		return clone.copy(this) as OctantWrapper<T>;
 
 	}

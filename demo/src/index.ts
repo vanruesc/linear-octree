@@ -28,7 +28,7 @@ window.addEventListener("load", () => {
 	renderer.debug.checkShaderErrors = (window.location.hostname === "localhost");
 	renderer.setClearColor(0x000000, 0);
 
-	const container = document.querySelector(".viewport") as HTMLElement;
+	const container = document.querySelector(".viewport")!;
 	container.append(renderer.domElement);
 
 	// Scene
@@ -121,7 +121,7 @@ window.addEventListener("load", () => {
 
 	// Settings
 
-	const pane = new Pane({ container: container.querySelector(".tp") as HTMLElement });
+	const pane = new Pane({ container: container.querySelector<HTMLElement>(".tp")! });
 	const folder = pane.addFolder({ title: "Settings" });
 
 	octreeRaycaster.registerOptions(folder);
