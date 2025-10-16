@@ -68,7 +68,7 @@ const keyDesign = new KeyDesign(26, 0, 26);
   - Packs positional data into numeric keys
   - Constant time access to octants, parents and neighbors at any depth level
   - Low memory usage (no explicit positional data stored in octants)
-- Adheres to a [common octant layout](https://vanruesc.github.io/sparse-octree/docs/index.html#layout)
+- Adheres to a [common octant layout](https://vanruesc.github.io/sparse-octree/docs/variables/layout.html)
 - Supports raycasting
 - Supports culling
 - Can be extended to manage any data
