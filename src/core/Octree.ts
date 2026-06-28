@@ -1,5 +1,5 @@
-import { Box3, Frustum, Raycaster, Vector3 } from "three";
-import { layout, Node, Tree } from "sparse-octree";
+import { Box3, Raycaster, Vector3 } from "three";
+import { BoxIntersector, layout, Node, Tree } from "sparse-octree";
 import { IntermediateOctant } from "./IntermediateOctant.js";
 import { KeyDesign } from "./KeyDesign.js";
 import { Octant } from "./Octant.js";
@@ -190,7 +190,7 @@ function prune<T>(octree: Octree<T>, keyX: number, keyY: number, keyZ: number, l
 
 function cull<T>(octree: Octree<T>, octant: IntermediateOctant<T>,
 	keyX: number, keyY: number, keyZ: number, level: number,
-	region: Frustum | Box3, result: Node[]): void {
+	region: BoxIntersector, result: Node[]): void {
 
 	const cellSize = octree.getCellSize(level, u);
 	b.min.copy(v.set(keyX, keyY, keyZ)).multiply(cellSize).add(octree.min);
@@ -656,7 +656,7 @@ export class Octree<T> implements Tree, Iterable<OctantWrapper<T>> {
 	 * @return The nodes.
 	 */
 
-	cull(region: Frustum | Box3): OctantWrapper<T>[] {
+	cull(region: BoxIntersector): OctantWrapper<T>[] {
 
 		const result: OctantWrapper<T>[] = [];
 		const octant = this.root.octant as IntermediateOctant<T>;
