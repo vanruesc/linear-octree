@@ -34,7 +34,7 @@ bounds.max.set(1, 1, 1);
 const cellSize = new Vector3(1, 1, 1);
 const bounds = keyDesign.calculateBounds(cellSize, new Box3());
 
-// Create the octree.
+// Create the octree (this one stores strings).
 const octree = new Octree<string>(bounds, keyDesign);
 
 // Octree operations expect Uint key coordinates.
