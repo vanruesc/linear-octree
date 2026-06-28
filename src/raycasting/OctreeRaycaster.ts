@@ -4,11 +4,11 @@ import { IntermediateOctant } from "../core/IntermediateOctant.js";
 import { OctantWrapper } from "../core/OctantWrapper.js";
 import { Octree } from "../core/Octree.js";
 
-const octantWrapper = new OctantWrapper<unknown>();
-const flags = new RaycastingFlags();
-const bounds = new Box3();
-const u = new Vector3();
-const v = new Vector3();
+const octantWrapper = /* @__PURE__ */ new OctantWrapper<unknown>();
+const flags = /* @__PURE__ */ new RaycastingFlags();
+const bounds = /* @__PURE__ */ new Box3();
+const u = /* @__PURE__ */ new Vector3();
+const v = /* @__PURE__ */ new Vector3();
 
 /**
  * Recursively traverses the given octant to find (pseudo) leaf octants that intersect with the given ray.

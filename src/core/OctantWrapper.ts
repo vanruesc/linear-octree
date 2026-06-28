@@ -3,7 +3,7 @@ import { Node } from "sparse-octree";
 import { Octant } from "./Octant.js";
 import { OctantId } from "./OctantId.js";
 
-const p = new Vector3();
+const p = /* @__PURE__ */ new Vector3();
 
 /**
  * An octant wrapper that stores positional information.

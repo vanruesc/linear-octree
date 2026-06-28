@@ -8,9 +8,9 @@ import { OctreeIterator } from "./OctreeIterator.js";
 import { OctreeRaycaster } from "../raycasting/OctreeRaycaster.js";
 import { calculateOffsetIndex } from "../utils/calculateOffsetIndex.js";
 
-const u = new Vector3();
-const v = new Vector3();
-const b = new Box3();
+const u = /* @__PURE__ */ new Vector3();
+const v = /* @__PURE__ */ new Vector3();
+const b = /* @__PURE__ */ new Box3();
 
 /**
  * Recursively deletes octant children.
