@@ -1,2 +1,2 @@
-export { Binary } from "./Binary.js";
-export { calculateOffsetIndex } from "./calculateOffsetIndex.js";
+export * from "./Binary.js";
+export * from "./calculateOffsetIndex.js";
